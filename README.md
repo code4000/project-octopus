@@ -1,5 +1,6 @@
 ### Create database
 
-Run `rails db:create`
+Run `rails db:create db:migrate`
 
-Run `rails db:migrate`
+### Set up master admin account
+Run `User.create(email: "you@yours.com", password: "yourpassword", role: "master")
