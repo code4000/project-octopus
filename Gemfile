@@ -6,6 +6,7 @@ ruby '2.6.3'
 gem 'devise'
 gem 'cancancan'
 gem 'dotenv-rails'
+gem 'acts-as-taggable-on'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
