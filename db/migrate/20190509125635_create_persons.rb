@@ -3,7 +3,8 @@ class CreatePersons < ActiveRecord::Migration[5.2]
     create_table :persons do |t|
       t.integer :type, null: false
       t.belongs_to :site, foreign_key: true, index: true
-      t.string :name, null: false
+      t.string :first_name, null: false
+      t.string :last_name, null: false
       t.integer :gender, null: false
       t.date :dob, null: false
       t.date :crd
@@ -12,7 +13,6 @@ class CreatePersons < ActiveRecord::Migration[5.2]
       t.date :recat
       t.text :address
       t.text :notes
-      t.integer :ability_level
 
       t.timestamps
     end
