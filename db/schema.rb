@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 2019_05_09_125635) do
   create_table "persons", force: :cascade do |t|
     t.integer "type", null: false
     t.bigint "site_id"
-    t.string "name", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
     t.integer "gender", null: false
     t.date "dob", null: false
     t.date "crd"
@@ -27,7 +28,6 @@ ActiveRecord::Schema.define(version: 2019_05_09_125635) do
     t.date "recat"
     t.text "address"
     t.text "notes"
-    t.integer "ability_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["site_id"], name: "index_persons_on_site_id"
