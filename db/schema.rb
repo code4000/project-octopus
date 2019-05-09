@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_05_09_131160) do
   create_table "sites", force: :cascade do |t|
     t.string "name", null: false
     t.integer "capacity"
-    t.text "address"
+    t.string "region"
     t.string "manager"
     t.text "notes"
     t.datetime "created_at", null: false
