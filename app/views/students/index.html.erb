@@ -12,7 +12,7 @@
   <tbody>
     <% @students.each do |student| %>
         <tr>
-          <th><%= link_to student.first_name + ' ' + student.last_name, student_path(student) %></th>
+          <th><%= link_to student.name, student_path(student) %></th>
           <th><%= link_to student.site.name, site_path(student.site) if student.site.present? %></th>
           <td><%= student.prison_number %></td>
           <td><%= l student.crd %></td>
