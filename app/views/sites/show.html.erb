@@ -2,6 +2,7 @@
 <h4>Attendence: <%= @site.students.count %> / <%= @site.capacity %></h4>
 <h4>Region: <%= @site.region %></h4>
 <h4>Manager: <%= @site.manager %></h4>
+<h4>Notes:</h4><p><%= @site.notes %></p>
 <%= link_to 'Edit site', edit_site_path(@site) %>
 <h3>Students:</h3>
 <table class="table">
@@ -18,10 +19,10 @@
         <tr>
           <th><%= link_to student.name, student_path(student) %></th>
           <td><%= student.prison_number %></td>
-          <td><%= l student.crd %></td>
-          <td><%= l student.hdc if student.hdc.present? %></td>
-          <td><%= l student.rotl %></td>
-          <td><%= l student.recat %></td>
+          <td><%= student.crd.present? ? (l student.crd) : "Unknown" %></td>
+          <td><%= student.hdc.present? ? (l student.hdc) : "N/A" %></td>
+          <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
+          <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
         </tr>
     <% end %>
   </tbody>
