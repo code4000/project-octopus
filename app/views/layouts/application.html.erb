@@ -10,6 +10,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div>
+      <%= link_to 'Home', root_path %> |
+      <%= link_to 'Sites Overview', sites_path %> |
+      <%= link_to 'Account Settings', edit_user_registration_path %>
+    </div>
+
+    <div>
+      <%= yield %>
+    </div>
   </body>
 </html>
