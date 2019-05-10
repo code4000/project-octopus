@@ -10,29 +10,33 @@
 <p><%= link_to 'Add student', new_student_path(site: @site) if can? :create, Student %></p>
 
 <h3>Students:</h3>
-<table class="table">
-  <thead>
-    <th>Name</th>
-    <th>Prison number</th>
-    <th>Release date</th>
-    <th>Eligable for tag</th>
-    <th>Eligable for ROTL</th>
-    <th>Next recategorisation</th>
-    <th></th>
-    <th></th>
-  </thead>
-  <tbody>
-    <% @site.students.each do |student| %>
-        <tr>
-          <th><%= link_to student.name, student_path(student) %></th>
-          <td><%= student.prison_number %></td>
-          <td><%= student.crd.present? ? (l student.crd) : "Unknown" %></td>
-          <td><%= student.hdc.present? ? (l student.hdc) : "N/A" %></td>
-          <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
-          <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
-          <td><%= link_to 'Edit', edit_student_path(student) if can? :update, Student %></td>
-          <td><%= link_to 'Remove', student_path(student), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Student %></td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if @site.students.count <= 0 %>
+  <p>There are currently no students enrolled at this site.</p>
+<% else %>
+  <table class="table">
+    <thead>
+      <th>Name</th>
+      <th>Prison number</th>
+      <th>Release date</th>
+      <th>Eligable for tag</th>
+      <th>Eligable for ROTL</th>
+      <th>Next recategorisation</th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @site.students.each do |student| %>
+          <tr>
+            <th><%= link_to student.name, student_path(student) %></th>
+            <td><%= student.prison_number %></td>
+            <td><%= student.crd.present? ? (l student.crd) : "Unknown" %></td>
+            <td><%= student.hdc.present? ? (l student.hdc) : "N/A" %></td>
+            <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
+            <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
+            <td><%= link_to 'Edit', edit_student_path(student) if can? :update, Student %></td>
+            <td><%= link_to 'Remove', student_path(student), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Student %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
