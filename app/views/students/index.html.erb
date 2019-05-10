@@ -1,4 +1,5 @@
 <h1>All students</h1>
+<%= link_to 'Add student', new_student_path %>
 <table class="table">
   <thead>
     <th>Name</th>
@@ -13,12 +14,12 @@
     <% @students.each do |student| %>
         <tr>
           <th><%= link_to student.name, student_path(student) %></th>
-          <th><%= link_to student.site.name, site_path(student.site) if student.site.present? %></th>
+          <th><%= student.site.present? ? (link_to student.site.name, site_path(student.site)) : "Non listed" %></th>
           <td><%= student.prison_number %></td>
-          <td><%= l student.crd %></td>
-          <td><%= l student.hdc if student.hdc.present? %></td>
-          <td><%= l student.rotl %></td>
-          <td><%= l student.recat %></td>
+          <td><%= student.crd.present? ? (l student.crd) : "Unknown" %></td>
+          <td><%= student.hdc.present? ? (l student.hdc) : "N/A" %></td>
+          <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
+          <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
         </tr>
     <% end %>
   </tbody>
