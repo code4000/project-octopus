@@ -5,9 +5,9 @@
 <h4>Manager: <%= @site.manager %></h4>
 <h4>Notes:</h4><p><%= @site.notes %></p>
 
-<p><%= link_to 'Edit site', edit_site_path(@site) %></p>
-<p><%= link_to 'Remove site', site_path(@site), method: :delete, data: { confirm: 'Are you sure?' } if current_user.master? %></p>
-<p><%= link_to 'Add student', new_student_path(site: @site) %></p>
+<p><%= link_to 'Edit site', edit_site_path(@site) if can? :update, Site %></p>
+<p><%= link_to 'Remove site', site_path(@site), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Site %></p>
+<p><%= link_to 'Add student', new_student_path(site: @site) if can? :create, Student %></p>
 
 <h3>Students:</h3>
 <table class="table">
@@ -18,6 +18,8 @@
     <th>Eligable for tag</th>
     <th>Eligable for ROTL</th>
     <th>Next recategorisation</th>
+    <th></th>
+    <th></th>
   </thead>
   <tbody>
     <% @site.students.each do |student| %>
@@ -28,6 +30,8 @@
           <td><%= student.hdc.present? ? (l student.hdc) : "N/A" %></td>
           <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
           <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
+          <td><%= link_to 'Edit', edit_student_path(student) %></td>
+          <td><%= link_to 'Remove', student_path(student), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Student %></td>
         </tr>
     <% end %>
   </tbody>

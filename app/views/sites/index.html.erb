@@ -1,5 +1,5 @@
 <h1>All sites</h1>
-<%= link_to 'Add site', new_site_path %>
+<%= link_to 'Add site', new_site_path if can? :create, Site %>
 <% @sites.each do |site| %>
   <table>
     <tr><th><%= link_to site.name, site_path(site) %></th></tr>

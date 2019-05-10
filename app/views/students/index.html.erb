@@ -1,5 +1,5 @@
 <h1>All students</h1>
-<%= link_to 'Add student', new_student_path %>
+<%= link_to 'Add student', new_student_path if can? :create, Student %>
 <table class="table">
   <thead>
     <th>Name</th>
@@ -9,6 +9,8 @@
     <th>Eligable for tag</th>
     <th>Eligable for ROTL</th>
     <th>Next recategorisation</th>
+    <th></th>
+    <th></th>
   </thead>
   <tbody>
     <% @students.each do |student| %>
@@ -20,6 +22,8 @@
           <td><%= student.hdc.present? ? (l student.hdc) : "N/A" %></td>
           <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
           <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
+          <td><%= link_to 'Edit', edit_student_path(student) if can? :update, Student %></td>
+          <td><%= link_to 'Remove', student_path(student), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Student %></td>
         </tr>
     <% end %>
   </tbody>
