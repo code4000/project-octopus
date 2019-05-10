@@ -46,7 +46,7 @@ class SitesController < ApplicationController
     end
     @site.destroy
     flash[:notice] = "Successfully deleted."
-    redirect_to sites_path
+    redirect_back fallback_location: sites_path
   end
 
   def site_params
