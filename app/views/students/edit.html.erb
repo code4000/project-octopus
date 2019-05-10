@@ -1,0 +1,4 @@
+<h1>Edit <%= @student.name %></h1>
+<%= form_for @student, url: student_path do |form| %>
+  <%= render "form", form: form %>
+<% end %>

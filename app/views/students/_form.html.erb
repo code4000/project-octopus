@@ -1,0 +1,48 @@
+<div>
+  <%= form.label "First name" %>
+  <%= form.text_field :first_name %>
+</div>
+<div>
+  <%= form.label "Surname" %>
+  <%= form.text_field :last_name %>
+</div>
+<div>
+  <%= form.label "Prison number" %>
+  <%= form.text_field :prison_number %>
+</div>
+<div>
+  <%= form.label "Site" %>
+   <%= form.collection_select :site_id, Site.order(:name),:id,:name, include_blank: true %>
+</div>
+<div>
+  <%= form.label "Gender" %>
+  <%= form.select :gender, ["Male","Female"] %>
+</div>
+<div>
+  <%= form.label "Date of birth" %>
+  <%= form.date_field :dob %>
+</div>
+<h4>Key dates:</h4>
+<div>
+  <%= form.label "Release date" %>
+  <%= form.date_field :crd %>
+</div>
+<div>
+  <%= form.label "Eligible for tag" %>
+  <%= form.date_field :hdc %>
+</div>
+<div>
+  <%= form.label "Eligible for ROTL" %>
+  <%= form.date_field :rotl %>
+</div>
+<div>
+  <%= form.label "Next recategorisation" %>
+  <%= form.date_field :recat %>
+</div>
+<div>
+  <%= form.label "Notes" %><br>
+  <%= form.text_area :notes %>
+</div>
+<div>
+  <%= form.submit "Save" %>
+</div>
