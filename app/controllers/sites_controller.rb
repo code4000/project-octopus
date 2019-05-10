@@ -1,4 +1,5 @@
 class SitesController < ApplicationController
+  load_and_authorize_resource class: Site, except: [:create]
   def index
     @sites = Site.all
   end

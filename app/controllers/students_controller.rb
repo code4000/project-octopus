@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  load_and_authorize_resource class: Student, except: [:create]
+
   def index
     @students = Student.all
   end
@@ -35,6 +37,13 @@ class StudentsController < ApplicationController
       flash[:alert] = "Error: #{@student.errors.full_messages.to_sentence}"
       render 'new'
     end
+  end
+
+  def destroy
+    @student = Student.find(params[:id])
+    @student.destroy
+    flash[:notice] = "Successfully deleted."
+    redirect_back fallback_location: students_path
   end
 
   def student_params
