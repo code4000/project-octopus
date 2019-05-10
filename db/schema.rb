@@ -15,12 +15,21 @@ ActiveRecord::Schema.define(version: 2019_05_09_131160) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "persons", force: :cascade do |t|
-    t.integer "type", null: false
+  create_table "sites", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "capacity"
+    t.string "region"
+    t.string "manager"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
     t.bigint "site_id"
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.integer "gender", null: false
+    t.string "gender", null: false
     t.date "dob", null: false
     t.date "crd"
     t.date "hdc"
@@ -30,17 +39,7 @@ ActiveRecord::Schema.define(version: 2019_05_09_131160) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["site_id"], name: "index_persons_on_site_id"
-  end
-
-  create_table "sites", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "capacity"
-    t.string "region"
-    t.string "manager"
-    t.text "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_students_on_site_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -81,5 +80,5 @@ ActiveRecord::Schema.define(version: 2019_05_09_131160) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "persons", "sites"
+  add_foreign_key "students", "sites"
 end
