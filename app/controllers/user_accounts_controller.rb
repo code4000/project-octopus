@@ -14,7 +14,7 @@ class UserAccountsController < ApplicationController
       flash[:notice] = 'User updated successfully'
       redirect_to user_accounts_path
     else
-      flash[:alert] = "Error: #{@admin.errors.full_messages.to_sentence}"
+      flash[:alert] = "Error: #{@user.errors.full_messages.to_sentence}"
       render 'edit'
     end
   end
