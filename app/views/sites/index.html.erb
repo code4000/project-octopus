@@ -1,3 +1,8 @@
-<% @sites.each do |site| %>
-  <%= site.name %>
-<% end %>
+<h1>All sites</h1>
+  <% @sites.each do |site| %>
+    <table>
+      <tr><th><%= link_to site.name, site_path(site) %></th></tr>
+      <tr><td>Region: <%= site.region %></td></tr>
+      <tr><td>Attendence: <%= site.students.count %> / <%= site.capacity %></td></tr>
+    </table>
+  <% end %>
