@@ -17,13 +17,15 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
-    <div>
-      <%= link_to 'Home', root_path %> |
-      <%= link_to 'Sites Overview', sites_path %> |
-      <%= link_to 'Students Overview', students_path %> |
-      <%= ((link_to 'Users', user_accounts_path) + " | ") if current_user.master? %>
-      <%= link_to 'Account Settings', edit_user_registration_path %>
-    </div>
+    <% if current_user.present? %>
+      <div>
+        <%= link_to 'Home', root_path %> |
+        <%= link_to 'Sites Overview', sites_path %> |
+        <%= link_to 'Students Overview', students_path %> |
+        <%= ((link_to 'Users', user_accounts_path) + " | ") if current_user&.master? %>
+        <%= link_to 'Account Settings', edit_user_registration_path %>
+      </div>
+    <% end %>
 
     <div>
       <%= yield %>
