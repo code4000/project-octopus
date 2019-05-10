@@ -10,4 +10,10 @@ class User < ApplicationRecord
     end
   end
 
+  def admin?
+    if self.role == "admin"
+      true
+    end
+  end
+
 end
