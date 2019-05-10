@@ -1,0 +1,4 @@
+<h1>Edit <%= @site.name %></h1>
+<%= form_for @site, url: site_path do |form| %>
+  <%= render "form", form: form %>
+<% end %>
