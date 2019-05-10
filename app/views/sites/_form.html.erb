@@ -1,0 +1,23 @@
+<div>
+  <%= form.label "Name" %>
+  <%= form.text_field :name %>
+</div>
+<div>
+  <%= form.label "Capacity" %>
+  <%= form.number_field :capacity %>
+</div>
+<div>
+  <%= form.label "Region" %>
+  <%= form.select :region, ["North","South"]%>
+</div>
+<div>
+  <%= form.label "Manager" %>
+  <%= form.text_field :manager %>
+</div>
+<div>
+  <%= form.label "Notes" %>
+  <%= form.text_area :notes %>
+</div>
+<div>
+  <%= form.submit "Save" %>
+</div>
