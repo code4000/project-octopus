@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Octopus, <%= @user.name %>!</h1>
+
+    <p>
+      Your account is now ready to go, you just need to set your password. Please follow the link below.
+      <br><br><%= link_to 'Set password', new_user_password_url %>
+    </p>
+
+    <p>See you soon!</p>
+
+  </body>
+</html>

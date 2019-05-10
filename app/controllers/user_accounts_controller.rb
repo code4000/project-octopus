@@ -29,13 +29,20 @@ class UserAccountsController < ApplicationController
     @user.password = SecureRandom.hex(8)
     if @user.save
       # TODO: email user password
-      # AdminMailer.with(admin: @admin).welcome_email.deliver_now
+      UserMailer.with(user: @user).welcome_email.deliver_now
       flash[:notice] = 'Account added!'
       redirect_to user_accounts_path
     else
       flash[:alert] = "Error: #{@user.errors.full_messages.to_sentence}"
       render 'new'
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "Successfully deleted."
+    redirect_to user_accounts_path
   end
 
   def user_params
