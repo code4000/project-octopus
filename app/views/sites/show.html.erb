@@ -6,6 +6,7 @@
 <h4>Notes:</h4><p><%= @site.notes %></p>
 
 <p><%= link_to 'Edit site', edit_site_path(@site) %></p>
+<p><%= link_to 'Remove site', site_path(@site), method: :delete, data: { confirm: 'Are you sure?' } if current_user.master? %></p>
 <p><%= link_to 'Add student', new_student_path(site: @site) %></p>
 
 <h3>Students:</h3>

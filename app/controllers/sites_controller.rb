@@ -37,6 +37,17 @@ class SitesController < ApplicationController
     end
   end
 
+  def destroy
+    @site = Site.find(params[:id])
+    @site.students.each do |student|
+      student.site = nil
+      student.save
+    end
+    @site.destroy
+    flash[:notice] = "Successfully deleted."
+    redirect_to sites_path
+  end
+
   def site_params
     params.permit(site: [
                         :name,
