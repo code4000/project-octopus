@@ -24,7 +24,6 @@ class SitesController < ApplicationController
 
   def new
     @site = Site.new
-    binding.pry
   end
 
   def create
