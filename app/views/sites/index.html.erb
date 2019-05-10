@@ -1,8 +1,10 @@
 <h1>All sites</h1>
-  <% @sites.each do |site| %>
-    <table>
-      <tr><th><%= link_to site.name, site_path(site) %></th></tr>
-      <tr><td>Region: <%= site.region %></td></tr>
-      <tr><td>Attendence: <%= site.students.count %> / <%= site.capacity %></td></tr>
-    </table>
-  <% end %>
+<%= link_to 'Add site', new_site_path %>
+<% @sites.each do |site| %>
+  <table>
+    <tr><th><%= link_to site.name, site_path(site) %></th></tr>
+    <tr><td>Attendence: <%= site.students.count %> / <%= site.capacity %></td></tr>
+    <tr><td>Region: <%= site.region %></td></tr>
+    <tr><td>Manager: <%= site.manager %></td></tr>
+  </table>
+<% end %>
