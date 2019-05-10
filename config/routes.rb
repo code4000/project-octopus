@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   # TODO: limit onbly to used actions!
   resources :sites
-  resources :persons
+  resources :students
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
