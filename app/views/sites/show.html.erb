@@ -5,8 +5,8 @@
 <h4>Manager: <%= @site.manager %></h4>
 <h4>Notes:</h4><p><%= @site.notes %></p>
 
-<p><%= link_to 'Edit site', edit_site_path(@site) if can? :update, Site %></p>
-<p><%= link_to 'Remove site', site_path(@site), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Site %></p>
+<%= link_to 'Edit', edit_site_path(@site) if can? :update, Site %>
+<%= link_to 'Remove', site_path(@site), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Site %>
 <p><%= link_to 'Add student', new_student_path(site: @site) if can? :create, Student %></p>
 
 <h3>Students:</h3>
