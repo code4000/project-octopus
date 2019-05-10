@@ -12,7 +12,7 @@
 </div>
 <div>
   <%= form.label "Site" %>
-   <%= form.collection_select :site_id, Site.order(:name),:id,:name, include_blank: true, selected: params[:site] %>
+   <%= form.collection_select :site_id, Site.order(:name),:id,:name, include_blank: true, selected: (@student&.site.present? ? @student.site.id : params[:site]) %>
 </div>
 <div>
   <%= form.label "Gender" %>
