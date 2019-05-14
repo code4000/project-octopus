@@ -4,7 +4,8 @@
   <table>
     <tr><th><%= link_to site.name, site_path(site) %></th></tr>
     <tr><td>Attendence: <%= site.students.count %> / <%= site.capacity %></td></tr>
-    <tr><td>Region: <%= site.region %></td></tr>
+    <tr><td>Regions: <%= site.region_list %></td></tr>
+    <tr><td>Population gender: <%= site.gender %></td></tr>
     <tr><td>Manager: <%= site.manager %></td></tr>
   </table>
 <% end %>

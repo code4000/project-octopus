@@ -3,9 +3,9 @@
 <%= link_to 'Edit', edit_student_path(@student) if can? :update, Student %>
 <%= link_to 'Remove', student_path(@student), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Student %>
 
-
+<h4>Profile:</h4>
 <p>Prison number: <%= @student.prison_number %></p>
-<p>Location: <%= @student.site.present? ? (link_to @student.site.name, site_path(@student.site)) : "Non listed" %></p>
+<p>Location: <%= !@student.released? ? (@student.site.present? ? (link_to @student.site.name, site_path(@student.site)) : "Non listed") : "Released" %></p>
 <p>Date of birth: <%= l @student.dob %> (<%= @student.age %>)</p>
 <p>Gender: <%= @student.gender %></p>
 <h4>Key dates:</h4>
@@ -13,5 +13,8 @@
 <p>Eligible for tag: <%= @student.hdc.present? ? (l @student.hdc) : "N/A" %></p>
 <p>Eligible for ROTL: <%= @student.rotl.present? ? (l @student.rotl) : "Unknown" %></p>
 <p>Next recategorisation: <%= @student.recat.present? ? (l @student.recat) : "Unknown" %></p>
+<p>Skills: <%= @student.skill_list %></p>
+<p>Job preferences: <%= @student.job_preference_list %></p>
+<p>Tags: <%= @student.tag_list %></p>
 <p>Notes:<br>
 <%= @student.notes %></p>

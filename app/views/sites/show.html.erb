@@ -1,8 +1,11 @@
 <h1><%= @site.name %></h1>
 
 <h4>Attendence: <%= @site.students.count %> / <%= @site.capacity %></h4>
-<h4>Region: <%= @site.region %></h4>
 <h4>Manager: <%= @site.manager %></h4>
+<h4>Contact number: <%= @site.contact_number %></h4>
+<h4>Population gender: <%= @site.gender %></h4>
+<h4>Regions:</h4><p><%= @site.region_list %></p>
+<h4>Tags:</h4><p><%= @site.tag_list %></p>
 <h4>Notes:</h4><p><%= @site.notes %></p>
 
 <%= link_to 'Edit', edit_site_path(@site) if can? :update, Site %>
@@ -17,10 +20,15 @@
     <thead>
       <th>Name</th>
       <th>Prison number</th>
+      <th>Date of birth</th>
+      <th>Gender</th>
       <th>Release date</th>
       <th>Eligable for tag</th>
       <th>Eligable for ROTL</th>
       <th>Next recategorisation</th>
+      <th>Skills</th>
+      <th>Job preferences</th>
+      <th>Tags</th>
       <th></th>
       <th></th>
     </thead>
@@ -29,10 +37,15 @@
           <tr>
             <th><%= link_to student.name, student_path(student) %></th>
             <td><%= student.prison_number %></td>
+            <td><%= student.dob.present? ? (l student.dob) : "Unknown" %></td>
+            <td><%= student.gender %></td>
             <td><%= student.crd.present? ? (l student.crd) : "Unknown" %></td>
             <td><%= student.hdc.present? ? (l student.hdc) : "N/A" %></td>
             <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
             <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
+            <td><%= student.skill_list %></td>
+            <td><%= student.job_preference_list %></td>
+            <td><%= student.tag_list %></td>
             <td><%= link_to 'Edit', edit_student_path(student) if can? :update, Student %></td>
             <td><%= link_to 'Remove', student_path(student), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Student %></td>
           </tr>
