@@ -3,7 +3,16 @@ class HomeController < ApplicationController
     if !current_user
       redirect_to new_user_session_path
     else
-      redirect_to sites_path
+
+      @all_sites = Site.all.order(:name).limit(5)
+
+      @most_popular_tags = {}
+      tags = Site.tag_counts_on(:regions).most_used(5)
+
+      tags.each do |tag|
+        @most_popular_tags[tag.name] = Site.tagged_with(tag.name).order(:name).limit(5)
+      end
+
     end
   end
 end
