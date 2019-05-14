@@ -4,10 +4,10 @@ class CreateStudents < ActiveRecord::Migration[5.2]
       t.belongs_to :site, foreign_key: true, index: true
       t.string :first_name, null: false
       t.string :last_name, null: false
-      t.string :prison_number, null: false
+      t.string :prison_number
       t.string :gender, null: false
-      t.date :dob, null: false
-      t.date :crd
+      t.date :dob
+      t.date :crd, null: false
       t.date :hdc
       t.date :rotl
       t.date :recat
