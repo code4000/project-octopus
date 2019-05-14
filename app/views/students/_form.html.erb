@@ -1,3 +1,4 @@
+<h4>Personal info:</h4>
 <div>
   <%= form.label "First name" %>
   <%= form.text_field :first_name %>
@@ -38,6 +39,19 @@
 <div>
   <%= form.label "Next recategorisation" %>
   <%= form.date_field :recat %>
+</div>
+<h4>Key info:</h4>
+<div>
+  <%= form.label "Skills" %>
+  <%= form.text_field :skill_list %>
+</div>
+<div>
+  <%= form.label "Job preferences" %>
+  <%= form.text_field :job_preference_list %>
+</div>
+<div>
+  <%= form.label "Tags" %>
+  <%= form.text_field :tag_list %>
 </div>
 <div>
   <%= form.label "Notes" %><br>
