@@ -53,8 +53,11 @@ class SitesController < ApplicationController
     params.permit(site: [
                         :name,
                         :capacity,
-                        :region,
                         :manager,
+                        :contact_number,
+                        :gender,
+                        :region_list,
+                        :tag_list,
                         :notes
                         ])[:site]
   end

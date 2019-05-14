@@ -7,12 +7,24 @@
   <%= form.number_field :capacity %>
 </div>
 <div>
-  <%= form.label "Region" %>
-  <%= form.select :region, ["North","South"]%>
-</div>
-<div>
   <%= form.label "Manager" %>
   <%= form.text_field :manager %>
+</div>
+<div>
+  <%= form.label "Contact number" %>
+  <%= form.text_field :contact_number %>
+</div>
+<div>
+  <%= form.label "Gender" %>
+  <%= form.select :gender, ["Male","Female","Mixed"] %>
+</div>
+<div>
+  <%= form.label "Regions" %>
+  <%= form.text_field :region_list %>
+</div>
+<div>
+  <%= form.label "Tags" %>
+  <%= form.text_field :tag_list %>
 </div>
 <div>
   <%= form.label "Notes" %>

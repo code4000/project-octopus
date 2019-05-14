@@ -46,6 +46,33 @@ class StudentsController < ApplicationController
     redirect_back fallback_location: students_path
   end
 
+  def add_skills
+    @student = Student.find(params[:id])
+
+    params[:skills].each do |tag|
+      @student.skill_list.add(tag) unless @student.skill_list.include?(tag)
+    end
+    @student.save
+  end
+
+  def add_job_preferences
+    @student = Student.find(params[:id])
+
+    params[:job_preferences].each do |tag|
+      @student.job_preference_list.add(tag) unless @student.job_preference_list.include?(tag)
+    end
+    @student.save
+  end
+
+  def add_tags
+    @student = Student.find(params[:id])
+
+    params[:tags].each do |tag|
+      @student.tag_list.add(tag) unless @student.tag_list.include?(tag)
+    end
+    @student.save
+  end
+
   def student_params
     params.permit(student: [
                         :first_name,
@@ -58,6 +85,8 @@ class StudentsController < ApplicationController
                         :hdc,
                         :rotl,
                         :recat,
+                        :skill_list,
+                        :job_preference_list,
                         :notes
                         ])[:student]
   end
