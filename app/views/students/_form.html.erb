@@ -40,58 +40,9 @@
   <%= form.date_field :recat %>
 </div>
 <div>
-  <%= form.label "Skills" %>
-  <%= form.text_field :skill_list %>
-  <%= form.select("skills", Student.tag_counts_on(:skills).collect{ |t| [ t.name, t.name ] }, { selected: @student.skill_list }, { id: "skill_tags_#{@student.id}", class: 'tag_list',  multiple: true, :onchange=>"addSkillTags(#{@student.id});" }) %>
-</div>
-<div>
-  <%= form.label "Job preferences" %>
-  <%= form.text_field :job_preference_list %>
-</div>
-<div>
-  <%= form.label "Tags" %>
-  <%= form.text_field :tag_list %>
-</div>
-<div>
   <%= form.label "Notes" %><br>
   <%= form.text_area :notes %>
 </div>
 <div>
   <%= form.submit "Save" %>
 </div>
-
-<% content_for :head do %>
-  <script>
-    $(document).on('ready page:load', function () {
-      var select, chosen;
-      select = $('.tag_list');
-      select.chosen({
-        allow_single_deselect: true,
-        width: '200px',
-        placeholder_text_multiple: 'Add tags',
-        no_results_text: 'Press enter to add:'
-      });
-
-      chosen = $('.chosen-container');
-      chosen.find('input').keyup( function(e) {
-          if (e.which === 13 && chosen.find('li.no-results').length > 0){
-              var option = $("<option>").val(this.value).text(this.value);
-              select.prepend(option);
-              select.find(option).prop('selected', true);
-              select.trigger("chosen:updated");
-          }
-      });
-    });
-
-    function addSkillTags(id) {
-      var data = $('#skill_tags_' + id).val();
-      $.ajax({
-        type: "POST",
-        url: "/students/add_skills",
-        dataType: "json",
-        data: { id: id, tags: data }
-      });
-    }
-    }
-  </script>
-<% end %>
