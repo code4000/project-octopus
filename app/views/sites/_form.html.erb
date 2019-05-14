@@ -20,11 +20,11 @@
 </div>
 <div>
   <%= form.label "Regions" %>
-  <%= form.text_field :region_list %>
+  <%= select("regions", "names", Site.tag_counts_on(:regions).collect {|t| [ t.name, t.name ] }, { selected: @site.region_list }, { id: "region_tags", multiple: true, :onChange=>"addRegionTags();" } ) %>
 </div>
 <div>
   <%= form.label "Tags" %>
-  <%= form.text_field :tag_list %>
+    <%= select("tags", "names", Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @site.tag_list }, { id: "tags", multiple: true, :onChange=>"addTags();" } ) %>
 </div>
 <div>
   <%= form.label "Notes" %>
@@ -33,3 +33,69 @@
 <div>
   <%= form.submit "Save" %>
 </div>
+
+<script>
+  $(document).on('ready page:load', function () {
+
+    var regions_select, regions_chosen;
+      regions_select = $('#region_tags');
+      regions_select.chosen({
+        allow_single_deselect: true,
+        width: '200px',
+        placeholder_text_multiple: 'Add new',
+        no_results_text: 'Press enter to add:'
+      });
+
+      regions_chosen = $('.chosen-container');
+      regions_chosen.find('input').keyup( function(e) {
+          if (e.which === 13 && regions_chosen.find('li.no-results').length > 0){
+              var option = $("<option>").val(this.value).text(this.value);
+              regions_select.prepend(option);
+              regions_select.trigger("chosen:updated");
+              regions_select.find(option).prop('selected', true);
+          }
+      });
+
+      var tags_select, tags_chosen;
+        tags_select = $('#tags');
+        tags_select.chosen({
+          allow_single_deselect: true,
+          width: '200px',
+          placeholder_text_multiple: 'Add new',
+          no_results_text: 'Press enter to add:'
+        });
+
+        tags_chosen = $('.chosen-container');
+        tags_chosen.find('input').keyup( function(e) {
+            if (e.which === 13 && tags_chosen.find('li.no-results').length > 0){
+                var option = $("<option>").val(this.value).text(this.value);
+                tags_select.prepend(option);
+                tags_select.trigger("chosen:updated");
+                tags_select.find(option).prop('selected', true);
+            }
+        });
+
+  });
+
+  function addRegionTags() {
+    var id = <%= @site.id %>
+    var data = $('#region_tags').val();
+    $.ajax({
+      type: "POST",
+      url: "/sites/add_regions",
+      dataType: "json",
+      data: { site: id, tags: data }
+    });
+  }
+
+  function addTags() {
+    var id = <%= @site.id %>
+    var data = $('#tags').val();
+    $.ajax({
+      type: "POST",
+      url: "/sites/add_tags",
+      dataType: "json",
+      data: { site: id, tags: data }
+    });
+  }
+</script>

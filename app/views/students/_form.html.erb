@@ -43,15 +43,15 @@
 <h4>Key info:</h4>
 <div>
   <%= form.label "Skills" %>
-  <%= form.text_field :skill_list %>
+  <%= select("skills", "names", Student.tag_counts_on(:skills).collect {|t| [ t.name, t.name ] }, { selected: @student.skill_list }, { id: "skill_tags", multiple: true, :onchange=>"addSkillTags(});" } ) %>
 </div>
 <div>
   <%= form.label "Job preferences" %>
-  <%= form.text_field :job_preference_list %>
+  <%= select("job_preferences", "names", Student.tag_counts_on(:job_preferences).collect {|t| [ t.name, t.name ] }, { selected: @student.job_preference_list }, { id: "job_preference_tags", multiple: true, :onchange=>"addJobPreferenceTags();" } ) %>
 </div>
 <div>
   <%= form.label "Tags" %>
-  <%= form.text_field :tag_list %>
+  <%= select("tags", "names", Student.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @student.tag_list }, { id: "tags", multiple: true, :onChange=>"addTags();" } ) %>
 </div>
 <div>
   <%= form.label "Notes" %><br>
@@ -60,3 +60,99 @@
 <div>
   <%= form.submit "Save" %>
 </div>
+
+<script>
+  $(document).on('ready page:load', function () {
+
+    var skills_select, skills_chosen;
+      skills_select = $('#skill_tags');
+      skills_select.chosen({
+        allow_single_deselect: true,
+        width: '200px',
+        placeholder_text_multiple: 'Add new',
+        no_results_text: 'Press enter to add:'
+      });
+
+      skills_chosen = $('.chosen-container');
+      skills_chosen.find('input').keyup( function(e) {
+          if (e.which === 13 && skills_chosen.find('li.no-results').length > 0){
+              var option = $("<option>").val(this.value).text(this.value);
+              skills_select.prepend(option);
+              skills_select.trigger("chosen:updated");
+              skills_select.find(option).prop('selected', true);
+          }
+      });
+
+    var job_preferences_select, job_preferences_chosen;
+      job_preferences_select = $('#job_preference_tags');
+      job_preferences_select.chosen({
+        allow_single_deselect: true,
+        width: '200px',
+        placeholder_text_multiple: 'Add new',
+        no_results_text: 'Press enter to add:'
+      });
+
+      job_preferences_chosen = $('.chosen-container');
+      job_preferences_chosen.find('input').keyup( function(e) {
+          if (e.which === 13 && job_preferences_chosen.find('li.no-results').length > 0){
+              var option = $("<option>").val(this.value).text(this.value);
+              job_preferences_select.prepend(option);
+              job_preferences_select.trigger("chosen:updated");
+              job_preferences_select.find(option).prop('selected', true);
+          }
+      });
+
+      var tags_select, tags_chosen;
+        tags_select = $('#tags');
+        tags_select.chosen({
+          allow_single_deselect: true,
+          width: '200px',
+          placeholder_text_multiple: 'Add new',
+          no_results_text: 'Press enter to add:'
+        });
+
+        tags_chosen = $('.chosen-container');
+        tags_chosen.find('input').keyup( function(e) {
+            if (e.which === 13 && tags_chosen.find('li.no-results').length > 0){
+                var option = $("<option>").val(this.value).text(this.value);
+                tags_select.prepend(option);
+                tags_select.trigger("chosen:updated");
+                tags_select.find(option).prop('selected', true);
+            }
+        });
+
+  });
+
+  function addSkillTags() {
+    var id = <%= @student.id %>
+    var data = $('#skill_tags').val();
+    $.ajax({
+      type: "POST",
+      url: "/students/add_skills",
+      dataType: "json",
+      data: { student: id, tags: data }
+    });
+  }
+
+  function addJobPreferenceTags() {
+    var id = <%= @student.id %>
+    var data = $('#job_preference_tags').val();
+    $.ajax({
+      type: "POST",
+      url: "/students/add_job_preferences",
+      dataType: "json",
+      data: { student: id, tags: data }
+    });
+  }
+
+  function addTags() {
+    var id = <%= @student.id %>
+    var data = $('#tags').val();
+    $.ajax({
+      type: "POST",
+      url: "/students/add_tags",
+      dataType: "json",
+      data: { student: id, tags: data }
+    });
+  }
+</script>
