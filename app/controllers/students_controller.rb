@@ -47,29 +47,50 @@ class StudentsController < ApplicationController
   end
 
   def add_skills
-    @student = Student.find(params[:id])
+    @student = Student.find(params[:student])
 
-    params[:skills].each do |tag|
-      @student.skill_list.add(tag) unless @student.skill_list.include?(tag)
+    if params.dig(:tags).present?
+      params.dig(:tags).each do |tag|
+        @student.skill_list.add(tag) unless @student.skill_list.include?(tag)
+      end
     end
+
+    @student.skill_list.each do |tag|
+      @student.skill_list.remove(tag) unless params.dig(:tags).include?(tag)
+    end
+
     @student.save
   end
 
   def add_job_preferences
-    @student = Student.find(params[:id])
+    @student = Student.find(params[:student])
 
-    params[:job_preferences].each do |tag|
-      @student.job_preference_list.add(tag) unless @student.job_preference_list.include?(tag)
+    if params.dig(:tags).present?
+      params.dig(:tags).each do |tag|
+        @student.job_preference_list.add(tag) unless @student.job_preference_list.include?(tag)
+      end
     end
+
+    @student.job_preference_list.each do |tag|
+      @student.job_preference_list.remove(tag) unless params.dig(:tags).include?(tag)
+    end
+
     @student.save
   end
 
   def add_tags
-    @student = Student.find(params[:id])
+    @student = Student.find(params[:student])
 
-    params[:tags].each do |tag|
-      @student.tag_list.add(tag) unless @student.tag_list.include?(tag)
+    if params.dig(:tags).present?
+      params.dig(:tags).each do |tag|
+        @student.tag_list.add(tag) unless @student.tag_list.include?(tag)
+      end
     end
+
+    @student.tag_list.each do |tag|
+      @student.tag_list.remove(tag) unless params.dig(:tags).include?(tag)
+    end
+
     @student.save
   end
 
@@ -87,6 +108,7 @@ class StudentsController < ApplicationController
                         :recat,
                         :skill_list,
                         :job_preference_list,
+                        :tag_list,
                         :notes
                         ])[:student]
   end
