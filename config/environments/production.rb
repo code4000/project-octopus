@@ -12,7 +12,9 @@ config.action_mailer.delivery_method = :smtp
       domain: 'gmail.com',
       user_name: 'josh@yoomee.com',
       password: "!xXg2_(z@achq3<EC;^e+_'anC~8#-5}",
-      authentication: 'plain'
+      authentication: 'plain',
+      enable_starttls_auto: true,
+      :openssl_verify_mode => 'none'
 }
 
   # Code is not reloaded between requests.
