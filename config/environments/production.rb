@@ -3,15 +3,19 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: ENV['SITE_URL'] }
 
-  config.action_mailer.delivery_method = :sendmail
-  # Defaults to:
-  # config.action_mailer.sendmail_settings = {
-  #   location: '/usr/sbin/sendmail',
-  #   arguments: '-i'
-  # }
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = {from: ENV['SITE_EMAIL_ADDRESS']}
+
+config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+      address: 'smtp.gmail.com',
+      port: 587,
+      domain: 'gmail.com',
+      user_name: 'josh@yoomee.com',
+      password: "!xXg2_(z@achq3<EC;^e+_'anC~8#-5}",
+      authentication: 'plain',
+      enable_starttls_auto: true,
+      :openssl_verify_mode => 'none'  # This line added and it works fine
+}
 
   # Code is not reloaded between requests.
   config.cache_classes = true
