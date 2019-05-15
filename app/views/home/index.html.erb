@@ -2,7 +2,7 @@
   <h2>All</h2>
   <ul>
     <% @all_sites.each do |site| %>
-      <li><%= site.name %></li>
+      <li><%= link_to site.name, site_path(site) %></li>
     <% end %>
   </ul>
 
@@ -10,7 +10,7 @@
     <h2><%= tag_name %></h2>
     <ul>
       <% sites.each do |site| %>
-        <li><%= site.name %></li>
+        <li><%= link_to site.name, site_path(site) %></li>
       <% end %>
     </ul>
   <% end %>
