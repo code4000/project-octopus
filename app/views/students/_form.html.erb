@@ -43,15 +43,15 @@
 <h4>Key info:</h4>
 <div>
   <%= form.label "Skills" %>
-  <%= select("skills", "names", Student.tag_counts_on(:skills).collect {|t| [ t.name, t.name ] }, { selected: @student.skill_list }, { id: "skill_tags", multiple: true, :onchange=>"addSkillTags(});" } ) %>
+  <%= form.select(:skill_list, Student.tag_counts_on(:skills).collect {|t| [ t.name, t.name ] }, { selected: @student.skill_list }, { id: "skill_tags", multiple: true, :onchange=>"addSkillTags();" } ) %>
 </div>
 <div>
   <%= form.label "Job preferences" %>
-  <%= select("job_preferences", "names", Student.tag_counts_on(:job_preferences).collect {|t| [ t.name, t.name ] }, { selected: @student.job_preference_list }, { id: "job_preference_tags", multiple: true, :onchange=>"addJobPreferenceTags();" } ) %>
+  <%= form.select(:job_preference_list, Student.tag_counts_on(:job_preferences).collect {|t| [ t.name, t.name ] }, { selected: @student.job_preference_list }, { id: "job_preference_tags", multiple: true, :onchange=>"addJobPreferenceTags();" } ) %>
 </div>
 <div>
   <%= form.label "Tags" %>
-  <%= select("tags", "names", Student.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @student.tag_list }, { id: "tags", multiple: true, :onChange=>"addTags();" } ) %>
+  <%= form.select(:tag_list, Student.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @student.tag_list }, { id: "tags", multiple: true, :onChange=>"addTags();" } ) %>
 </div>
 <div>
   <%= form.label "Notes" %><br>
@@ -124,35 +124,41 @@
   });
 
   function addSkillTags() {
-    var id = <%= @student.id %>
-    var data = $('#skill_tags').val();
-    $.ajax({
-      type: "POST",
-      url: "/students/add_skills",
-      dataType: "json",
-      data: { student: id, tags: data }
-    });
+    <% if @student.id.present? %>
+      var id = <%= @student.id %>;
+      var data = $('#skill_tags').val();
+      $.ajax({
+        type: "POST",
+        url: "/students/add_skills",
+        dataType: "json",
+        data: { student: id, tags: data }
+      });
+    <% end %>
   }
 
   function addJobPreferenceTags() {
-    var id = <%= @student.id %>
-    var data = $('#job_preference_tags').val();
-    $.ajax({
-      type: "POST",
-      url: "/students/add_job_preferences",
-      dataType: "json",
-      data: { student: id, tags: data }
-    });
+    <% if @student.id.present? %>
+      var id = <%= @student.id %>;
+      var data = $('#job_preference_tags').val();
+      $.ajax({
+        type: "POST",
+        url: "/students/add_job_preferences",
+        dataType: "json",
+        data: { student: id, tags: data }
+      });
+    <% end %>
   }
 
   function addTags() {
-    var id = <%= @student.id %>
-    var data = $('#tags').val();
-    $.ajax({
-      type: "POST",
-      url: "/students/add_tags",
-      dataType: "json",
-      data: { student: id, tags: data }
-    });
+    <% if @student.id.present? %>
+      var id = <%= @student.id %>;
+      var data = $('#tags').val();
+      $.ajax({
+        type: "POST",
+        url: "/students/add_tags",
+        dataType: "json",
+        data: { student: id, tags: data }
+      });
+    <% end %>
   }
 </script>
