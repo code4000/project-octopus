@@ -71,11 +71,11 @@ class SitesController < ApplicationController
 
     results = results.where("name ILIKE ?", "%#{params.dig(:name)}") if params&.dig(:name).present?
 
-    results = results.tagged_with(params.dig(:region_list), :on => :regions, :any => true) if params&.dig(:region_list).present?
+    results = results.tagged_with(params.dig(:region_list), :on => :regions, :match_all => true) if params&.dig(:region_list).present?
 
     results = results.where(gender: params.dig(:gender)) if params&.dig(:gender).present?
 
-    results = results.tagged_with(params.dig(:tag_list), :on => :tags, :any => true) if params&.dig(:tag_list).present?
+    results = results.tagged_with(params.dig(:tag_list), :on => :tags, :match_all => true) if params&.dig(:tag_list).present?
 
     results
   end
