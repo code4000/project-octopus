@@ -91,13 +91,14 @@
           <td><%= link_to 'Remove', student_path(student), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Student %></td>
         </tr>
     <% end %>
-    <% if Student.count == 0 %>
-      There are currently no students enrolled on the system.
-    <% elsif @students.count == 0 %>
-      No results found
-    <% end %>
   </tbody>
 </table>
+
+<% if Student.count == 0 %>
+  There are currently no students enrolled on the system.
+<% elsif @students.count == 0 %>
+  No results found
+<% end %>
 
   <script>
     $(document).on('ready page:load', function () {
