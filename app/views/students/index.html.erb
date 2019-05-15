@@ -1,44 +1,109 @@
-<h1>All students</h1>
-<%= link_to 'Add student', new_student_path if can? :create, Student %>
-<% if Student.count <= 0 %>
-  <p>There are currently no students enrolled on the system.</p>
-<% else %>
-  <table class="table">
-    <thead>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Prison number</th>
-      <th>Date of birth</th>
-      <th>Gender</th>
-      <th>Release date</th>
-      <th>Eligable for tag</th>
-      <th>Eligable for ROTL</th>
-      <th>Next recategorisation</th>
-      <th>Skills</th>
-      <th>Job preferences</th>
-      <th>Tags</th>
-      <th></th>
-      <th></th>
-    </thead>
-    <tbody>
-      <% @students.each do |student| %>
-          <tr>
-            <th><%= link_to student.name, student_path(student) %></th>
-            <th><%= !student.released? ? (student.site.present? ? (link_to student.site.name, site_path(student.site)) : "Non listed") : "Released" %></th>
-            <td><%= student.prison_number %></td>
-            <td><%= student.dob.present? ? (l student.dob) : "Unknown" %></td>
-            <td><%= student.gender %></td>
-            <td><%= student.crd.present? ? (l student.crd) : "Unknown" %></td>
-            <td><%= student.hdc.present? ? (l student.hdc) : "N/A" %></td>
-            <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
-            <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
-            <td><%= student.skill_list %></td>
-            <td><%= student.job_preference_list %></td>
-            <td><%= student.tag_list %></td>
-            <td><%= link_to 'Edit', edit_student_path(student) if can? :update, Student %></td>
-            <td><%= link_to 'Remove', student_path(student), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Student %></td>
-          </tr>
-      <% end %>
-    </tbody>
-  </table>
+<h1>Students</h1>
+<h4>Filter:</h4>
+<%= form_tag(search_students_path, method: :get) do %>
+
+  <%= label_tag "First name" %>
+  <%= text_field_tag :first_name %>
+
+  <%= label_tag "Surname" %>
+  <%= text_field_tag :last_name %>
+
+  <%= label_tag "Prison number" %>
+  <%= text_field_tag :prison_number %>
+
+  <%= label_tag "Site" %>
+   <%= select_tag :site, options_for_select(Site.order(:name).map { |site| [ site.name, site.name ] } + ["Released", "Non listed"]), include_blank: true %>
+
+  <%= label_tag "Gender" %>
+  <%= select_tag :gender, options_for_select(["","Male","Female"]) %>
+
+  <%= label_tag "Date of birth" %>
+  <%= date_field_tag :dob %>
+
+  <div>
+    <%= label_tag "Release date between" %>
+    <%= date_field_tag :crd_from %>
+    <%= date_field_tag :crd_to %>
+
+    <%= label_tag "Eligible for tag between" %>
+    <%= date_field_tag :hdc_from %>
+    <%= date_field_tag :hdc_to %>
+
+    <%= label_tag "Eligible for ROTL between" %>
+    <%= date_field_tag :rotl_from %>
+    <%= date_field_tag :rotl_to %>
+
+    <%= label_tag "Next recategorisation between" %>
+    <%= date_field_tag :recat_from %>
+    <%= date_field_tag :recat_to %>
+  </div>
+
+  <div>
+    <%= label_tag "Skills" %>
+    <%= select_tag :skill_list, options_for_select(Student.tag_counts_on(:skills).collect {|t| [ t.name ] }), { class: "tags", multiple: true } %>
+
+    <%= label_tag "Job preferences" %>
+    <%= select_tag :job_preference_list, options_for_select(Student.tag_counts_on(:job_preferences).collect {|t| [ t.name ] }), { class: "tags", multiple: true } %>
+
+    <%= label_tag "Tags" %>
+    <%= select_tag :tag_list, options_for_select(Student.tag_counts_on(:tags).collect {|t| [ t.name ] }), { class: "tags", multiple: true } %>
+  </div>
+
+  <%= submit_tag "Filter" %>
 <% end %>
+
+<div><%= link_to 'View all', students_path %></div>
+<div><%= link_to 'Add student', new_student_path if can? :create, Student %></div>
+
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Prison number</th>
+    <th>Date of birth</th>
+    <th>Gender</th>
+    <th>Release date</th>
+    <th>Eligable for tag</th>
+    <th>Eligable for ROTL</th>
+    <th>Next recategorisation</th>
+    <th>Skills</th>
+    <th>Job preferences</th>
+    <th>Tags</th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+        <tr>
+          <th><%= link_to student.name, student_path(student) %></th>
+          <th><%= !student.released? ? (student.site.present? ? (link_to student.site.name, site_path(student.site)) : "Non listed") : "Released" %></th>
+          <td><%= student.prison_number %></td>
+          <td><%= student.dob.present? ? (l student.dob) : "Unknown" %></td>
+          <td><%= student.gender %></td>
+          <td><%= student.crd.present? ? (l student.crd) : "Unknown" %></td>
+          <td><%= student.hdc.present? ? (l student.hdc) : "N/A" %></td>
+          <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
+          <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
+          <td><%= student.skill_list %></td>
+          <td><%= student.job_preference_list %></td>
+          <td><%= student.tag_list %></td>
+          <td><%= link_to 'Edit', edit_student_path(student) if can? :update, Student %></td>
+          <td><%= link_to 'Remove', student_path(student), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Student %></td>
+        </tr>
+    <% end %>
+    <% if Student.count == 0 %>
+      There are currently no students enrolled on the system.
+    <% elsif @students.count == 0 %>
+      No results found
+    <% end %>
+  </tbody>
+</table>
+
+  <script>
+    $(document).on('ready page:load', function () {
+      $('.tags').chosen({
+        allow_single_deselect: true,
+        width: '200px'
+      });
+    });
+  </script>
