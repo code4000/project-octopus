@@ -13,6 +13,7 @@
 <p>Eligible for tag: <%= @student.hdc.present? ? (l @student.hdc) : "N/A" %></p>
 <p>Eligible for ROTL: <%= @student.rotl.present? ? (l @student.rotl) : "Unknown" %></p>
 <p>Next recategorisation: <%= @student.recat.present? ? (l @student.recat) : "Unknown" %></p>
+<h4>Key information:</h4>
 <p>Skills: <%= @student.skill_list %></p>
 <p>Job preferences: <%= @student.job_preference_list %></p>
 <p>Tags: <%= @student.tag_list %></p>
