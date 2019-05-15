@@ -39,7 +39,7 @@
             <td><%= student.prison_number %></td>
             <td><%= student.dob.present? ? (l student.dob) : "Unknown" %></td>
             <td><%= student.gender %></td>
-            <td><%= student.crd.present? ? (l student.crd) : "Unknown" %></td>
+            <td><%= !student.released? ? (student.site.present? ? (link_to student.site.name, site_path(student.site)) : "Non listed") : "Released" %></td>
             <td><%= student.hdc.present? ? (l student.hdc) : "N/A" %></td>
             <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
             <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
