@@ -4,14 +4,11 @@
   <%= label_tag "Name" %>
   <%= text_field_tag :name %>
 
-  <%= label_tag "Capacity" %>
-  <%= number_field_tag :capacity %>
+  <%= label_tag "Regions" %>
+  <%= select_tag :region_list, options_for_select(Site.tag_counts_on(:regions).collect {|t| [ t.name ] }), { class: "tags", multiple: true } %>
 
   <%= label_tag "Gender" %>
   <%= select_tag :gender, options_for_select(["","Male","Female","Mixed"]) %>
-
-  <%= label_tag "Regions" %>
-  <%= select_tag :region_list, options_for_select(Site.tag_counts_on(:regions).collect {|t| [ t.name ] }), { class: "tags", multiple: true } %>
 
   <%= label_tag "Tags" %>
   <%= select_tag :tag_list, options_for_select(Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }), { class: "tags", multiple: true } %>
