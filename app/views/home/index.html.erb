@@ -1,5 +1,7 @@
+<h1>Code 4000 sites by region</h1>
+<p>Currently showing 5 busiest regions</p>
 <% if Site.count != 0 %>
-  <h2>All</h2>
+  <h2><%= link_to 'All', sites_path %></h2>
   <ul>
     <% @all_sites.each do |site| %>
       <li><%= link_to site.name, site_path(site) %></li>
@@ -7,7 +9,7 @@
   </ul>
 
   <% @most_popular_tags.each do |tag_name, sites| %>
-    <h2><%= tag_name %></h2>
+    <h2><%= link_to tag_name, sites_path(region_list: [tag_name]) %></h2>
     <ul>
       <% sites.each do |site| %>
         <li><%= link_to site.name, site_path(site) %></li>
