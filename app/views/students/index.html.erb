@@ -3,50 +3,50 @@
 <%= form_tag(search_students_path, method: :get) do %>
 
   <%= label_tag "First name" %>
-  <%= text_field_tag :first_name %>
+  <%= text_field_tag :first_name, params[:first_name] %>
 
   <%= label_tag "Surname" %>
-  <%= text_field_tag :last_name %>
+  <%= text_field_tag :last_name, params[:last_name] %>
 
   <%= label_tag "Prison number" %>
-  <%= text_field_tag :prison_number %>
+  <%= text_field_tag :prison_number, params[:prison_number] %>
 
   <%= label_tag "Site" %>
-   <%= select_tag :site, options_for_select(Site.order(:name).map { |site| [ site.name, site.name ] } + ["Released", "Non listed"]), include_blank: true %>
+   <%= select_tag :site, options_for_select(Site.order(:name).map { |site| [ site.name, site.name ] } + ["Released", "Non listed"], params[:site]), include_blank: true %>
 
   <%= label_tag "Gender" %>
-  <%= select_tag :gender, options_for_select(["","Male","Female"]) %>
+  <%= select_tag :gender, options_for_select(["","Male","Female"], params[:gender]) %>
 
   <%= label_tag "Date of birth" %>
-  <%= date_field_tag :dob %>
+  <%= date_field_tag :dob, params[:dob] %>
 
   <div>
     <%= label_tag "Release date between" %>
-    <%= date_field_tag :crd_from %>
-    <%= date_field_tag :crd_to %>
+    <%= date_field_tag :crd_from, params[:crd_from] %>
+    <%= date_field_tag :crd_to, params[:crd_to] %>
 
     <%= label_tag "Eligible for tag between" %>
-    <%= date_field_tag :hdc_from %>
-    <%= date_field_tag :hdc_to %>
+    <%= date_field_tag :hdc_from, params[:hdc_from] %>
+    <%= date_field_tag :hdc_to, params[:hdc_to] %>
 
     <%= label_tag "Eligible for ROTL between" %>
-    <%= date_field_tag :rotl_from %>
-    <%= date_field_tag :rotl_to %>
+    <%= date_field_tag :rotl_from, params[:rotl_from] %>
+    <%= date_field_tag :rotl_to, params[:rotl_to] %>
 
     <%= label_tag "Next recategorisation between" %>
-    <%= date_field_tag :recat_from %>
-    <%= date_field_tag :recat_to %>
+    <%= date_field_tag :recat_from, params[:recat_from] %>
+    <%= date_field_tag :recat_to, params[:recat_to] %>
   </div>
 
   <div>
     <%= label_tag "Skills" %>
-    <%= select_tag :skill_list, options_for_select(Student.tag_counts_on(:skills).collect {|t| [ t.name ] }), { class: "tags", multiple: true } %>
+    <%= select_tag :skill_list, options_for_select(Student.tag_counts_on(:skills).collect {|t| [ t.name ] }, params[:skill_list]), { class: "tags", multiple: true } %>
 
     <%= label_tag "Job preferences" %>
-    <%= select_tag :job_preference_list, options_for_select(Student.tag_counts_on(:job_preferences).collect {|t| [ t.name ] }), { class: "tags", multiple: true } %>
+    <%= select_tag :job_preference_list, options_for_select(Student.tag_counts_on(:job_preferences).collect {|t| [ t.name ] }, params[:job_preference_list]), { class: "tags", multiple: true } %>
 
     <%= label_tag "Tags" %>
-    <%= select_tag :tag_list, options_for_select(Student.tag_counts_on(:tags).collect {|t| [ t.name ] }), { class: "tags", multiple: true } %>
+    <%= select_tag :tag_list, options_for_select(Student.tag_counts_on(:tags).collect {|t| [ t.name ] }, params[:tag_list]), { class: "tags", multiple: true } %>
   </div>
 
   <%= submit_tag "Filter" %>
