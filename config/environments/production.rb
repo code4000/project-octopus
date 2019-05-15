@@ -16,7 +16,7 @@ config.action_mailer.delivery_method = :smtp
       ssl: true
       enable_starttls_auto: false,
       openssl_verify_mode: OpenSSL::SSL::VERIFY_PEER,
-      ca_file: "/etc/ssl/certs/ca-certificates.crt",
+      ca_file: "/etc/ssl/certs/ca-certificates.crt"
 }
 
   # Code is not reloaded between requests.
