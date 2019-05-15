@@ -29,7 +29,6 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.new(site_params)
-    binding.pry
     if @site.save
       flash[:notice] = 'Site added!'
       redirect_to site_path(@site)
