@@ -15,5 +15,11 @@
     </ul>
   <% end %>
 <% else %>
-  <div><%= can? :create, Site ? (link_to 'Add sites', new_site_path) : "Please add sites" %></div>
+  <div>
+    <% if can? :create, Site %>
+      <%= link_to 'Add sites', new_site_path %>
+    <% else %>
+      Please add sites
+    <% end %>
+  </div>
 <% end %>
