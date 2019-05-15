@@ -31,7 +31,11 @@
   </table>
 <% end %>
 
-<%= "No results found" if @sites.count == 0 %>
+<% if Site.count == 0 %>
+  There are currently no students enrolled on the system.
+<% elsif @sites.count == 0 %>
+  No results found
+<% end %>
 
 <script>
   $(document).on('ready page:load', function () {

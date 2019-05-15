@@ -1,15 +1,19 @@
-<h2>All</h2>
-<ul>
-  <% @all_sites.each do |site| %>
-    <li><%= site.name %></li>
-  <% end %>
-</ul>
-
-<% @most_popular_tags.each do |tag_name, sites| %>
-  <h2><%= tag_name %></h2>
+<% if Site.count != 0 %>
+  <h2>All</h2>
   <ul>
-    <% sites.each do |site| %>
+    <% @all_sites.each do |site| %>
       <li><%= site.name %></li>
     <% end %>
   </ul>
+
+  <% @most_popular_tags.each do |tag_name, sites| %>
+    <h2><%= tag_name %></h2>
+    <ul>
+      <% sites.each do |site| %>
+        <li><%= site.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% else %>
+  <div><%= can? :create, Site ? (link_to 'Add sitess', new_site_path) : "Please add sites" %></div>
 <% end %>
