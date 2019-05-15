@@ -15,8 +15,10 @@
 
   <%= submit_tag "Filter" %>
 <% end %>
+
 <div><%= link_to 'View all', sites_path %></div>
 <div><%= link_to 'Add site', new_site_path if can? :create, Site %></div>
+
 <% @sites.each do |site| %>
   <table>
     <tr><th><%= link_to site.name, site_path(site) %></th></tr>
