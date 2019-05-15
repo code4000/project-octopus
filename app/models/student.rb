@@ -1,6 +1,7 @@
 class Student < ApplicationRecord
   belongs_to :site, optional: true
   acts_as_taggable_on :skills, :job_preferences, :tags
+  validates_presence_of :first_name, :last_name
 
   def age
     dob = self.dob
