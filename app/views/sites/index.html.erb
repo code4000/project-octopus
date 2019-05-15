@@ -1,5 +1,25 @@
-<h1>All sites</h1>
-<%= link_to 'Add site', new_site_path if can? :create, Site %>
+<h1>Sites</h1>
+<h4>Filter:</h4>
+<%= form_tag(search_sites_path, method: :get) do %>
+  <%= label_tag "Name" %>
+  <%= text_field_tag :name %>
+
+  <%= label_tag "Capacity" %>
+  <%= number_field_tag :capacity %>
+
+  <%= label_tag "Gender" %>
+  <%= select_tag :gender, options_for_select(["","Male","Female","Mixed"]) %>
+
+  <%= label_tag "Regions" %>
+  <%= select_tag :region_list, options_for_select(Site.tag_counts_on(:regions).collect {|t| [ t.name ] }), { class: "tags", multiple: true } %>
+
+  <%= label_tag "Tags" %>
+  <%= select_tag :tag_list, options_for_select(Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }), { class: "tags", multiple: true } %>
+
+  <%= submit_tag "Filter" %>
+<% end %>
+<div><%= link_to 'View all', sites_path %></div>
+<div><%= link_to 'Add site', new_site_path if can? :create, Site %></div>
 <% @sites.each do |site| %>
   <table>
     <tr><th><%= link_to site.name, site_path(site) %></th></tr>
@@ -10,3 +30,14 @@
     <tr><td>Contact number: <%= site.contact_number %></td></tr>
   </table>
 <% end %>
+
+<%= "No results found" if @sites.count == 0 %>
+
+<script>
+  $(document).on('ready page:load', function () {
+    $('.tags').chosen({
+      allow_single_deselect: true,
+      width: '200px'
+    });
+  });
+</script>

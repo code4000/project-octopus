@@ -1,7 +1,7 @@
 class SitesController < ApplicationController
   load_and_authorize_resource class: Site, except: [:create]
   def index
-    @sites = Site.all
+    @sites = filtered_sites
   end
 
   def show
@@ -49,6 +49,39 @@ class SitesController < ApplicationController
     redirect_to sites_path
   end
 
+  def search
+    redirect_to sites_path(request.params)
+  end
+
+  def site_params
+    params.permit(site: [
+                        :name,
+                        :capacity,
+                        :manager,
+                        :contact_number,
+                        :gender,
+                        {:region_list => []},
+                        {:tag_list => []},
+                        :notes
+                        ])[:site]
+  end
+
+  def filtered_sites
+    results = Site.all
+
+    results = results.where("name ILIKE ?", "%#{params.dig(:name)}") if params&.dig(:name).present?
+
+    results = results.where(capacity: params.dig(:capacity)) if params&.dig(:capacity).present?
+
+    results = results.where(gender: params.dig(:gender)) if params&.dig(:gender).present?
+
+    results = results.tagged_with(params.dig(:region_list), :on => :regions, :any => true) if params&.dig(:region_list).present?
+
+    results = results.tagged_with(params.dig(:tag_list), :on => :tags, :any => true) if params&.dig(:tag_list).present?
+
+    results
+  end
+
   # def add_regions
   #   @site = Site.find(params[:site])
   #
@@ -80,17 +113,4 @@ class SitesController < ApplicationController
   #
   #   @site.save
   # end
-
-  def site_params
-    params.permit(site: [
-                        :name,
-                        :capacity,
-                        :manager,
-                        :contact_number,
-                        :gender,
-                        {:region_list => []},
-                        {:tag_list => []},
-                        :notes
-                        ])[:site]
-  end
 end
