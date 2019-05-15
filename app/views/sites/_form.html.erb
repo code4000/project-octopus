@@ -20,11 +20,11 @@
 </div>
 <div>
   <%= form.label "Regions" %>
-  <%= form.select(:region_list, Site.tag_counts_on(:regions).collect {|t| [ t.name, t.name ] }, { selected: @site.region_list }, { id: "region_tags", multiple: true, :onChange=>"addRegionTags();" } ) %>
+  <%= form.select(:region_list, Site.tag_counts_on(:regions).collect {|t| [ t.name, t.name ] }, { selected: @site.region_list }, { id: "region_tags", multiple: true } ) %>
 </div>
 <div>
   <%= form.label "Tags" %>
-  <%= form.select(:tag_list, Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @site.tag_list }, { id: "tags", multiple: true, :onChange=>"addTags();" } ) %>
+  <%= form.select(:tag_list, Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @site.tag_list }, { id: "tags", multiple: true } ) %>
 </div>
 <div>
   <%= form.label "Notes" %>
@@ -75,29 +75,4 @@
             }
         });
   });
-
-  function addRegionTags() {
-    <% if @site.id.present? %>
-      var data = $('#region_tags').val();
-      $.ajax({
-        type: "POST",
-        url: "/sites/add_regions",
-        dataType: "json",
-        data: { site: id, tags: data }
-      });
-    <% end %>
-  }
-
-  function addTags() {
-    <% if @site.id.present? %>
-      var id = <%= @site.id %>;
-      var data = $('#tags').val();
-      $.ajax({
-        type: "POST",
-        url: "/sites/add_tags",
-        dataType: "json",
-        data: { site: id, tags: data }
-      });
-    <% end %>
-  }
 </script>
