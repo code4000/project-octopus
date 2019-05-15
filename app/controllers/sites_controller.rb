@@ -79,36 +79,4 @@ class SitesController < ApplicationController
 
     results
   end
-
-  # def add_regions
-  #   @site = Site.find(params[:site])
-  #
-  #   if params.dig(:tags).present?
-  #     params.dig(:tags).each do |tag|
-  #       @site.region_list.add(tag) unless @site.region_list.include?(tag)
-  #     end
-  #   end
-  #
-  #   @site.region_list.each do |tag|
-  #     @site.region_list.remove(tag) unless params.dig(:tags).include?(tag)
-  #   end
-  #
-  #   @site.save
-  # end
-  #
-  # def add_tags
-  #   @site = Site.find(params[:site])
-  #
-  #   if params.dig(:tags).present?
-  #     params.dig(:tags).each do |tag|
-  #       @site.tag_list.add(tag) unless @site.tag_list.include?(tag)
-  #     end
-  #   end
-  #
-  #   @site.tag_list.each do |tag|
-  #     @site.tag_list.remove(tag) unless params.dig(:tags).include?(tag)
-  #   end
-  #
-  #   @site.save
-  # end
 end
