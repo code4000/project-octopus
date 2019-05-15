@@ -13,7 +13,7 @@ config.action_mailer.delivery_method = :smtp
       user_name: 'josh@yoomee.com',
       password: "!xXg2_(z@achq3<EC;^e+_'anC~8#-5}",
       authentication: 'plain',
-      ssl: true,
+      ssl: true
       enable_starttls_auto: false,
       openssl_verify_mode: OpenSSL::SSL::VERIFY_PEER,
       ca_file: "/etc/ssl/certs/ca-certificates.crt",
