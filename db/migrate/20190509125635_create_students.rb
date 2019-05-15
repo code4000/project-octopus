@@ -5,9 +5,9 @@ class CreateStudents < ActiveRecord::Migration[5.2]
       t.string :first_name, null: false
       t.string :last_name, null: false
       t.string :prison_number
-      t.string :gender, null: false
+      t.string :gender
       t.date :dob
-      t.date :crd, null: false
+      t.date :crd
       t.date :hdc
       t.date :rotl
       t.date :recat
