@@ -13,7 +13,7 @@ class Student < ApplicationRecord
   end
 
   def released?
-    if self.crd.past?
+    if self.crd&.past?
       true
     else
       false
