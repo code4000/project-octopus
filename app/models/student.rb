@@ -37,4 +37,12 @@ class Student < ApplicationRecord
     end
   end
 
+  def contactable?
+    if self.out? || self&.site&.hub?
+      true
+    else
+      false
+    end
+  end
+
 end
