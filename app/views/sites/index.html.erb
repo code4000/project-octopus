@@ -19,17 +19,30 @@
 <div><%= link_to 'View all', sites_path %></div>
 <div><%= link_to 'Add site', new_site_path if can? :create, Site %></div>
 
-<% @sites.each do |site| %>
-  <table>
-    <tr><th><%= link_to site.name, site_path(site) %></th></tr>
-    <tr><td>Attendence: <%= site.students.count %> / <%= site.capacity %></td></tr>
-    <tr><td>Regions: <%= site.region_list %></td></tr>
-    <tr><td>Population gender: <%= site.gender %></td></tr>
-    <tr><td>Manager: <%= site.manager %></td></tr>
-    <tr><td>Contact number: <%= site.contact_number %></td></tr>
-    <tr><td>Tags: <%= site.tag_list %></td></tr>
-  </table>
-<% end %>
+<table class="table">
+  <thead>
+    <th></th>
+    <th>Attendence</th>
+    <th>Regions</th>
+    <th>Population</th>
+    <th>Manager</th>
+    <th>Contact number</th>
+    <th>Tags</th>
+  </thead>
+  <tbody>
+    <% @sites.each do |site| %>
+      <tr>
+        <th><%= link_to site.name, site_path(site) %></th>
+        <td><%= site.students.count %> / <%= site.capacity %></td>
+        <td><%= site.region_list %></td>
+        <td><%= site.gender %></td>
+        <td><%= site.manager %></td>
+        <td><%= site.contact_number %></td>
+        <td><%= site.tag_list %></td>
+      </tr>
+    <% end %>
+</tbody>
+</table>
 
 <% if Site.count == 0 %>
   There are currently no students enrolled on the system.
