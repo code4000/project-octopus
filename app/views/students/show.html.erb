@@ -3,21 +3,25 @@
   <%= "Released" if @student.out? %>
   <%= " (on tag)" if @student.on_tag? %>
 </h3>
-<%= "<p>If this student didn't get their tag please remove their tag date</p>".html_safe if @student.on_tag? %> 
+<%= "<p>If this student didn't get their tag please remove their tag date</p>".html_safe if @student.on_tag? %>
 <%= link_to 'Edit', edit_student_path(@student) if can? :update, Student %>
 <%= link_to 'Remove', student_path(@student), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Student %>
 
 <h4>Profile:</h4>
 <p>Prison number: <%= @student.prison_number %></p>
 <p>Location: <%= !@student.released? ? (@student.site.present? ? (link_to @student.site.name, site_path(@student.site)) : "Non listed") : "Released" %></p>
-<p>Date of birth: <%= l @student.dob %> (<%= @student.age %>)</p>
 <p>Gender: <%= @student.gender %></p>
+<p>Date of birth: <%= l @student.dob %> (<%= @student.age %>)</p>
 <h4>Key dates:</h4>
 <p>Release: <%= @student.crd.present? ? (l @student.crd) : "Unknown" %></p>
 <p>Tag: <%= @student.hdc.present? ? (l @student.hdc) : "N/A" %></p>
 <p>ROTL: <%= @student.rotl.present? ? (l @student.rotl) : "Unknown" %></p>
 <p>Recategorisation: <%= @student.recat.present? ? (l @student.recat) : "Unknown" %></p>
 <h4>Key information:</h4>
+<% if  @student.out? %>
+  <p>Contact number: <%= @student.contact_number %></p>
+  <p>Email: <%= @student.email %></p>
+<% end %>
 <p>Skills: <%= @student.skill_list %></p>
 <p>Job preferences: <%= @student.job_preference_list %></p>
 <p>Tags: <%= @student.tag_list %></p>

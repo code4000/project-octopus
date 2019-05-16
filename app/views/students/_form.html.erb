@@ -41,6 +41,16 @@
   <%= form.date_field :recat %>
 </div>
 <h4>Key info:</h4>
+<% if @student&.id.present? && @student.out? %>
+  <div>
+    <%= form.label "Contact number" %>
+    <%= form.text_field :contact_number %>
+  </div>
+  <div>
+    <%= form.label "Email" %>
+    <%= form.email_field :email %>
+  </div>
+<% end %>
 <div>
   <%= form.label "Skills" %>
   <%= form.select(:skill_list, Student.tag_counts_on(:skills).collect {|t| [ t.name, t.name ] }, { selected: @student.skill_list }, { id: "skill_tags", multiple: true } ) %>
