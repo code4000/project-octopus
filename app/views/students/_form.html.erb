@@ -41,7 +41,7 @@
   <%= form.date_field :recat %>
 </div>
 <h4>Key info:</h4>
-<% if @student&.id.present? && @student.out? %>
+<% if @student&.id.present? && (@student.out? || @student&.site&.hub?) %>
   <div>
     <%= form.label "Contact number" %>
     <%= form.text_field :contact_number %>

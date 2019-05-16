@@ -18,7 +18,7 @@
 <p>ROTL: <%= @student.rotl.present? ? (l @student.rotl) : "Unknown" %></p>
 <p>Recategorisation: <%= @student.recat.present? ? (l @student.recat) : "Unknown" %></p>
 <h4>Key information:</h4>
-<% if  @student.out? %>
+<% if @student.out? || @student&.site&.hub? %>
   <p>Contact number: <%= @student.contact_number %></p>
   <p>Email: <%= @student.email %></p>
 <% end %>
