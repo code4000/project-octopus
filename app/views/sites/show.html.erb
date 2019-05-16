@@ -32,7 +32,7 @@
       <th>Tags</th>
     </thead>
     <tbody>
-      <% @site.students.each do |student| %>
+      <% @site.students.order(:first_name).each do |student| %>
           <tr>
             <th><%= link_to student.name, student_path(student) %></th>
             <% if @site.hub? %>

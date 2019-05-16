@@ -116,6 +116,6 @@ class StudentsController < ApplicationController
 
     results = results.tagged_with(params.dig(:tag_list), :on => :tags, :any => true) if params&.dig(:tag_list).present?
 
-    results
+    results.order(:first_name)
   end
 end
