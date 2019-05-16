@@ -79,9 +79,7 @@ class StudentsController < ApplicationController
     results = results.where("prison_number ILIKE ?", "%#{params.dig(:prison_number)}") if params&.dig(:prison_number).present?
 
     if params&.dig(:site).present?
-      if params.dig(:site) == "Released"
-        results = results.where("crd <= ?", Date.today)
-      elsif params.dig(:site) == "Non listed"
+      if params.dig(:site) == "Non listed"
         results = results.left_outer_joins(:site).where( sites: { id: nil } )
       else
         results = results.joins(:site).where(sites: { name: params.dig(:site) } )
@@ -91,6 +89,8 @@ class StudentsController < ApplicationController
     results = results.where(gender: params.dig(:gender)) if params&.dig(:gender).present?
 
     results = results.where(dob: params.dig(:dob)) if params&.dig(:dob).present?
+
+    results = results.where("crd < ? OR hdc < ?", Date.today, Date.today) if params&.dig(:released?) == "1"
 
     results = results.where("crd >= ?", params.dig(:crd_from)) if params&.dig(:crd_from).present?
 
