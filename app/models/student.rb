@@ -13,6 +13,14 @@ class Student < ApplicationRecord
     self.first_name + ' ' + self.last_name
   end
 
+  def on_tag?
+    if self.hdc&.past? && self.crd&.future?
+      true
+    else
+      false
+    end
+  end
+
   def released?
     if self.crd&.past?
       true
@@ -20,4 +28,13 @@ class Student < ApplicationRecord
       false
     end
   end
+
+  def out?
+    if self.on_tag? || self.released?
+      true
+    else
+      false
+    end
+  end
+
 end
