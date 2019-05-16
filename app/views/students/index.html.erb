@@ -24,19 +24,19 @@
   <%= check_box_tag :released?, 1, (params&.dig(:released?) == "1") %>
 
   <div>
-    <%= label_tag "Release date between" %>
+    <%= label_tag "Release between" %>
     <%= date_field_tag :crd_from, params[:crd_from] %>
     <%= date_field_tag :crd_to, params[:crd_to] %>
 
-    <%= label_tag "Eligible for tag between" %>
+    <%= label_tag "Tag between" %>
     <%= date_field_tag :hdc_from, params[:hdc_from] %>
     <%= date_field_tag :hdc_to, params[:hdc_to] %>
 
-    <%= label_tag "Eligible for ROTL between" %>
+    <%= label_tag "ROTL between" %>
     <%= date_field_tag :rotl_from, params[:rotl_from] %>
     <%= date_field_tag :rotl_to, params[:rotl_to] %>
 
-    <%= label_tag "Next recategorisation between" %>
+    <%= label_tag "Recategorisation between" %>
     <%= date_field_tag :recat_from, params[:recat_from] %>
     <%= date_field_tag :recat_to, params[:recat_to] %>
   </div>
