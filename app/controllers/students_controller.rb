@@ -58,6 +58,8 @@ class StudentsController < ApplicationController
                         :site_id,
                         :gender,
                         :dob,
+                        :contact_number,
+                        :email,
                         :crd,
                         :hdc,
                         :rotl,
