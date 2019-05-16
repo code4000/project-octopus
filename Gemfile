@@ -8,6 +8,7 @@ gem 'cancancan'
 gem 'acts-as-taggable-on'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
+gem 'font-awesome-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-chosen'
