@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates_presence_of :name
 
   has_many :contact_comments, through: :contacts
+  has_many :articles
 
   def master?
     if self.role == "master"
@@ -16,6 +17,12 @@ class User < ApplicationRecord
 
   def admin?
     if self.role == "admin"
+      true
+    end
+  end
+
+  def publisher?
+    if self.role == "publisher"
       true
     end
   end
