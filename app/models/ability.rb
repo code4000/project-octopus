@@ -8,9 +8,14 @@ class Ability
       if user.present?
         can :read, :all
         can :search, :all
-        can :manage, Site if user.admin?
-        can :manage, Student if user.admin?
-        can :manage, Contact if user.admin?
+        if user.admin?
+          can :manage, Site
+          can :manage, Student
+          can :manage, Contact
+          can :manage, ContactComment
+          can :manage, Article
+        end
+        can :manage, Article if user.publisher?
         can :manage, ContactComment, user_id: user.id
         can :manage, :all if user.master?
       end
