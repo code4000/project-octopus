@@ -10,6 +10,8 @@ class Ability
         can :search, :all
         can :manage, Site if user.admin?
         can :manage, Student if user.admin?
+        can :manage, Contact if user.admin?
+        can :manage, ContactComment, user_id: user.id
         can :manage, :all if user.master?
       end
 
