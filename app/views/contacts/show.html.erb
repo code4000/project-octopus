@@ -1,8 +1,8 @@
 <h1><%= @contact.name %></h1>
 
-<%= link_to 'Back', :back %>
-<%= link_to 'Edit', edit_contact_path(@contact) if can? :update, Contact %>
-<%= link_to 'Remove', contact_path(@contact), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Contact %>
+<%= ((link_to 'Edit', edit_contact_path(@contact)) + " | ") if can? :update, Contact %>
+<%= ((link_to 'Remove', contact_path(@contact), method: :delete, data: { confirm: 'Are you sure?' }) + " | ") if can? :destroy, Contact %>
+<%= link_to 'All contacts', contacts_path %>
 
 <p>First name: <%= @contact.first_name %></p>
 <p>Surname: <%= @contact.last_name %></p>
@@ -11,32 +11,31 @@
 <p>Email: <%= @contact.email %></p>
 <p>Mobile: <%= @contact.mobile_number %></p>
 <p>Workphone: <%= @contact.work_number %></p>
+<p>Tags: <%= @contact.tag_list %></p>
 <p>About:<br>
 <%= @contact.about %></p>
 
-<br>
+<br><br>
 <div>
   <% if @contact.contact_comments != nil %>
     <h4>Comments</h4>
-    <% @contact.contact_comments.each do |comment| %>
-      <div class="list-group" style="width: 25%;">
-        <a class="list-group-item flex-column align-items-start">
+    <div class="list-group" style="width: 25%;">
+      <% @contact.contact_comments.each do |comment| %>
+        <div class="list-group-item flex-column align-items-start" style="padding: 0; margin: 0;">
           <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1"><%= comment.user.name %></h5>
-            <small class="text-muted"><%= l comment.created_at %></small>
+            <h5 class="mb-1"><%= comment.user.name %><small class="text-muted"> <%= l comment.created_at %></small>
+              <% if can? :manage, comment %>
+                <small><%= link_to 'Delete', [comment.contact,comment],
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %></small>
+              <% end %></h5>
+            <p class="mb-1"><%= comment.body %></p>
           </div>
-          <p class="mb-1"><%= comment.body %></p>
-          <% if can? :manage, comment %>
-            <small><%= link_to 'Delete comment', [comment.contact,comment],
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></small>
-          <% end %>
-        </a>
-      </div>
-    <% end %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 
-  <br>
-  <h4>Add a comment</h4>
+  <h5>Add a comment</h5>
   <%= render 'contact_comments/form' %>
 </div>

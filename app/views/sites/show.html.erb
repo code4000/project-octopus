@@ -8,10 +8,11 @@
 <h4>Tags:</h4><p><%= @site.tag_list %></p>
 <h4>Notes:</h4><p><%= @site.notes %></p>
 
-<%= link_to 'Back', :back %>
-<%= link_to 'Edit', edit_site_path(@site) if can? :update, Site %>
-<%= link_to 'Remove', site_path(@site), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Site %>
-<p><%= link_to 'Add student', new_student_path(site: @site) if can? :create, Student %></p>
+<br>
+<%= ((link_to 'Edit', edit_site_path(@site)) + " | ") if can? :update, Site %>
+<%= ((link_to 'Remove', site_path(@site), method: :delete, data: { confirm: 'Are you sure?' }) + " | ") if can? :destroy, Site %>
+<%= ((link_to 'Add student', new_student_path(site: @site)) + " | ") if can? :create, Student %>
+<%= link_to 'All sites', sites_path %>
 
 <h3>Students:</h3>
 <% if @site.students.count <= 0 %>
