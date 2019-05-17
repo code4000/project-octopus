@@ -1,4 +1,23 @@
 <h1>Contacts</h1>
+<h4>Filter:</h4>
+<%= form_tag(search_contacts_path, method: :get) do %>
+  <%= label_tag "First name" %>
+  <%= text_field_tag :first_name, params[:first_name] %>
+
+  <%= label_tag "Surname" %>
+  <%= text_field_tag :last_name, params[:last_name] %>
+
+  <%= label_tag "Organisation" %>
+  <%= text_field_tag :organisation, params[:organisation] %>
+
+  <%= label_tag "Role" %>
+  <%= text_field_tag :role, params[:role] %>
+
+  <%= label_tag "Tags" %>
+  <%= select_tag :tag_list, options_for_select(Contact.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, params[:tag_list]), { class: "tags", multiple: true } %>
+
+  <%= submit_tag "Filter" %>
+<% end %>
 
 <div><%= link_to 'View all', contacts_path %></div>
 <div><%= link_to 'Add contact', new_contact_path if can? :create, Contact %></div>
@@ -32,3 +51,12 @@
 <% elsif @contacts.count == 0 %>
   No results found
 <% end %>
+
+<script>
+  $(document).on('ready page:load', function () {
+    $('.tags').chosen({
+      allow_single_deselect: true,
+      width: '200px'
+    });
+  });
+</script>
