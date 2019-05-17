@@ -1,0 +1,19 @@
+<div>
+  <%= form.label "Title" %>
+  <%= form.text_field :title %>
+</div>
+<div>
+  <%= form.label "Content" %>
+  <%= form.text_area :content %>
+</div>
+<div>
+  <%= form.label "Published date" %>
+  <%= form.date_field :published_at %>
+</div>
+<div>
+  <%= form.label "Publish" %>
+  <%= form.check_box :publish, {}, 'true', 'false' %>
+</div>
+<div>
+  <%= form.submit "Save" %>
+</div>
