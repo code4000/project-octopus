@@ -55,7 +55,12 @@ class ContactsController < ApplicationController
     params.permit(contact: [
                         :first_name,
                         :last_name,
+                        :role,
                         :organisation,
+                        :email,
+                        :mobile_number,
+                        :work_number,
+                        :about,
                         :role,
                         {:tag_list => []}
                         ])[:contact]
