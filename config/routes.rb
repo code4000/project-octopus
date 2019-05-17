@@ -14,9 +14,16 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :contacts do
+    resources :contact_comments
+    collection do
+      get 'search'
+    end
+  end
   resources :user_accounts
 
   post '/sites/new', to: 'sites#create'
   post '/students/new', to: 'students#create'
+  post '/contacts/new', to: 'contacts#create'
   post '/user_accounts/new', to: 'user_accounts#create'
 end
