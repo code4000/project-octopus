@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_17_105420) do
+ActiveRecord::Schema.define(version: 2019_05_17_125253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title", null: false
+    t.text "content", null: false
+    t.boolean "publish", default: false
+    t.date "published_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
 
   create_table "contact_comments", force: :cascade do |t|
     t.bigint "contact_id", null: false
@@ -106,6 +117,7 @@ ActiveRecord::Schema.define(version: 2019_05_17_105420) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articles", "users"
   add_foreign_key "contact_comments", "contacts"
   add_foreign_key "students", "sites"
 end
