@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates_presence_of :name
 
+  has_many :contact_comments, through: :contacts
+
   def master?
     if self.role == "master"
       true
