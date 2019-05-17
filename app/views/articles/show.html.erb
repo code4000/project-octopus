@@ -1,0 +1,14 @@
+<h1><%= @article.title %></h1>
+
+<%= ((link_to 'Edit', edit_article_path(@article)) + " | ") if can? :update, @article %>
+<%= ((link_to 'Remove', article_path(@article), method: :delete, data: { confirm: 'Are you sure?' }) + " | ") if can? :destroy, @article %>
+<%= link_to 'All articles', articles_path %>
+
+<br><br>
+<p>Title: <%= @article.title %>
+<p>Content:<br><%= @article.content %></p>
+<p>Author: <%= @article.user.name %></p>
+<p>Published: <%= @article.publish ? (fa_icon "check") : (fa_icon "times") %></p>
+<p>Publish date: <%= l @article.published_at %></p>
+<p>Created at: <%= l @article.created_at %></p>
+<p>Last updated: <%= l @article.updated_at %></p>
