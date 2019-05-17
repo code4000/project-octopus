@@ -1,0 +1,63 @@
+<div>
+  <%= form.label "First name" %>
+  <%= form.text_field :first_name %>
+</div>
+<div>
+  <%= form.label "Surname" %>
+  <%= form.text_field :last_name %>
+</div>
+<div>
+  <%= form.label "Role" %>
+  <%= form.text_field :role %>
+</div>
+<div>
+  <%= form.label "Organisation" %>
+  <%= form.text_field :organisation %>
+</div>
+<div>
+  <%= form.label "Email" %>
+  <%= form.email_field :email %>
+</div>
+<div>
+  <%= form.label "Mobile number" %>
+  <%= form.text_field :mobile_number %>
+</div>
+<div>
+  <%= form.label "Work number" %>
+  <%= form.text_field :work_number %>
+</div>
+<div>
+  <%= form.label "About" %>
+  <%= form.text_area :about %>
+</div>
+<div>
+  <%= form.label "Tags" %>
+  <%= form.select(:tag_list, Contact.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @contact.tag_list }, { id: "tags", multiple: true } ) %>
+</div>
+<div>
+  <%= form.submit "Save" %>
+</div>
+
+<script>
+  $(document).on('ready page:load', function () {
+
+      var tags_select, tags_chosen;
+        tags_select = $('#tags');
+        tags_select.chosen({
+          allow_single_deselect: true,
+          width: '200px',
+          placeholder_text_multiple: 'Add new',
+          no_results_text: 'Press enter to add:'
+        });
+
+        tags_chosen = $('.chosen-container');
+        tags_chosen.find('input').keyup( function(e) {
+            if (e.which === 13 && tags_chosen.find('li.no-results').length > 0){
+                var option = $("<option>").val(this.value).text(this.value);
+                tags_select.prepend(option);
+                tags_select.trigger("chosen:updated");
+                tags_select.find(option).prop('selected', true);
+            }
+        });
+  });
+</script>

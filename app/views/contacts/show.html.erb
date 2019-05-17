@@ -1,0 +1,42 @@
+<h1><%= @contact.name %></h1>
+
+<%= link_to 'Back', :back %>
+<%= link_to 'Edit', edit_contact_path(@contact) if can? :update, Contact %>
+<%= link_to 'Remove', contact_path(@contact), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Contact %>
+
+<p>First name: <%= @contact.first_name %></p>
+<p>Surname: <%= @contact.last_name %></p>
+<p>Role: <%= @contact.role %></p>
+<p>Organisation: <%= @contact.organisation %></p>
+<p>Email: <%= @contact.email %></p>
+<p>Mobile: <%= @contact.mobile_number %></p>
+<p>Workphone: <%= @contact.work_number %></p>
+<p>About:<br>
+<%= @contact.about %></p>
+
+<br>
+<div>
+  <% if @contact.contact_comments != nil %>
+    <h4>Comments</h4>
+    <% @contact.contact_comments.each do |comment| %>
+      <div class="list-group" style="width: 25%;">
+        <a class="list-group-item flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><%= comment.user.name %></h5>
+            <small class="text-muted"><%= l comment.created_at %></small>
+          </div>
+          <p class="mb-1"><%= comment.body %></p>
+          <% if can? :manage, comment %>
+            <small><%= link_to 'Delete comment', [comment.contact,comment],
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></small>
+          <% end %>
+        </a>
+      </div>
+    <% end %>
+  <% end %>
+
+  <br>
+  <h4>Add a comment</h4>
+  <%= render 'contact_comments/form' %>
+</div>

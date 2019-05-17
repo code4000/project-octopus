@@ -4,6 +4,7 @@
   <%= " (on tag)" if @student.on_tag? %>
 </h3>
 <%= "<p>If this student didn't get their tag please remove their tag date</p>".html_safe if @student.on_tag? %>
+<%= link_to 'Back', :back %>
 <%= link_to 'Edit', edit_student_path(@student) if can? :update, Student %>
 <%= link_to 'Remove', student_path(@student), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Student %>
 

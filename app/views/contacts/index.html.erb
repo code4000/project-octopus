@@ -1,0 +1,34 @@
+<h1>Contacts</h1>
+
+<div><%= link_to 'View all', contacts_path %></div>
+<div><%= link_to 'Add contact', new_contact_path if can? :create, Contact %></div>
+
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Organisation</th>
+    <th>Role</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Workphone</th>
+    <th>Tags</th>
+  </thead>
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <th><%= link_to contact.name, contact_path(contact) %></th>
+        <td><%= contact.organisation %></td>
+        <td><%= contact.role %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.mobile_number %></td>
+        <td><%= contact.work_number %></td>
+        <td><%= contact.tag_list %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if Contact.count == 0 %>
+  There are currently no contacts listed on the system.
+<% elsif @contacts.count == 0 %>
+  No results found
+<% end %>
