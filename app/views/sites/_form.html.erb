@@ -27,10 +27,6 @@
   <%= form.select(:tag_list, Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @site.tag_list }, { id: "tags", multiple: true } ) %>
 </div>
 <div>
-  <%= form.label "Notes" %>
-  <%= form.text_area :notes %>
-</div>
-<div>
   <%= form.submit "Save" %>
 </div>
 

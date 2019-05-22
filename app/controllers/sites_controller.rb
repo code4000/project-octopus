@@ -61,8 +61,7 @@ class SitesController < ApplicationController
                         :contact_number,
                         :gender,
                         {:region_list => []},
-                        {:tag_list => []},
-                        :notes
+                        {:tag_list => []}
                         ])[:site]
   end
 

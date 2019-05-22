@@ -6,7 +6,6 @@
 <h4>Population: <%= @site.gender %></h4>
 <h4>Regions:</h4><p><%= @site.region_list %></p>
 <h4>Tags:</h4><p><%= @site.tag_list %></p>
-<h4>Notes:</h4><p><%= @site.notes %></p>
 
 <br>
 <%= ((link_to 'Edit', edit_site_path(@site)) + " | ") if can? :update, Site %>

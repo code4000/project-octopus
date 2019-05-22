@@ -66,8 +66,7 @@ class StudentsController < ApplicationController
                         :recat,
                         {:skill_list => []},
                         {:job_preference_list => []},
-                        {:tag_list => []},
-                        :notes
+                        {:tag_list => []}
                         ])[:student]
   end
 
