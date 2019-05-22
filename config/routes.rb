@@ -3,19 +3,20 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  # TODO: limit onbly to used actions!
+  # TODO: limit only to used actions!
   resources :sites do
     collection do
       get 'search'
     end
   end
   resources :students do
+    resources :comments
     collection do
       get 'search'
     end
   end
   resources :contacts do
-    resources :comments, to: 'comments#contact_comment_create'
+    resources :comments
     collection do
       get 'search'
     end
