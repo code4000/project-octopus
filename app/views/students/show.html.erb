@@ -31,3 +31,28 @@
 <p>Tags: <%= @student.tag_list %></p>
 <p>Notes:<br>
 <%= @student.notes %></p>
+
+<br><br>
+<div>
+  <% if @student.comments.count != 0 %>
+    <h4>Comments</h4>
+    <div class="list-group" style="width: 25%;">
+      <% @student.comments.each do |comment| %>
+        <div class="list-group-item flex-column align-items-start" style="padding: 0; margin: 0;">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><%= comment.user.name %><small class="text-muted"> <%= l comment.created_at %></small>
+              <% if can? :manage, comment %>
+                <small><%= link_to 'Delete', comment_path(comment),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %></small>
+              <% end %></h5>
+            <p class="mb-1"><%= comment.body %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <h5>Add a comment</h5>
+  <%= render 'comments/student_comment' %>
+</div>
