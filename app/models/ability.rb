@@ -11,7 +11,7 @@ class Ability
         can :manage, Site if user.admin?
         can :manage, Student if user.admin?
         can :manage, Contact if user.admin?
-        can :manage, ContactComment, user_id: user.id
+        can :manage, Comment, user_id: user.id
         can :manage, :all if user.master?
       end
 
