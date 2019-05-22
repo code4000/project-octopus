@@ -1,0 +1,10 @@
+<div class="col-lg-3">
+
+  <%= form_with(model: [ @student, @student.comments.build ], local: true) do |form| %>
+
+      <%= form.text_area :body, class: "form-control" %>
+      <br>
+      <%= form.submit "Add comment", class: 'btn btn-primary' %>
+  <% end %>
+
+</div>
