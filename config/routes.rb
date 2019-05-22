@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # TODO: limit only to used actions!
   resources :sites do
+    resources :comments
     collection do
       get 'search'
     end
