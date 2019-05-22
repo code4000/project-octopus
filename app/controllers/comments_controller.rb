@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def find_resource
+    resource = Site.find(params[:site_id]) if params[:site_id]
     resource = Student.find(params[:student_id]) if params[:student_id]
     resource = Contact.find(params[:contact_id]) if params[:contact_id]
     resource
