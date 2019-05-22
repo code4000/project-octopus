@@ -16,7 +16,7 @@ Run `rails s`
 
 ### Log in as master user
 
-Open http://localhost:8000
+Open http://localhost:3000
 
 Email: admin@yoomee.com
 
