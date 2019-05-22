@@ -1,6 +1,13 @@
 ### Create database
-
 Run `rails db:create db:migrate`
 
-### Set up master admin account
-In Rails console run `User.create(email: "you@yours.com", password: "yourpassword", role: "master")`
+### Use seeds to create master user account
+Run `rails db:seed`
+
+### Start up the server
+Run `rails s`
+
+### Log in as master user
+Open http://localhost:8000
+Email: admin@yoomee.com
+Password: letmein
