@@ -17,15 +17,15 @@
 
 <br><br>
 <div>
-  <% if @contact.contact_comments != nil %>
+  <% if @contact.comments != nil %>
     <h4>Comments</h4>
     <div class="list-group" style="width: 25%;">
-      <% @contact.contact_comments.each do |comment| %>
+      <% @contact.comments.each do |comment| %>
         <div class="list-group-item flex-column align-items-start" style="padding: 0; margin: 0;">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1"><%= comment.user.name %><small class="text-muted"> <%= l comment.created_at %></small>
               <% if can? :manage, comment %>
-                <small><%= link_to 'Delete', [comment.contact,comment],
+                <small><%= link_to 'Delete', comment_path(comment),
                     method: :delete,
                     data: { confirm: 'Are you sure?' } %></small>
               <% end %></h5>
@@ -37,5 +37,5 @@
   <% end %>
 
   <h5>Add a comment</h5>
-  <%= render 'contact_comments/form' %>
+  <%= render 'comments/contact_comment' %>
 </div>
