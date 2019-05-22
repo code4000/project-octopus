@@ -6,4 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts ""
+puts "Creating seed data..."
 User.create(name: "Master User", email: "admin@yoomee.com", password: "logmein", role: "master")
+puts ""
+puts "Created admin user <admin@yoomee.com> with password 'logmein'"
+puts ""
+
