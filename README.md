@@ -1,3 +1,7 @@
+### Make sure gems are installed
+
+Run `bundle install`
+
 ### Create database
 
 Run `rails db:create db:migrate`
