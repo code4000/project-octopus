@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
-  has_many :contact_comments
+  has_many :comments, as: :resource
   acts_as_taggable_on :tags
   validates_presence_of :first_name, :last_name, :email
   validates_uniqueness_of :email

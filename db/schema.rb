@@ -15,13 +15,15 @@ ActiveRecord::Schema.define(version: 2019_05_17_105420) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "contact_comments", force: :cascade do |t|
-    t.bigint "contact_id", null: false
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "resource_type"
+    t.bigint "resource_id"
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.index ["contact_id"], name: "index_contact_comments_on_contact_id"
+    t.index ["resource_type", "resource_id"], name: "index_comments_on_resource_type_and_resource_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -106,6 +108,5 @@ ActiveRecord::Schema.define(version: 2019_05_17_105420) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "contact_comments", "contacts"
   add_foreign_key "students", "sites"
 end
