@@ -1,8 +1,8 @@
-class ContactCommentsController < ApplicationController
+class CommentsController < ApplicationController
 
-  def create
+  def contact_comment_create
     @contact = Contact.find(params[:contact_id])
-    @comment = @contact.contact_comments.new(user_id: current_user.id)
+    @comment = @contact.comments.new(user: current_user)
     if @comment.update_attributes(comment_params)
       flash[:notice] = "Comment added."
     else
@@ -12,15 +12,14 @@ class ContactCommentsController < ApplicationController
   end
 
   def destroy
-    @contact = Contact.find(params[:contact_id])
-    @comment = @contact.contact_comments.find(params[:id])
+    @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:notice] = "Successfully deleted."
-    redirect_to contact_path(@contact)
+    redirect_to request.referer
   end
 
   private
     def comment_params
-      params.require(:contact_comment).permit(:body)
+      params.require(:comment).permit(:body)
     end
 end
