@@ -1,14 +1,20 @@
 class CommentsController < ApplicationController
 
-  def contact_comment_create
-    @contact = Contact.find(params[:contact_id])
-    @comment = @contact.comments.new(user: current_user)
+  def create
+    @resource = find_resource
+    @comment = @resource.comments.new(user: current_user)
     if @comment.update_attributes(comment_params)
       flash[:notice] = "Comment added."
     else
       flash[:alert] = "Error: #{@comment.errors.full_messages.to_sentence}"
     end
-    redirect_to contact_path(@contact)
+    redirect_to request.referer
+  end
+
+  def find_resource
+    resource = Student.find(params[:student_id]) if params[:student_id]
+    resource = Contact.find(params[:contact_id]) if params[:contact_id]
+    resource
   end
 
   def destroy
