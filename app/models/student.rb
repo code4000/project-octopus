@@ -1,5 +1,6 @@
 class Student < ApplicationRecord
   belongs_to :site, optional: true
+  has_many :comments, as: :resource
   acts_as_taggable_on :skills, :job_preferences, :tags
   validates_presence_of :first_name, :last_name
 
