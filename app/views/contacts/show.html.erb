@@ -17,7 +17,7 @@
 
 <br><br>
 <div>
-  <% if @contact.comments != nil %>
+  <% if @contact.comments.count != 0 %>
     <h4>Comments</h4>
     <div class="list-group" style="width: 25%;">
       <% @contact.comments.each do |comment| %>
