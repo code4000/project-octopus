@@ -15,12 +15,13 @@ Rails.application.routes.draw do
     end
   end
   resources :contacts do
-    resources :contact_comments
+    resources :comments, to: 'comments#contact_comment_create'
     collection do
       get 'search'
     end
   end
   resources :user_accounts
+  resources :comments
 
   post '/sites/new', to: 'sites#create'
   post '/students/new', to: 'students#create'
