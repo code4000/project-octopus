@@ -9,6 +9,8 @@ gem 'acts-as-taggable-on'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
+gem 'public_activity'
+gem 'polymorphic_join', '~> 0.2.1'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-chosen'

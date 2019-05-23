@@ -122,9 +122,15 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.1.4)
+    polymorphic_join (0.2.1)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    public_activity (1.6.3)
+      actionpack (>= 3.0.0)
+      activerecord (>= 3.0)
+      i18n (>= 0.5.0)
+      railties (>= 3.0.0)
     public_suffix (3.0.3)
     puma (3.12.1)
     rack (2.0.7)
@@ -242,7 +248,9 @@ DEPENDENCIES
   letter_opener
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
+  polymorphic_join (~> 0.2.1)
   pry
+  public_activity
   puma (~> 3.11)
   rails (~> 5.2.3)
   rails-assets-chosen!
