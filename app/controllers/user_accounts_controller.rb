@@ -28,7 +28,6 @@ class UserAccountsController < ApplicationController
     @user = User.new(user_params)
     @user.password = SecureRandom.hex(8)
     if @user.save
-      # TODO: email user password
       UserMailer.with(user: @user).welcome_email.deliver_now
       flash[:notice] = 'Account added!'
       redirect_to user_accounts_path
