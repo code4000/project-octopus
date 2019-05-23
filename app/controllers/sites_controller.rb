@@ -6,6 +6,7 @@ class SitesController < ApplicationController
 
   def show
     @site = Site.find_by_id(params[:id])
+    @activities = get_site_activities.paginate(page: params[:page], per_page: 20)
   end
 
   def edit
@@ -77,5 +78,14 @@ class SitesController < ApplicationController
     results = results.tagged_with(params.dig(:tag_list), :on => :tags, :any => true) if params&.dig(:tag_list).present?
 
     results.order(:name)
+  end
+
+  def get_site_activities
+    (
+      @site.activities +
+        (PublicActivity::Activity.preload(:trackable).where(trackable_type: "Student").select{ |activity| activity&.trackable&.site&.id == @site.id }) +
+          (PublicActivity::Activity.preload(:trackable).where(trackable_type: "Comment").select { |activity| activity&.trackable&.resource_type == "Site" && activity&.trackable&.resource_id == @site.id }) +
+            (PublicActivity::Activity.preload(:trackable).where(trackable_type: "Comment").select { |activity| activity&.trackable&.resource_type == "Student" && activity&.trackable&.site&.id == @ssite.id })
+              ).sort_by(&:created_at).reverse
   end
 end
