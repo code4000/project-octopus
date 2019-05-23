@@ -43,7 +43,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     @student.destroy
     flash[:notice] = "Successfully deleted."
-    redirect_back fallback_location: students_path
+    redirect_to students_path
   end
 
   def search
