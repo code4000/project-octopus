@@ -15,7 +15,9 @@
 <p>Prison number: <%= @student.prison_number %></p>
 <p>Location: <%= @student.site.present? ? (link_to @student.site.name, site_path(@student.site)) : "Non listed" %></p>
 <p>Gender: <%= @student.gender %></p>
-<p>Date of birth: <%= l @student.dob %> (<%= @student.age %>)</p>
+<p>Date of birth:
+  <%= @student.dob.present? ? ((l @student.dob) + ' (' + @student.age.to_s + ')') : "Unknown" %>
+</p>
 <br><h4>Key dates:</h4>
 <p>Release: <%= @student.crd.present? ? (l @student.crd) : "Unknown" %></p>
 <p>Tag: <%= @student.hdc.present? ? (l @student.hdc) : "N/A" %></p>
