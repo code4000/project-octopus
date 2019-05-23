@@ -51,6 +51,8 @@ class ContactsController < ApplicationController
     redirect_to contacts_path(request.params)
   end
 
+  private
+
   def contact_params
     params.permit(contact: [
                         :first_name,

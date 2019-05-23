@@ -44,6 +44,8 @@ class UserAccountsController < ApplicationController
     redirect_to user_accounts_path
   end
 
+  private
+
   def user_params
     params.permit(user: [
                         :name,

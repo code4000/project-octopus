@@ -55,6 +55,8 @@ class SitesController < ApplicationController
     redirect_to sites_path(request.params)
   end
 
+  private
+
   def site_params
     params.permit(site: [
                         :name,

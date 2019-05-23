@@ -51,6 +51,8 @@ class StudentsController < ApplicationController
     redirect_to students_path(request.params)
   end
 
+  private
+
   def student_params
     params.permit(student: [
                         :first_name,
