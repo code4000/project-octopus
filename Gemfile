@@ -10,7 +10,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'public_activity'
-gem 'polymorphic_join', '~> 0.2.1'
+gem 'will_paginate', '~> 3.1.0'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-chosen'
