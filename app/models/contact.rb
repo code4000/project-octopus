@@ -1,4 +1,7 @@
 class Contact < ApplicationRecord
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
+
   has_many :comments, as: :resource
   acts_as_taggable_on :tags
   validates_presence_of :first_name, :last_name, :email

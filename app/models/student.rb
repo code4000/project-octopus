@@ -1,4 +1,7 @@
 class Student < ApplicationRecord
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
+
   belongs_to :site, optional: true
   has_many :comments, as: :resource
   acts_as_taggable_on :skills, :job_preferences, :tags
