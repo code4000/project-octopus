@@ -41,6 +41,7 @@ class StudentsController < ApplicationController
 
   def destroy
     @student = Student.find(params[:id])
+    @student.comments.destroy_all
     @student.destroy
     flash[:notice] = "Successfully deleted."
     redirect_to students_path

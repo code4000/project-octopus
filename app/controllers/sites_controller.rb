@@ -45,6 +45,7 @@ class SitesController < ApplicationController
       student.site = nil
       student.save
     end
+    @site.comments.destroy_all
     @site.destroy
     flash[:notice] = "Successfully deleted."
     redirect_to sites_path
