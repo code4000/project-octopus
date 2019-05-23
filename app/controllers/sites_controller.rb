@@ -82,11 +82,10 @@ class SitesController < ApplicationController
   end
 
   def get_site_activities
-    (
-      @site.activities +
+    (@site.activities +
         (PublicActivity::Activity.preload(:trackable).where(trackable_type: "Student").select{ |activity| activity&.trackable&.site&.id == @site.id }) +
           (PublicActivity::Activity.preload(:trackable).where(trackable_type: "Comment").select { |activity| activity&.trackable&.resource_type == "Site" && activity&.trackable&.resource_id == @site.id }) +
-            (PublicActivity::Activity.preload(:trackable).where(trackable_type: "Comment").select { |activity| activity&.trackable&.resource_type == "Student" && activity&.trackable&.site&.id == @ssite.id })
-              ).sort_by(&:created_at).reverse
+            (PublicActivity::Activity.preload(:trackable).where(trackable_type: "Comment").select { |activity| activity&.trackable&.resource_type == "Student" && activity&.trackable&.site&.id == @ssite.id }))
+              .sort_by(&:created_at).reverse
   end
 end
