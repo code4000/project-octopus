@@ -55,6 +55,17 @@
   </table>
 <% end %>
 
+<% if !@activities.nil? %>
+  <h4>Activity feed</h4>
+  <% @activities.each do |activity| %>
+    <div class="activity">
+      <small>(<%= l activity.created_at %>)</small>
+      <%= activity.owner.name if activity.owner %>
+      <%= render_activity activity %>
+    </div>
+  <% end %>
+<% end %>
+
 <br><br>
 <div>
   <% if @site.comments.count != 0 %>
