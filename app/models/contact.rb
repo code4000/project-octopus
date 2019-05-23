@@ -13,8 +13,9 @@ class Contact < ApplicationRecord
   end
 
   def self.import(file)
-     CSV.foreach(file.path, headers: true) do |row|
-      Contact.create if row.to_hash
+    CSV.foreach(file.path, headers: true) do |row|
+      # TODO: show error message if the next line fails (because attributes in file arent correct)
+      Contact.create(row.to_hash)
     end
   end
 
