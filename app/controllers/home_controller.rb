@@ -13,6 +13,8 @@ class HomeController < ApplicationController
         @most_popular_tags[tag.name] = Site.tagged_with(tag.name).order(:name).limit(5)
       end
 
+      activities = PublicActivity::Activity.all.order('created_at desc')
+      @activities = activities.paginate(page: params[:page], per_page: 20)
     end
   end
 end
