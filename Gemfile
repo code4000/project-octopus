@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'public_activity'
 gem 'will_paginate', '~> 3.1.0'
+gem "factory_bot_rails"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-chosen'
