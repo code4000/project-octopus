@@ -8,8 +8,8 @@ class Student < ApplicationRecord
   validates_presence_of :first_name, :last_name
 
   validate :email_or_prison_number_present
-  validates :email, uniqueness: true, allow_nil: true
-  validates :prison_number, uniqueness: true, allow_nil: true
+  validates :email, uniqueness: true, allow_blank: true
+  validates :prison_number, uniqueness: true, allow_blank: true
 
   def age
     dob = self.dob
