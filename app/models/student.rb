@@ -7,6 +7,10 @@ class Student < ApplicationRecord
   acts_as_taggable_on :skills, :job_preferences, :tags
   validates_presence_of :first_name, :last_name
 
+  validate :email_or_prison_number_present
+  validates :email, uniqueness: true, allow_nil: true
+  validates :prison_number, uniqueness: true, allow_nil: true
+
   def age
     dob = self.dob
     now = Time.now.utc.to_date
@@ -46,6 +50,14 @@ class Student < ApplicationRecord
       true
     else
       false
+    end
+  end
+
+  private
+  def email_or_prison_number_present
+    unless prison_number.present? || email.present?
+      errors.add(:prison_number, "can't be blank if email is also blank")
+      errors.add(:email, "can't be blank if prison number is also blank")
     end
   end
 
