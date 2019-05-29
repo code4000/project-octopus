@@ -53,7 +53,7 @@ class ContactsController < ApplicationController
 
   def import
     if params.dig(:file)&.content_type == "text/csv" && Contact.import(params[:file])
-        lash[:notice] = "Contacts added!"
+      flash[:notice] = "Contacts added!"
     else
       flash[:alert] = "Please select a valid .CSV files containing new contacts in the correct format."
     end
