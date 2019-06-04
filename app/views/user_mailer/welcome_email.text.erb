@@ -1,8 +1,14 @@
 Welcome to Octopus, <%= @user.name %>!
 ====================================================
 
-Your account is now ready to go, you just need to set your password. Please follow the link below.
+Your account is now ready to go, you just need to set your password. Please follow this link:
 
 <%= link_to 'Set password', edit_password_url(@user, reset_password_token: @token) %>
+
+
+Alternatively, if your reset password token expires, follow this link to get a new one and set your password:
+
+<%= link_to 'Get new set password email', new_user_password_url %>
+
 
 See you soon!
