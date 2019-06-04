@@ -7,7 +7,7 @@ shared_examples "an invalid record" do
 
   describe "#validate!" do
     it 'raises an exception' do
-      expect { subject.validate! }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { subject.validate! }.to raise_error(expected_error)
     end
   end
 
@@ -31,7 +31,7 @@ shared_examples "an invalid record" do
 
   describe "#save!" do
     it 'raises an exception' do
-      expect { subject.save! }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { subject.save! }.to raise_error(expected_error)
     end
   end
 
@@ -42,6 +42,14 @@ shared_examples "an invalid record" do
 
     it 'is not empty' do
       expect(subject.errors).not_to be_empty
+    end
+  end
+
+  def expected_error
+    if described_class.included_modules.include?(ActiveRecord::Validations)
+      expected_error = ActiveRecord::RecordInvalid
+    else
+      expected_error = ActiveModel::ValidationError
     end
   end
 end
