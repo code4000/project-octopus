@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 shared_examples "an invalid record" do
   describe "#validate" do
     it 'returns false' do
@@ -41,7 +39,7 @@ shared_examples "an invalid record" do
     before do
       subject.validate
     end
-    
+
     it 'is not empty' do
       expect(subject.errors).not_to be_empty
     end

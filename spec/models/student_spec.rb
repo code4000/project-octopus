@@ -1,6 +1,4 @@
 require 'rails_helper'
-# TODO: refactor ionto rails helper
-require_relative '../shared/an_invalid_record.rb'
 
 describe Student do
   describe 'uniqueness' do
