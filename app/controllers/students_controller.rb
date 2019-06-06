@@ -118,42 +118,6 @@ class StudentsController < ApplicationController
 
     results = results.tagged_with(params.dig(:tag_list), :on => :tags, :any => true) if params&.dig(:tag_list).present?
 
-    sort_by = "first_name"
-    sort_by = sort_results unless params&.dig(:sort_by).nil?
-
-    sort_order = "asc"
-    sort_order = order_results unless params&.dig(:order).nil?
-
-    results.order("#{sort_by} #{sort_order}")
-  end
-
-  def sort_results
-    case params&.dig(:sort_by)
-    when "First name"
-      sort_by = "first_name"
-    when "Last name"
-      sort_by = "last_name"
-    when "Date of birth"
-      sort_by = "dob"
-    when "Release date"
-      sort_by = "crd"
-    when "Tag date"
-      sort_by = "hdc"
-    when "ROTL date"
-      sort_by = "rotl"
-    when "Recategorisation date"
-      sort_by = "recat"
-    end
-    sort_by
-  end
-
-  def order_results
-    case params&.dig(:order)
-    when "Ascending"
-      sort_order = "asc"
-    when "Descending"
-      sort_order = "desc"
-    end
-    sort_order
+    results.order(:first_name)
   end
 end
