@@ -53,6 +53,12 @@
   </div>
 
   <%= submit_tag "Filter" %>
+
+  <%= label_tag "Sort by" %>
+  <%= select_tag :sort_by, options_for_select(["First name", "Last name", "Date of birth", "Release date", "Tag date", "ROTL date", "Recategorisation date"], (!params.dig(:sort_by)&.empty? ? params[:sort_by] : "First name")) %>
+
+  <%= label_tag "Order" %>
+  <%= select_tag :order, options_for_select(["Ascending", "Descending"], (!params.dig(:order)&.empty? ? params[:order] : "First name")) %>
 <% end %>
 
 <div><%= link_to 'View all', students_path %></div>
