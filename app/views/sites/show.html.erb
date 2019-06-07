@@ -7,69 +7,80 @@
 <h4>Regions:</h4><p><%= @site.region_list %></p>
 <h4>Tags:</h4><p><%= @site.tag_list %></p>
 
-<br>
 <%= ((link_to 'Edit', edit_site_path(@site)) + " | ") if can? :update, Site %>
 <%= ((link_to 'Remove', site_path(@site), method: :delete, data: { confirm: 'Are you sure?' }) + " | ") if can? :destroy, Site %>
 <%= ((link_to 'Add student', new_student_path(site: @site)) + " | ") if can? :create, Student %>
 <%= link_to 'All sites', sites_path %>
 
-<h3>Students:</h3>
-<% if @site.students.count <= 0 %>
-  <p>There are currently no students enrolled at this site.</p>
-<% else %>
-  <table class="table">
-    <thead>
-      <th>Name</th>
-      <%= '<th>Relased?</th>'.html_safe if @site.hub? %>
-      <th>Prison number</th>
-      <th>Date of birth</th>
-      <th>Gender</th>
-      <th>Release</th>
-      <th>Tag</th>
-      <th>ROTL</th>
-      <th>Recategorisation</th>
-      <th>Skills</th>
-      <th>Job preferences</th>
-      <th>Tags</th>
-    </thead>
-    <tbody>
-      <% @site.students.order(:first_name).each do |student| %>
-          <tr>
-            <th><%= link_to student.name, student_path(student) %></th>
-            <% if @site.hub? %>
-              <td><%= fa_icon "check" if student.out? %></td>
-            <% end %>
-            <td><%= student.prison_number %></td>
-            <td><%= student.dob.present? ? (l student.dob) : "Unknown" %></td>
-            <td><%= student.gender %></td>
-            <td><%= student.crd.present? ? (l student.crd) : "Unknown" %></td>
-            <td><%= student.hdc.present? ? (l student.hdc) : "N/A" %></td>
-            <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
-            <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
-            <td><%= student.skill_list %></td>
-            <td><%= student.job_preference_list %></td>
-            <td><%= student.tag_list %></td>
-          </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
-
-<% if !@activities.nil? %>
-  <h4>Activity feed</h4>
-  <% @activities.each do |activity| %>
-    <div class="activity">
-      <small>(<%= l activity.created_at %>)</small>
-      <%= activity.owner.name if activity.owner %>
-      <%= render_activity activity %>
-    </div>
-  <% end %>
-<% end %>
-
-<br><br>
+<hr>
 <div>
+  <h5>
+    <a href='#' id='see_students'>Students</a> |
+    <a href='#' id='see_activity'>Activity feed</a> |
+    <a href='#' id='see_comments'>Comments</a>
+  </h5>
+</div>
+
+<div id="students_tab" class="tab">
+  <h3>Students</h3>
+  <% if @site.students.count <= 0 %>
+    <p>There are currently no students enrolled at this site.</p>
+  <% else %>
+    <table class="table">
+      <thead>
+        <th>Name</th>
+        <%= '<th>Relased?</th>'.html_safe if @site.hub? %>
+        <th>Prison number</th>
+        <th>Date of birth</th>
+        <th>Gender</th>
+        <th>Release</th>
+        <th>Tag</th>
+        <th>ROTL</th>
+        <th>Recategorisation</th>
+        <th>Skills</th>
+        <th>Job preferences</th>
+        <th>Tags</th>
+      </thead>
+      <tbody>
+        <% @site.students.order(:first_name).each do |student| %>
+            <tr>
+              <th><%= link_to student.name, student_path(student) %></th>
+              <% if @site.hub? %>
+                <td><%= fa_icon "check" if student.out? %></td>
+              <% end %>
+              <td><%= student.prison_number %></td>
+              <td><%= student.dob.present? ? (l student.dob) : "Unknown" %></td>
+              <td><%= student.gender %></td>
+              <td><%= student.crd.present? ? (l student.crd) : "Unknown" %></td>
+              <td><%= student.hdc.present? ? (l student.hdc) : "N/A" %></td>
+              <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
+              <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
+              <td><%= student.skill_list %></td>
+              <td><%= student.job_preference_list %></td>
+              <td><%= student.tag_list %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+
+<div id="activity_tab" class="tab">
+  <% if !@activities.nil? %>
+    <h3>Activity feed</h3>
+    <% @activities.each do |activity| %>
+      <div class="activity">
+        <small>(<%= l activity.created_at %>)</small>
+        <%= activity.owner.name if activity.owner %>
+        <%= render_activity activity %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div id="comments_tab" class="tab">
   <% if @site.comments.count != 0 %>
-    <h4>Comments</h4>
+    <h3>Comments</h3>
     <div class="list-group" style="width: 25%;">
       <% @site.comments.each do |comment| %>
         <div class="list-group-item flex-column align-items-start" style="padding: 0; margin: 0;">
@@ -90,3 +101,25 @@
   <h5>Add a comment</h5>
   <%= render 'comments/site_comment' %>
 </div>
+
+<script>
+  $(document).on('ready page:load', function () {
+    $('.tab').hide();
+    $('#students_tab').show();
+  });
+
+  $('#see_students').click(function() {
+    $('.tab').hide();
+    $('#students_tab').show();
+  });
+
+  $('#see_activity').click(function() {
+    $('.tab').hide();
+    $('#activity_tab').show();
+  });
+
+  $('#see_comments').click(function() {
+    $('.tab').hide();
+    $('#comments_tab').show();
+  });
+</script>
