@@ -5,8 +5,8 @@ class CreateContacts < ActiveRecord::Migration[5.2]
       t.string :last_name, null: false
       t.string :role
       t.string :organisation
-      t.string :mobile
-      t.string :workphone
+      t.string :mobile_number
+      t.string :work_number
       t.string :email, null: false
       t.text :about
 
