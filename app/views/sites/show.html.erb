@@ -15,9 +15,9 @@
 <hr>
 <div>
   <h5>
-    <a href='#' id='see_students'>Students</a> |
-    <a href='#' id='see_activity'>Activity feed</a> |
-    <a href='#' id='see_comments'>Comments</a>
+    <a href='#' id='see_students' class='toggle_tab'>Students</a> |
+    <a href='#' id='see_activity' class='toggle_tab'>Activity feed</a> |
+    <a href='#' id='see_comments' class='toggle_tab'>Comments</a>
   </h5>
 </div>
 
@@ -79,24 +79,22 @@
 </div>
 
 <div id="comments_tab" class="tab">
-  <% if @site.comments.count != 0 %>
-    <h3>Comments</h3>
-    <div class="list-group" style="width: 25%;">
-      <% @site.comments.each do |comment| %>
-        <div class="list-group-item flex-column align-items-start" style="padding: 0; margin: 0;">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1"><%= comment.user.name %><small class="text-muted"> <%= l comment.created_at %></small>
-              <% if can? :manage, comment %>
-                <small><%= link_to 'Delete', comment_path(comment),
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %></small>
-              <% end %></h5>
-            <p class="mb-1"><%= comment.body %></p>
-          </div>
+  <h3>Comments</h3>
+  <div class="list-group" style="width: 25%;">
+    <% @site.comments.each do |comment| %>
+      <div class="list-group-item flex-column align-items-start" style="padding: 0; margin: 0;">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><%= comment.user.name %><small class="text-muted"> <%= l comment.created_at %></small>
+            <% if can? :manage, comment %>
+              <small><%= link_to 'Delete', comment_path(comment),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %></small>
+            <% end %></h5>
+          <p class="mb-1"><%= comment.body %></p>
         </div>
-      <% end %>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 
   <h5>Add a comment</h5>
   <%= render 'comments/site_comment' %>
@@ -108,18 +106,19 @@
     $('#students_tab').show();
   });
 
-  $('#see_students').click(function() {
+  $('.toggle_tab').click(function() {
     $('.tab').hide();
+  });
+
+  $('#see_students').click(function() {
     $('#students_tab').show();
   });
 
   $('#see_activity').click(function() {
-    $('.tab').hide();
     $('#activity_tab').show();
   });
 
   $('#see_comments').click(function() {
-    $('.tab').hide();
     $('#comments_tab').show();
   });
 </script>
