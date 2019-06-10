@@ -3,6 +3,9 @@
 <p>Currently showing 5 busiest regions</p>
 
 <% if Site.count != 0 %>
+
+  <%# DISPLAY THE MOST POPULAR REGIONS AND 5 SITES FOR EACH %>
+  <%# includes some confusing code because of styling in the correct grid format %>
   <div class="row">
     <div class="col-md-4">
       <h2><%= link_to 'All', sites_path %></h2>
@@ -30,15 +33,25 @@
           <% end %>
         </div>
     <% else %>
-      <div class="col-md-4">
-        <h2><%= link_to tag_name, sites_path(region_list: [tag_name]) %></h2>
-        <% sites.each do |site| %>
-          <li><%= link_to site.name, site_path(site) %></li>
-        <% end %>
-      </div>
+        <div class="col-md-4">
+          <h2><%= link_to tag_name, sites_path(region_list: [tag_name]) %></h2>
+          <% sites.each do |site| %>
+            <li><%= link_to site.name, site_path(site) %></li>
+          <% end %>
+        </div>
       </div>
     <% end %>
   <% end %>
+
+  <% if (@most_popular_tags.count + 1) % 3 > 0 %>
+    <div class="col-md-4"></div>
+      <% if (@most_popular_tags.count + 1) % 3 == 1 %>
+        <div class="col-md-4"></div></div>
+      <% else %>
+        </div>
+      <% end %>
+  <% end %>
+  <%# end of messy code %>
 
 <% else %>
   <div>
