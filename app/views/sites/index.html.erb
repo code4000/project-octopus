@@ -28,7 +28,7 @@
   <div>
     <%= link_to 'View all', sites_path %>
     <% if can? :create, Site %>
-     | <%= link_to 'Add site', new_site_path if can? :create, Site %>
+     | <%= link_to 'Add site', new_site_path %>
     <% end %>
   </div>
 
