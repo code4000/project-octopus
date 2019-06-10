@@ -1,56 +1,71 @@
-<h1>Contacts</h1>
-<h4>Filter:</h4>
-<%= form_tag(search_contacts_path, method: :get) do %>
-  <%= label_tag "First name" %>
-  <%= text_field_tag :first_name, params[:first_name] %>
+<div class="sidebar">
+  <h4>Filter contacts</h4>
+  <%= form_tag(search_contacts_path, method: :get) do %>
+    <div>
+      <%= label_tag "First name" %>
+      <%= text_field_tag :first_name, params[:first_name] %>
+    </div>
+    <div>
+      <%= label_tag "Surname" %>
+      <%= text_field_tag :last_name, params[:last_name] %>
+    </div>
+    <div>
+      <%= label_tag "Organisation" %>
+      <%= text_field_tag :organisation, params[:organisation] %>
+    </div>
+    <div>
+      <%= label_tag "Role" %><br>
+      <%= text_field_tag :role, params[:role] %>
+    </div>
+    <div>
+      <%= label_tag "Tags" %>
+      <%= select_tag :tag_list, options_for_select(Contact.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, params[:tag_list]), { class: "tags", multiple: true } %>
+    </div>
+    <div><br>
+      <%= submit_tag "Filter" %>
+    </div>
+  <% end %>
+</div>
 
-  <%= label_tag "Surname" %>
-  <%= text_field_tag :last_name, params[:last_name] %>
-
-  <%= label_tag "Organisation" %>
-  <%= text_field_tag :organisation, params[:organisation] %>
-
-  <%= label_tag "Role" %>
-  <%= text_field_tag :role, params[:role] %>
-
-  <%= label_tag "Tags" %>
-  <%= select_tag :tag_list, options_for_select(Contact.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, params[:tag_list]), { class: "tags", multiple: true } %>
-
-  <%= submit_tag "Filter" %>
-<% end %>
-
-<div><%= link_to 'View all', contacts_path %></div>
-<div><%= link_to 'Add contact', new_contact_path if can? :create, Contact %></div>
-
-<table class="table">
-  <thead>
-    <th>Name</th>
-    <th>Organisation</th>
-    <th>Role</th>
-    <th>Email</th>
-    <th>Mobile</th>
-    <th>Workphone</th>
-    <th>Tags</th>
-  </thead>
-  <tbody>
-    <% @contacts.each do |contact| %>
-      <tr>
-        <th><%= link_to contact.name, contact_path(contact) %></th>
-        <td><%= contact.organisation %></td>
-        <td><%= contact.role %></td>
-        <td><%= contact.email %></td>
-        <td><%= contact.mobile_number %></td>
-        <td><%= contact.work_number %></td>
-        <td><%= contact.tag_list %></td>
-      </tr>
+<div class="main">
+  <h1>Contacts</h1>
+  <div>
+    <%= link_to 'View all', contacts_path %>
+    <% if can? :create, Contact %>
+      | <%= link_to 'Add contact', new_contact_path %>
     <% end %>
-  </tbody>
-</table>
-<% if Contact.count == 0 %>
-  There are currently no contacts listed on the system.
-<% elsif @contacts.count == 0 %>
-  No results found
-<% end %>
+  </div>
+
+  <table class="table">
+    <thead>
+      <th>Name</th>
+      <th>Organisation</th>
+      <th>Role</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>Workphone</th>
+      <th>Tags</th>
+    </thead>
+    <tbody>
+      <% @contacts.each do |contact| %>
+        <tr>
+          <th><%= link_to contact.name, contact_path(contact) %></th>
+          <td><%= contact.organisation %></td>
+          <td><%= contact.role %></td>
+          <td><%= contact.email %></td>
+          <td><%= contact.mobile_number %></td>
+          <td><%= contact.work_number %></td>
+          <td><%= contact.tag_list %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% if Contact.count == 0 %>
+    There are currently no contacts listed on the system.
+  <% elsif @contacts.count == 0 %>
+    No results found
+  <% end %>
+</div>
 
 <script>
   $(document).on('ready page:load', function () {
