@@ -1,54 +1,68 @@
-<h1>Sites</h1>
-<h4>Filter:</h4>
-<%= form_tag(search_sites_path, method: :get) do %>
-  <%= label_tag "Name" %>
-  <%= text_field_tag :name, params[:name] %>
+<div class="sidebar">
+  <h4>Filter sites</h4>
+  <%= form_tag(search_sites_path, method: :get) do %>
+    <div>
+      <%= label_tag "Name" %>
+      <%= text_field_tag :name, params[:name] %>
+    </div>
+    <div>
+      <%= label_tag "Regions" %>
+      <%= select_tag :region_list, options_for_select(Site.tag_counts_on(:regions).collect {|t| [ t.name ] }, params[:region_list]), { class: "tags", multiple: true } %>
+    </div>
+    <div>
+      <%= label_tag "Tags" %>
+      <%= select_tag :tag_list, options_for_select(Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, params[:tag_list]), { class: "tags", multiple: true } %>
+    </div>
+    <div>
+      <%= label_tag "Gender" %>
+      <%= select_tag :gender, options_for_select(["","Male","Female","Mixed"], params[:gender]) %>
+    </div>
+    <div>
+      <%= submit_tag "Filter" %>
+    </div>
+  <% end %>
+</div>
 
-  <%= label_tag "Regions" %>
-  <%= select_tag :region_list, options_for_select(Site.tag_counts_on(:regions).collect {|t| [ t.name ] }, params[:region_list]), { class: "tags", multiple: true } %>
-
-  <%= label_tag "Gender" %>
-  <%= select_tag :gender, options_for_select(["","Male","Female","Mixed"], params[:gender]) %>
-
-  <%= label_tag "Tags" %>
-  <%= select_tag :tag_list, options_for_select(Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, params[:tag_list]), { class: "tags", multiple: true } %>
-
-  <%= submit_tag "Filter" %>
-<% end %>
-
-<div><%= link_to 'View all', sites_path %></div>
-<div><%= link_to 'Add site', new_site_path if can? :create, Site %></div>
-
-<table class="table">
-  <thead>
-    <th></th>
-    <th>Attendence</th>
-    <th>Regions</th>
-    <th>Population</th>
-    <th>Manager</th>
-    <th>Contact number</th>
-    <th>Tags</th>
-  </thead>
-  <tbody>
-    <% @sites.each do |site| %>
-      <tr>
-        <th><%= link_to site.name, site_path(site) %></th>
-        <td><%= site.students.count %> / <%= site.capacity %></td>
-        <td><%= site.region_list %></td>
-        <td><%= site.gender %></td>
-        <td><%= site.manager %></td>
-        <td><%= site.contact_number %></td>
-        <td><%= site.tag_list %></td>
-      </tr>
+<div class="main">
+  <h1>Sites</h1>
+  <div>
+    <%= link_to 'View all', sites_path %>
+    <% if can? :create, Site %>
+     | <%= link_to 'Add site', new_site_path if can? :create, Site %>
     <% end %>
-</tbody>
-</table>
+  </div>
 
-<% if Site.count == 0 %>
-  There are currently no students enrolled on the system.
-<% elsif @sites.count == 0 %>
-  No results found
-<% end %>
+  <table class="table">
+    <thead>
+      <th></th>
+      <th>Attendence</th>
+      <th>Regions</th>
+      <th>Population</th>
+      <th>Manager</th>
+      <th>Contact number</th>
+      <th>Tags</th>
+    </thead>
+    <tbody>
+      <% @sites.each do |site| %>
+        <tr>
+          <th><%= link_to site.name, site_path(site) %></th>
+          <td><%= site.students.count %> / <%= site.capacity %></td>
+          <td><%= site.region_list %></td>
+          <td><%= site.gender %></td>
+          <td><%= site.manager %></td>
+          <td><%= site.contact_number %></td>
+          <td><%= site.tag_list %></td>
+        </tr>
+      <% end %>
+  </tbody>
+  </table>
+
+  <% if Site.count == 0 %>
+    There are currently no students enrolled on the system.
+  <% elsif @sites.count == 0 %>
+    No results found
+  <% end %>
+</div>
 
 <script>
   $(document).on('ready page:load', function () {
