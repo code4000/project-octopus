@@ -1,21 +1,45 @@
+<div class="container">
 <h1>Code 4000 sites by region</h1>
 <p>Currently showing 5 busiest regions</p>
-<% if Site.count != 0 %>
-  <h2><%= link_to 'All', sites_path %></h2>
-  <ul>
-    <% @all_sites.each do |site| %>
-      <li><%= link_to site.name, site_path(site) %></li>
-    <% end %>
-  </ul>
 
-  <% @most_popular_tags.each do |tag_name, sites| %>
-    <h2><%= link_to tag_name, sites_path(region_list: [tag_name]) %></h2>
-    <ul>
-      <% sites.each do |site| %>
+<% if Site.count != 0 %>
+  <div class="row">
+    <div class="col-md-4">
+      <h2><%= link_to 'All', sites_path %></h2>
+      <% @all_sites.each do |site| %>
         <li><%= link_to site.name, site_path(site) %></li>
       <% end %>
-    </ul>
+    </div>
+  <% index = 0 %>
+  <% @most_popular_tags.each do |tag_name, sites| %>
+    <% index += 1 %>
+    <% if index <= 2 || index == 4 %>
+      <div class="col-md-4">
+        <h2><%= link_to tag_name, sites_path(region_list: [tag_name]) %></h2>
+        <% sites.each do |site| %>
+          <li><%= link_to site.name, site_path(site) %></li>
+        <% end %>
+      </div>
+    <% elsif index == 3 %>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h2><%= link_to tag_name, sites_path(region_list: [tag_name]) %></h2>
+          <% sites.each do |site| %>
+            <li><%= link_to site.name, site_path(site) %></li>
+          <% end %>
+        </div>
+    <% else %>
+      <div class="col-md-4">
+        <h2><%= link_to tag_name, sites_path(region_list: [tag_name]) %></h2>
+        <% sites.each do |site| %>
+          <li><%= link_to site.name, site_path(site) %></li>
+        <% end %>
+      </div>
+      </div>
+    <% end %>
   <% end %>
+
 <% else %>
   <div>
     <% if can? :create, Site %>
@@ -26,13 +50,18 @@
   </div>
 <% end %>
 
+  <hr><br><br>
+
 <% if !@activities.nil? %>
-  <h2>Activity feed</h2>
-  <% @activities.each do |activity| %>
-    <div class="activity">
-      <small>(<%= l activity.created_at %>)</small>
-      <%= activity.owner.name if activity.owner %>
-      <%= render_activity activity %>
-    </div>
-  <% end %>
+  <div class="text-center">
+    <h2>Activity feed</h2>
+    <% @activities.each do |activity| %>
+      <div class="activity">
+        <small>(<%= l activity.created_at %>)</small>
+        <%= activity.owner.name if activity.owner %>
+        <%= render_activity activity %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
+</div>
