@@ -7,7 +7,7 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find_by_id(params[:id])
-    @activities = @student.activities.paginate(page: params[:page], per_page: 20)
+    @activities = get_student_activities.paginate(page: params[:page], per_page: 20)
   end
 
   def edit
@@ -156,5 +156,11 @@ class StudentsController < ApplicationController
       sort_order = "desc"
     end
     sort_order
+  end
+
+  def get_student_activities
+    (@student.activities +
+      (PublicActivity::Activity.preload(:trackable).where(trackable_type: "Comment").select { |activity| activity&.trackable&.resource_type == "Student" && activity&.trackable&.resource&.id == @student.id }))
+        .sort_by(&:created_at).reverse
   end
 end
