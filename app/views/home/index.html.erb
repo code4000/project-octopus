@@ -1,6 +1,6 @@
-<div class="container">
-<h1>Code 4000 sites by region</h1>
-<p>Currently showing 5 busiest regions</p>
+<div class="container text-center">
+<h1>Welcome <%= current_user.name %></h1>
+<p>Showing 5 busiest regions</p>
 
 <% if Site.count != 0 %>
 
@@ -68,7 +68,7 @@
 </div>
 
 <% if !@activities.nil? %>
-  <div class="text-center">
+  <div>
     <h2>Activity feed</h2>
     <% @activities.each do |activity| %>
       <div class="activity">
