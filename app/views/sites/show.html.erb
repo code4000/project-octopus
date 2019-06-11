@@ -7,8 +7,8 @@
 <h4>Regions:</h4><p><%= @site.region_list %></p>
 <h4>Tags:</h4><p><%= @site.tag_list %></p>
 
-<%= ((link_to 'Edit', edit_site_path(@site)) + " | ") if can? :update, Site %>
-<%= ((link_to 'Remove', site_path(@site), method: :delete, data: { confirm: 'Are you sure?' }) + " | ") if can? :destroy, Site %>
+<%= ((link_to 'Edit', edit_site_path(@site)) + " | ") if can? :update, @site %>
+<%= ((link_to 'Remove', site_path(@site), method: :delete, data: { confirm: 'Are you sure?' }) + " | ") if can? :destroy, @site %>
 <%= ((link_to 'Add student', new_student_path(site: @site)) + " | ") if can? :create, Student %>
 <%= link_to 'All sites', sites_path %>
 

@@ -1,7 +1,7 @@
 <h1><%= @contact.name %></h1>
 
-<%= ((link_to 'Edit', edit_contact_path(@contact)) + " | ") if can? :update, Contact %>
-<%= ((link_to 'Remove', contact_path(@contact), method: :delete, data: { confirm: 'Are you sure?' }) + " | ") if can? :destroy, Contact %>
+<%= ((link_to 'Edit', edit_contact_path(@contact)) + " | ") if can? :update, @contact %>
+<%= ((link_to 'Remove', contact_path(@contact), method: :delete, data: { confirm: 'Are you sure?' }) + " | ") if can? :destroy, @contact %>
 <%= link_to 'All contacts', contacts_path %>
 
 <div>
