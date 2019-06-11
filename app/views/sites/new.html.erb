@@ -1,5 +1,7 @@
-<h1>Add a new site</h1>
-<%= form_for @site, url: new_site_path do |form| %>
-  <%= render "form", form: form %>
-<% end %>
-<%= link_to 'Back', :back %>
+<div class="container">
+  <h1>Add a new site</h1>
+  <%= form_for @site, url: new_site_path do |form| %>
+    <%= render "form", form: form %>
+  <% end %>
+  <%= link_to 'Back', :back %>
+</div>

@@ -1,5 +1,7 @@
-<h1>Add a new contact</h1>
-<%= form_for @contact, url: new_contact_path do |form| %>
-  <%= render "form", form: form %>
-<% end %>
-<%= link_to 'Back', :back %>
+<div class="container">
+  <h1>Add a new contact</h1>
+  <%= form_for @contact, url: new_contact_path do |form| %>
+    <%= render "form", form: form %>
+  <% end %>
+  <%= link_to 'Back', :back %>
+</div>

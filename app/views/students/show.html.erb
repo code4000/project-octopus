@@ -1,83 +1,85 @@
-<h1><%= @student.name %></h1>
+<div class="container">
+  <h1><%= @student.name %></h1>
 
-<% if @student.out? %>
-  <h3>
-    Released
-    <%= " (on tag)" if @student.on_tag? %>
-  </h3>
-  <%= "<p>If this student didn't get their tag please remove their tag date</p>".html_safe if @student.on_tag? %>
-<% end %>
-
-<%= ((link_to 'Edit', edit_student_path(@student)) + " | ") if can? :update, @student %>
-<%= ((link_to 'Remove', student_path(@student), method: :delete, data: { confirm: 'Are you sure?' }) + " | ") if can? :destroy, @student %>
-<%= link_to 'All students', students_path %>
-
-<div>
-  <h5>
-    <a href='#' id='see_profile' class='toggle_tab'>Profile</a> |
-    <a href='#' id='see_activity' class='toggle_tab'>Activity feed</a> |
-    <a href='#' id='see_comments' class='toggle_tab'>Comments</a>
-  </h5>
-</div>
-
-<hr>
-<div id="profile_tab" class="tab">
-  <h4>Profile:</h4>
-  <p>Prison number: <%= @student.prison_number %></p>
-  <p>Location: <%= @student.site.present? ? (link_to @student.site.name, site_path(@student.site)) : "Non listed" %></p>
-  <p>Gender: <%= @student.gender %></p>
-  <p>Date of birth:
-    <%= @student.dob.present? ? ((l @student.dob) + ' (' + @student.age.to_s + ')') : "Unknown" %>
-  </p>
-  <h4>Key dates:</h4>
-  <p>Release: <%= @student.crd.present? ? (l @student.crd) : "Unknown" %></p>
-  <p>Tag: <%= @student.hdc.present? ? (l @student.hdc) : "N/A" %></p>
-  <p>ROTL: <%= @student.rotl.present? ? (l @student.rotl) : "Unknown" %></p>
-  <p>Recategorisation: <%= @student.recat.present? ? (l @student.recat) : "Unknown" %></p>
-  <h4>Key information:</h4>
-  <% if @student.contactable? %>
-    <p>Contact number: <%= @student.contact_number %></p>
-    <p>Email: <%= @student.email %></p>
+  <% if @student.out? %>
+    <h3>
+      Released
+      <%= " (on tag)" if @student.on_tag? %>
+    </h3>
+    <%= "<p>If this student didn't get their tag please remove their tag date</p>".html_safe if @student.on_tag? %>
   <% end %>
-  <p>Skills: <%= @student.skill_list %></p>
-  <p>Job preferences: <%= @student.job_preference_list %></p>
-  <p>Tags: <%= @student.tag_list %></p>
-</div>
 
-<div id="activity_tab" class="tab">
-  <% if !@activities.nil? %>
-    <h3>Activity feed</h3>
-    <% @activities.each do |activity| %>
-      <div class="activity">
-        <small>(<%= l activity.created_at %>)</small>
-        <%= activity.owner.name if activity.owner %>
-        <%= render_activity activity %>
-      </div>
+  <%= ((link_to 'Edit', edit_student_path(@student)) + " | ") if can? :update, @student %>
+  <%= ((link_to 'Remove', student_path(@student), method: :delete, data: { confirm: 'Are you sure?' }) + " | ") if can? :destroy, @student %>
+  <%= link_to 'All students', students_path %>
+
+  <div>
+    <h5>
+      <a href='#' id='see_profile' class='toggle_tab'>Profile</a> |
+      <a href='#' id='see_activity' class='toggle_tab'>Activity feed</a> |
+      <a href='#' id='see_comments' class='toggle_tab'>Comments</a>
+    </h5>
+  </div>
+
+  <hr>
+  <div id="profile_tab" class="tab">
+    <h4>Profile:</h4>
+    <p>Prison number: <%= @student.prison_number %></p>
+    <p>Location: <%= @student.site.present? ? (link_to @student.site.name, site_path(@student.site)) : "Non listed" %></p>
+    <p>Gender: <%= @student.gender %></p>
+    <p>Date of birth:
+      <%= @student.dob.present? ? ((l @student.dob) + ' (' + @student.age.to_s + ')') : "Unknown" %>
+    </p>
+    <h4>Key dates:</h4>
+    <p>Release: <%= @student.crd.present? ? (l @student.crd) : "Unknown" %></p>
+    <p>Tag: <%= @student.hdc.present? ? (l @student.hdc) : "N/A" %></p>
+    <p>ROTL: <%= @student.rotl.present? ? (l @student.rotl) : "Unknown" %></p>
+    <p>Recategorisation: <%= @student.recat.present? ? (l @student.recat) : "Unknown" %></p>
+    <h4>Key information:</h4>
+    <% if @student.contactable? %>
+      <p>Contact number: <%= @student.contact_number %></p>
+      <p>Email: <%= @student.email %></p>
     <% end %>
-  <% end %>
-</div>
+    <p>Skills: <%= @student.skill_list %></p>
+    <p>Job preferences: <%= @student.job_preference_list %></p>
+    <p>Tags: <%= @student.tag_list %></p>
+  </div>
 
-
-<div id="comments_tab" class="tab">
-  <h3>Comments</h3>
-  <div class="list-group" style="width: 25%;">
-    <% @student.comments.each do |comment| %>
-      <div class="list-group-item flex-column align-items-start" style="padding: 0; margin: 0;">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1"><%= comment.user.name %><small class="text-muted"> <%= l comment.created_at %></small>
-            <% if can? :manage, comment %>
-              <small><%= link_to 'Delete', comment_path(comment),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %></small>
-            <% end %></h5>
-          <p class="mb-1"><%= comment.body %></p>
+  <div id="activity_tab" class="tab">
+    <% if !@activities.nil? %>
+      <h3>Activity feed</h3>
+      <% @activities.each do |activity| %>
+        <div class="activity">
+          <small>(<%= l activity.created_at %>)</small>
+          <%= activity.owner.name if activity.owner %>
+          <%= render_activity activity %>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 
-  <h5>Add a comment</h5>
-  <%= render 'comments/student_comment' %>
+
+  <div id="comments_tab" class="tab">
+    <h3>Comments</h3>
+    <div class="list-group" style="width: 25%;">
+      <% @student.comments.each do |comment| %>
+        <div class="list-group-item flex-column align-items-start" style="padding: 0; margin: 0;">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><%= comment.user.name %><small class="text-muted"> <%= l comment.created_at %></small>
+              <% if can? :manage, comment %>
+                <small><%= link_to 'Delete', comment_path(comment),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %></small>
+              <% end %></h5>
+            <p class="mb-1"><%= comment.body %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <h5>Add a comment</h5>
+    <%= render 'comments/student_comment' %>
+  </div>
 </div>
 
 <script>
