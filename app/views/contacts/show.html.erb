@@ -4,38 +4,83 @@
 <%= ((link_to 'Remove', contact_path(@contact), method: :delete, data: { confirm: 'Are you sure?' }) + " | ") if can? :destroy, Contact %>
 <%= link_to 'All contacts', contacts_path %>
 
-<p>First name: <%= @contact.first_name %></p>
-<p>Surname: <%= @contact.last_name %></p>
-<p>Role: <%= @contact.role %></p>
-<p>Organisation: <%= @contact.organisation %></p>
-<p>Email: <%= @contact.email %></p>
-<p>Mobile: <%= @contact.mobile_number %></p>
-<p>Workphone: <%= @contact.work_number %></p>
-<p>Tags: <%= @contact.tag_list %></p>
-<p>About:<br>
-<%= @contact.about %></p>
-
-<br><br>
 <div>
-  <% if @contact.comments.count != 0 %>
-    <h4>Comments</h4>
-    <div class="list-group" style="width: 25%;">
-      <% @contact.comments.each do |comment| %>
-        <div class="list-group-item flex-column align-items-start" style="padding: 0; margin: 0;">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1"><%= comment.user.name %><small class="text-muted"> <%= l comment.created_at %></small>
-              <% if can? :manage, comment %>
-                <small><%= link_to 'Delete', comment_path(comment),
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %></small>
-              <% end %></h5>
-            <p class="mb-1"><%= comment.body %></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
+  <h5>
+    <a href='#' id='see_profile' class='toggle_tab'>Profile</a> |
+    <a href='#' id='see_activity' class='toggle_tab'>Activity feed</a> |
+    <a href='#' id='see_comments' class='toggle_tab'>Comments</a>
+  </h5>
+</div>
+
+<hr>
+<div id="profile_tab" class="tab">
+  <h3>Profile</h3>
+  <p>First name: <%= @contact.first_name %></p>
+  <p>Surname: <%= @contact.last_name %></p>
+  <p>Role: <%= @contact.role %></p>
+  <p>Organisation: <%= @contact.organisation %></p>
+  <p>Email: <%= @contact.email %></p>
+  <p>Mobile: <%= @contact.mobile_number %></p>
+  <p>Workphone: <%= @contact.work_number %></p>
+  <p>Tags: <%= @contact.tag_list %></p>
+  <p>About:<br>
+  <%= @contact.about %></p>
+</div>
+
+<div id="activity_tab" class="tab">
+  <% if !@activities.nil? %>
+    <h3>Activity feed</h3>
+    <% @activities.each do |activity| %>
+      <div class="activity">
+        <small>(<%= l activity.created_at %>)</small>
+        <%= activity.owner.name if activity.owner %>
+        <%= render_activity activity %>
+      </div>
+    <% end %>
   <% end %>
+</div>
+
+<div id="comments_tab" class="tab">
+  <h3>Comments</h3>
+  <div class="list-group" style="width: 25%;">
+    <% @contact.comments.each do |comment| %>
+      <div class="list-group-item flex-column align-items-start" style="padding: 0; margin: 0;">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><%= comment.user.name %><small class="text-muted"> <%= l comment.created_at %></small>
+            <% if can? :manage, comment %>
+              <small><%= link_to 'Delete', comment_path(comment),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %></small>
+            <% end %></h5>
+          <p class="mb-1"><%= comment.body %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
   <h5>Add a comment</h5>
   <%= render 'comments/contact_comment' %>
 </div>
+
+<script>
+  $(document).on('ready page:load', function () {
+    $('.tab').hide();
+    $('#profile_tab').show();
+  });
+
+  $('.toggle_tab').click(function() {
+    $('.tab').hide();
+  });
+
+  $('#see_profile').click(function() {
+    $('#profile_tab').show();
+  });
+
+  $('#see_activity').click(function() {
+    $('#activity_tab').show();
+  });
+
+  $('#see_comments').click(function() {
+    $('#comments_tab').show();
+  });
+</script>

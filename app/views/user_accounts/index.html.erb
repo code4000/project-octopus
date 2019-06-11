@@ -1,23 +1,26 @@
-<%= link_to "New user", new_user_account_path %>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Role</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<div class="container">
+  <h1>CRM Users</h1>
+  <%= link_to "New user", new_user_account_path %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.role.present? ? user.role : "" %></td>
-        <td><%= link_to 'Edit', edit_user_account_path(user) %></td>
-        <td><%= link_to 'Delete', user_account_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role.present? ? user.role : "" %></td>
+          <td><%= link_to 'Edit', edit_user_account_path(user) %></td>
+          <td><%= link_to 'Delete', user_account_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

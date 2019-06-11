@@ -7,6 +7,7 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find_by_id(params[:id])
+    @activities = get_contact_activities.paginate(page: params[:page], per_page: 20)
   end
 
   def edit
@@ -82,5 +83,11 @@ class ContactsController < ApplicationController
     results = results.tagged_with(params.dig(:tag_list), :on => :tags, :any => true) if params&.dig(:tag_list).present?
 
     results.order(:first_name)
+  end
+
+  def get_contact_activities
+    (@contact.activities +
+      (PublicActivity::Activity.preload(:trackable).where(trackable_type: "Comment").select { |activity| activity&.trackable&.resource_type == "Contact" && activity&.trackable&.resource&.id == @contact.id }))
+        .sort_by(&:created_at).reverse
   end
 end
