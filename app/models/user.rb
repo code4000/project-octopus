@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_many :contact_comments, through: :contacts
 
+  has_one_time_password
+
   def master?
     if self.role == "master"
       true
