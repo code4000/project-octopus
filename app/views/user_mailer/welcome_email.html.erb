@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to Octopus, <%= @user.name %>!</h1>
+    <h1>Welcome to <%= ENV["APP_NAME"] %>, <%= @user.name %>!</h1>
 
     <p>
       Your account is now ready to go, you just need to set your password. Please follow this link:
