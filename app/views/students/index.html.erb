@@ -22,8 +22,9 @@
       <%= select_tag :gender, options_for_select(["","Male","Female"], params[:gender]) %>
     </div>
     <div>
-      <%= label_tag "Date of birth" %>
-      <%= date_field_tag :dob, params[:dob] %>
+      <%= label_tag "Date of birth between" %>
+      <%= date_field_tag :dob_from, params[:dob_from] %>
+      <%= date_field_tag :dob_to, params[:dob_to] %>
     </div>
     <div>
       <%= label_tag "Released?" %>

@@ -93,7 +93,11 @@ class StudentsController < ApplicationController
 
     results = results.where(gender: params.dig(:gender)) if params&.dig(:gender).present?
 
-    results = results.where(dob: params.dig(:dob)) if params&.dig(:dob).present?
+    # results = results.where(dob: params.dig(:dob)) if params&.dig(:dob).present?
+
+    results = results.where("dob >= ?", params.dig(:dob_from)) if params&.dig(:dob_from).present?
+
+    results = results.where("dob <= ?", params.dig(:dob_to)) if params&.dig(:dob_to).present?
 
     results = results.where("crd < ? OR hdc < ?", Date.today, Date.today) if params&.dig(:released?) == "1"
 
