@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates_presence_of :name
+  validates :password, password_strength: true
 
   has_many :contact_comments, through: :contacts
 
