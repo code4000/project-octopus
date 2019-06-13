@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    collection { post :import }
   end
   resources :contacts do
     resources :comments
