@@ -67,11 +67,33 @@
   <% end %>
 </div>
 
+<%= link_to 'Import contacts by CSV', '#', id: 'show-import' %>
+<div id="import">
+  <%= form_tag import_contacts_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+  <% end %>
+  <i>Important! <%= link_to 'Click here to see example formatting for CSV import', '#', id: 'show-example' %></i>
+  <br>
+  <%= image_tag("csv-example.png", id: 'csv-example') %>
+
+</div>
+
 <script>
   $(document).on('ready page:load', function () {
+    $('#import').hide();
+    $('#csv-example').hide();
     $('.tags').chosen({
       allow_single_deselect: true,
       width: '200px'
     });
+  });
+
+  $('#show-import').click(function(){
+    $('#import').show();
+  });
+
+  $('#show-example').click(function(){
+    $('#csv-example').show();
   });
 </script>
