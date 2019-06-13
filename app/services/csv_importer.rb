@@ -15,16 +15,18 @@ class CSVImporter
 
   def save
     return false unless valid?
-    @csv_file.each do |row|
-      Contact.create(row.to_hash)
+    all_succeeded = true
+
+    @csv_file.each.with_index(1) do |row, index|
+      all_succeeded = false unless create_or_update(row.to_hash.with_indifferent_access, index)
     end
-    true
+    all_succeeded
   end
 
   def save!
     validate!
     @csv_file.each do |row|
-      Contact.create!(row.to_hash)
+      create_or_update!(row.to_hash.with_indifferent_access)
     end
   end
 
