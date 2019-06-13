@@ -9,9 +9,7 @@ class ContactImporter < CSVImporter
     succeeded = contact.update(contact_hash)
     unless succeeded
       contact.errors.full_messages.each do |error_message|
-        # TODO: add row number
         errors.add(:file, "line #{line_number}: #{error_message}");
-
       end
     end
     succeeded
