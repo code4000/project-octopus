@@ -52,8 +52,8 @@ class ContactsController < ApplicationController
   end
 
   def import
-    @csv_import = ContactImporter.new(params.dig(:file)&.path)
     if params.dig(:file)&.content_type == "text/csv"
+      @csv_import = ContactImporter.new(params.dig(:file)&.path)
       if @csv_import.save
         flash[:notice] = "Contacts added!"
       else
