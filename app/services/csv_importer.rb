@@ -38,4 +38,29 @@ class CSVImporter
     end
   end
 
+  # Create or update a row
+  def create_or_update(row_hash, line_number)
+    imported_object = find_or_initialize_by_key_fields(row_hash)
+
+    succeeded = imported_object.update(row_hash)
+    unless succeeded
+      imported_object.errors.full_messages.each do |error_message|
+        errors.add(:file, "line #{line_number}: #{error_message}");
+      end
+    end
+    succeeded
+  end
+
+  def create_or_update!(row_hash)
+    imported_object = find_or_initialize_by_key_fields(row_hash)
+    imported_object.update!(row_hash)
+    return imported_object
+  end
+
+  def find_or_initialize_by_key_fields(row_hash)
+    row_key_fields = row_hash.slice(*headers_to_find_duplicates_by)
+
+    # We expect import_class to be defined in any implementing subclass
+    import_class.find_or_initialize_by(row_key_fields)
+  end
 end
