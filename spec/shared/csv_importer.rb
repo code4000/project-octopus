@@ -1,5 +1,10 @@
 shared_examples "a csv importer" do
+  let!(:import_class) { described_class.import_class }
   let!(:csv_directory) { "#{described_class.to_s.underscore}_csv_files" }
+
+  # TOOD: partial success
+  # TOOD: full success
+  # TODO: duplicates - warning/silent/update?
 
   describe 'non-CSV file' do
     let!(:subject) { described_class.new( Rails.root.join("spec", "services", csv_directory, "non_csv.txt") ) }
@@ -28,28 +33,6 @@ shared_examples "a csv importer" do
     # TODO: errors hash check message
   end
 
-  describe 'valid CSV with duplicates' do
-    let!(:contact) { Contact.create(first_name: "Michael", last_name: "Angelo", email: "art@example.com") }
-    let!(:subject) { described_class.new( Rails.root.join('spec', 'services', csv_directory, 'valid_duplicates.csv') ) }
-    before {subject.save}
-
-    it 'has no errors' do
-      expect(subject.errors).to be_empty
-    end
-
-    it 'doesnt create new records' do
-      expect(Contact.count).to eq(1)
-    end
-
-    it 'has updated the duplicates' do
-      expect(Contact.first.email).to eq(contact.email)
-      expect(Contact.first.first_name).to eq(contact.first_name)
-      expect(Contact.first.last_name).to eq(contact.last_name)
-      expect(Contact.first.role).to eq("Artist")
-      expect(Contact.first.organisation).to eq("Vatican")
-    end
-  end
-
   describe 'valid CSV import' do
     let!(:subject) { described_class.new( Rails.root.join('spec', 'services', csv_directory, 'valid.csv') ) }
 
@@ -65,7 +48,7 @@ shared_examples "a csv importer" do
       end
 
       it 'creates new records' do
-        expect(Contact.count).to eq(3)
+        expect(import_class.count).to eq(3)
       end
     end
 
@@ -81,7 +64,7 @@ shared_examples "a csv importer" do
       end
 
       it 'creates new records' do
-        expect(Contact.count).to eq(3)
+        expect(import_class.count).to eq(3)
       end
       # returns true
     end
