@@ -59,8 +59,17 @@ class CSVImporter
 
   def find_or_initialize_by_key_fields(row_hash)
     row_key_fields = row_hash.slice(*headers_to_find_duplicates_by)
+    duplicate = nil
 
-    # We expect import_class to be defined in any implementing subclass
-    import_class.find_or_initialize_by(row_key_fields)
+    row_key_fields.each do |field|
+      duplicate = import_class.where("#{field.first} = ?", field.second)
+      break if duplicate.exists?
+    end
+
+    if duplicate.exists?
+      output = duplicate
+    else
+      output = import_class.new(row_key_fields)
+    end
   end
 end
