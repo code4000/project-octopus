@@ -1,7 +1,7 @@
 class ContactImporter < CSVImporter
 
   def import_class
-    Contact
+    self.class.import_class
   end
 
   def required_headers
@@ -10,5 +10,9 @@ class ContactImporter < CSVImporter
 
   def headers_to_find_duplicates_by
     [:email]
+  end
+
+  def self.import_class
+    Contact
   end
 end
