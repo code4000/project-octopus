@@ -84,6 +84,16 @@
       <%= submit_tag "Filter" %> <a id="show_ordering" href="#">Change order</a>
     </div>
   <% end %>
+
+  <div id="import">
+    <hr>
+    <h5>Import students</h5>
+    <%= form_tag import_students_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import CSV" %>
+    <% end %>
+
+  </div>
 </div>
 
 <div class="main">
@@ -93,6 +103,7 @@
     <%= link_to 'View all', students_path %>
     <% if can? :create, Student %>
       | <%= link_to 'Add student', new_student_path %>
+      | <%= link_to 'Import students', '#', id: 'show-import' %>
     <% end %>
   </div>
 
@@ -148,6 +159,7 @@
     });
 
     $('.extra_fields').hide();
+    $('#import').hide();
 
   });
 
@@ -185,5 +197,9 @@
       $('#ordering').hide();
       $('#show_ordering').html("Change order")
     }
+  });
+
+  $('#show-import').click(function(){
+    $('#import').show();
   });
 </script>
