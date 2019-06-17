@@ -15,14 +15,20 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    collection { post :import }
+    collection do
+      post :import
+      get :import, to: 'students#importer'
+    end
   end
   resources :contacts do
     resources :comments
     collection do
       get 'search'
     end
-    collection { post :import }
+    collection do
+      post :import
+      get :import, to: 'contacts#importer'
+    end
   end
   resources :user_accounts
   resources :comments
