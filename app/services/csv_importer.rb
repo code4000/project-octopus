@@ -45,7 +45,7 @@ class CSVImporter
 
   def self.valid_headers
     filtered_column_names = self.import_class.column_names.reject{|c| [:id, :created_at, :updated_at].include?(c.to_sym)}
-    (filtered_column_names + ['tag_list']).sort
+    filtered_column_names.sort
   end
 
   def self.required_headers
