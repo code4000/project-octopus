@@ -59,17 +59,16 @@ class CSVImporter
 
   def find_or_initialize_by_key_fields(row_hash)
     row_key_fields = row_hash.slice(*headers_to_find_duplicates_by)
-    duplicate = nil
+    query = nil
 
     row_key_fields.each do |field|
-      duplicate = import_class.where("#{field.first} = ?", field.second)
-      break if duplicate.exists?
+      field_where_query = import_class.where(field.first => field.second)
+
+      # if this is first query don't use or, but if it's not add a new clause using or
+      query = query.nil? ? field_where_query : query.or(field_where_query)
     end
 
-    if duplicate.exists?
-      output = duplicate
-    else
-      output = import_class.new(row_key_fields)
-    end
+    # assign query result, if query doesn't find results create a new instance
+    result = query.first_or_initialize(row_hash)
   end
 end
