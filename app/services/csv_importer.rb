@@ -18,7 +18,12 @@ class CSVImporter
     all_succeeded = true
 
     @csv_file.each.with_index(1) do |row, index|
-      all_succeeded = false unless create_or_update(row.to_hash.with_indifferent_access, index)
+      save_result = create_or_update(row.to_hash.with_indifferent_access, index)
+      if save_result
+        @items.push(save_result)
+      else
+        all_succeeded = false
+      end
     end
     all_succeeded
   end
@@ -26,8 +31,29 @@ class CSVImporter
   def save!
     validate!
     @csv_file.each do |row|
-      create_or_update!(row.to_hash.with_indifferent_access)
+      @items.push(create_or_update!(row.to_hash.with_indifferent_access))
     end
+  end
+
+  def import_class
+    self.class.import_class
+  end
+
+  def required_headers
+    self.class.required_headers
+  end
+
+  def self.valid_headers
+    filtered_column_names = self.import_class.column_names.reject{|c| [:id, :created_at, :updated_at].include?(c.to_sym)}
+    filtered_column_names.sort
+  end
+
+  def self.required_headers
+    import_class.validators.find{|v| v.instance_of? ActiveRecord::Validations::PresenceValidator}.attributes
+  end
+
+  def headers_to_find_duplicates_by
+    import_class.validators.find{|v| v.instance_of? ActiveRecord::Validations::UniquenessValidator}.attributes
   end
 
   private

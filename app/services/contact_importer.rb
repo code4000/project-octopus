@@ -1,18 +1,11 @@
 class ContactImporter < CSVImporter
 
-  def import_class
-    self.class.import_class
-  end
-
-  def required_headers
-    [:first_name, :last_name, :email]
-  end
-
-  def headers_to_find_duplicates_by
-    [:email]
-  end
-
   def self.import_class
     Contact
+  end
+
+  # add tag_list as it isnt a model attribute - but contacts have many
+  def self.valid_headers
+    (super + ['tag_list']).sort
   end
 end

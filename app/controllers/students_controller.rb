@@ -53,17 +53,24 @@ class StudentsController < ApplicationController
   end
 
   def import
+    redirection_path = import_students_path
+
     if params.dig(:file)&.content_type == "text/csv"
-      @csv_import = StudentImporter.new(params.dig(:file)&.path)
-      if @csv_import.save
-        flash[:notice] = "Contacts added!"
+      @importer = StudentImporter.new(params.dig(:file)&.path)
+      if @importer.save
+        redirection_path = students_path
       else
-        flash[:alert] = "Error: #{@csv_import.errors.full_messages.to_sentence}"
+        flash[:alert] = "Error: #{@importer.errors.full_messages.to_sentence}"
       end
+      flash[:notice] = "#{@importer.items.length} students added/updated!" if @importer.items.present?
     else
       flash[:alert] = "Please select a valid .CSV file."
     end
-    redirect_to students_path
+    redirect_to redirection_path
+  end
+
+  def importer
+    @importer_class = StudentImporter
   end
 
   private

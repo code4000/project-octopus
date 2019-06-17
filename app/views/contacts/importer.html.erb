@@ -1,0 +1,22 @@
+<div id="import">
+  <h1>Import contacts</h1>
+  <%= form_tag import_contacts_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV" %>
+  <% end %>
+
+  <hr>
+  <h4>Required headers</h4>
+  <ul>
+    <% @importer_class.required_headers.each do |header| %>
+      <li><%= header.to_s %></li>
+    <% end %>
+  </ul>
+
+  <h4>Valid headers</h4>
+  <ul>
+    <% @importer_class.valid_headers.each do |header| %>
+      <li><%= header.to_s %></li>
+    <% end %>
+  </ul>
+</div>
