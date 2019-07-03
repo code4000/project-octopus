@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Sites</h1>
 <h4>Filter:</h4>
 <%= form_tag(search_sites_path, method: :get) do %>
@@ -19,7 +20,7 @@
 <div><%= link_to 'View all', sites_path %></div>
 <div><%= link_to 'Add site', new_site_path if can? :create, Site %></div>
 
-<table class="table">
+<table class="table table-striped">
   <thead>
     <th></th>
     <th>Attendence</th>
@@ -49,7 +50,7 @@
 <% elsif @sites.count == 0 %>
   No results found
 <% end %>
-
+</div>
 <script>
   $(document).on('ready page:load', function () {
     $('.tags').chosen({

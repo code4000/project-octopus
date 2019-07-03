@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<!-- saved from url=(0108)https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters -->
+<html lang="en" class="application-layout code-challenges-show code-challenges-controller show-action has-stage-progress logged-in chrome webkit osx loaded scrolling scrolling-down" id="layout" data-featurette="application-layout"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./Code Challenge_ Updating Strong Parameters_files/d98036d1cc"></script><script src="./Code Challenge_ Updating Strong Parameters_files/nr-1123.min.js"></script><script src="./Code Challenge_ Updating Strong Parameters_files/inferredEvents.js" async=""></script><script src="./Code Challenge_ Updating Strong Parameters_files/688952224481965" async=""></script><script async="" src="./Code Challenge_ Updating Strong Parameters_files/fbevents.js"></script><script id="twitter-wjs" src="./Code Challenge_ Updating Strong Parameters_files/widgets.js"></script><script async="" src="./Code Challenge_ Updating Strong Parameters_files/gtm.js"></script>
+    <title>Code Challenge: Updating Strong Parameters</title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script>window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"d98036d1cc","applicationID":"1824378","transactionName":"cQ5eRRQNCQ8BFhZbWFYEb1IOAwkPAQpeXUQdElheEQ==","queueTime":0,"applicationTime":601,"agent":""}</script>
+<script>(window.NREUM||(NREUM={})).loader_config={xpid:"VwIBVldWGwIIVlVRAAk="};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(18),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(19),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var x=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof x&&(this.bstStart=g.now())}),o.on(w,function(t,n){var e=t[0];e instanceof x&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(21)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(21)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(21)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(21)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(b?b.then(a):w?w(a):(E=-E,R.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(21)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,R=document.createTextNode(E);new h(a).observe(R,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],10:[function(t,n,e){function r(){var t=window.NREUM,n=t.info.accountID||null,e=t.info.agentID||null,r=t.info.trustKey||null,i="btoa"in window&&"function"==typeof window.btoa;if(!n||!e||!i)return null;var a={v:[0,1],d:{ty:"Browser",ac:n,ap:e,id:o.generateCatId(),tr:o.generateCatId(),ti:Date.now()}};return r&&n!==r&&(a.d.tk=r),btoa(JSON.stringify(a))}var o=t(16);n.exports={generateTraceHeader:r}},{}],11:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(l[r],this.listener,!1);n.aborted||(e.duration=s.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):a(this,t),e.cbTime=this.cbTime,d.emit("xhr-done",[t],t),c("xhr",[n,e,this.startTime]))}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return w(r)}function i(t,n){var e=f(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}function a(t,n){t.params.status=n.status;var e=o(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(12),u=t(10).generateTraceHeader,d=t("ee"),l=["load","error","abort","timeout"],p=l.length,h=t("id"),m=t(15),w=t(14),v=window.XMLHttpRequest;s.features.xhr=!0,t(9),d.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){a(n,t)},!1),m&&(m>34||m<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),d.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),d.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=!1;if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(e=!!NREUM.init.distributed_tracing.enabled),e&&this.sameOrigin){var r=u();r&&n.setRequestHeader("newrelic",r)}}),d.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=w(r);i&&(e.txSize=i)}this.startTime=s.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{d.emit("internal-error",[e])}catch(r){}}};for(var a=0;a<p;a++)n.addEventListener(l[a],this.listener,!1)}),d.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),d.on("xhr-load-added",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),d.on("xhr-load-removed",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),d.on("addEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-added",[t[1],t[2]],n)}),d.on("removeEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-removed",[t[1],t[2]],n)}),d.on("fn-start",function(t,n,e){n instanceof v&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=s.now()))}),d.on("fn-end",function(t,n){this.xhrCbStart&&d.emit("xhr-cb-time",[s.now()-this.xhrCbStart,this.onload,n],n)})}},{}],12:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],13:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(18),s=t(19),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],14:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],15:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],16:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],17:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],18:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],19:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],20:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],21:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(19),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){y[t]=m(t).concat(n)}function h(t,n){var e=y[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return y[t]||[]}function w(t){return d[t]=d[t]||o(e)}function v(t,n){f(t,function(t,e){n=n||"feature",g[e]=n,n in u||(u[n]=[])})}var y={},g={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:w,listeners:m,context:n,buffer:v,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(18),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(g,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return R.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(18),u=t("ee"),d=t(17),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1123.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:x,userAgent:d};t(13),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,R=t(20)},{}]},{},["loader",2,11,4,3]);</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="4Ga-viQvIZUFNQXu323xpp_24RDlLooxwlpnXhinjPA">
+    <meta name="msvalidate.01" content="F0716E70B7DD3B8C892B48891CA4B541">
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="9sRfr7F2WWvsfj4Ai+MOnodwl2iN3+BeBU+O0Fh+2xmd6ZUCbs5Kmjqt0Xjfnpg20gOkAb/w7/j0yMhLmvnUqA==">
+
+
+
+    <script src="./Code Challenge_ Updating Strong Parameters_files/head_vendor-3e27b8529bd0af374e62e9329d38bc73c4f02b72dfffe8dbf075f32f4573a06f.js" crossorigin="anonymous" integrity="sha256-Pie4UpvQrzdOYukynTi8c8TwK3Lf/+jb8HXzL0VzoG8="></script>
+    <script>
+  window.bugsnagClient = bugsnag({
+    apiKey: "8251a8eb6422d59eaf410e7c1b1c7b38",
+    user: { id: 10735350 },
+    releaseStage: "production"
+  });
+</script>
+
+      <script src="./Code Challenge_ Updating Strong Parameters_files/39d1ae64-085b-42e6-a239-a988d6530b80.js" type="text/javascript" charset="UTF-8"></script><link type="text/css" href="./Code Challenge_ Updating Strong Parameters_files/optanon.css" rel="stylesheet"><style>#optanon ul#optanon-menu li { background-color: #F9FAFA !important }#optanon ul#optanon-menu li.menu-item-selected { background-color: #EDEFF0 !important }#optanon #optanon-popup-wrapper .optanon-white-button-middle { background-color: #387BAB !important }.optanon-alert-box-wrapper .optanon-alert-box-button-middle { background-color: #387BAB !important; border-color: #387BAB !important; }#optanon #optanon-popup-wrapper .optanon-white-button-middle a { color: #ffffff !important }.optanon-alert-box-wrapper .optanon-alert-box-button-middle a { color: #ffffff !important }#optanon #optanon-popup-bottom { background-color: #F9FAFA !important }#optanon.modern #optanon-popup-top, #optanon.modern #optanon-popup-body-left-shading { background-color: #F9FAFA !important }.optanon-alert-box-wrapper { background-color:#F9FAFA !important }.optanon-alert-box-wrapper .optanon-alert-box-bg p { color:#4B5658 !important }</style>
+
+<script type="text/javascript">
+function OptanonWrapper() { window.dataLayer.push({ event: "OneTrustGroupsUpdated" }) }
+</script>
+
+    <script>
+//<![CDATA[
+window.appData = '{\"controller_name\":\"code_challenges\",\"action_name\":\"show\",\"app_version\":\"b9408d8530fe5b2663a4a2dae6c730d9edc856ea\",\"user\":{\"id\":10735350,\"name\":\"Ash Fulcher\",\"profile_name\":\"ashfulcher\",\"cache_marks\":{\"notifications\":1559132092,\"progress\":1560871106,\"bookmarks\":1557233553}}}'
+//]]>
+</script>
+
+
+    <link rel="stylesheet" media="screen" href="./Code Challenge_ Updating Strong Parameters_files/vendor-c9dbbd0e60e5f1f2c55a30932cc497e31b010d101dcb10736974502f4691a310.css" crossorigin="anonymous" integrity="sha256-ydu9DmDl8fLFWjCTLMSX4xsBDRAdyxBzaXRQL0aRoxA=">
+<link rel="stylesheet" media="screen" href="./Code Challenge_ Updating Strong Parameters_files/application-f3564fc094363fef6f749466a1790e61e3e9765b7b003548ce602f8d48b73d21.css" crossorigin="anonymous" integrity="sha256-81ZPwJQ2P+9vdJRmoXkOYePpdlt7ADVIzmAvjUi3PSE=">
+    <link rel="stylesheet" type="text/css" href="./Code Challenge_ Updating Strong Parameters_files/fonts.css">
+    
+
+    <style media="print">
+      header, footer, .graph, .nav, svg {
+        display: none
+      }
+    </style>
+
+    
+    
+    
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://static.teamtreehouse.com/assets/apple-touch-icon-120x120-precomposed-dda60d87f49aa928ff86379bb50d9514d4b5f19502ff562b453e3d254730f682.png">
+    
+
+    
+
+    
+
+    <script type="text/javascript">
+  window._elqQ = [];
+  function _elqInitialize() {
+    if(!window._elqInitialized) {
+      window._elqInitialized = true;
+      _elqQ.push(['elqSetSiteId', '1855842777']);
+      var s = document.createElement('script'); s.type = 'text/javascript';
+      s.src = '//img04.en25.com/i/elqCfg.min.js';
+      var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    }
+  };
+</script>
+<script type="text/plain" class="optanon-category-2">
+  _elqInitialize();
+</script>
+<script type="text/plain" class="optanon-category-4">
+  _elqInitialize();
+  _elqQ.push(['elqTrackPageView']);
+</script>
+
+  <style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style><style>body.tablesorter-disableSelection { -ms-user-select: none; -moz-user-select: -moz-none;-khtml-user-select: none; -webkit-user-select: none; user-select: none; }.tablesorter-resizable-container { position: relative; height: 1px; }.tablesorter-resizable-handle { position: absolute; display: inline-block; width: 8px;top: 1px; cursor: ew-resize; z-index: 3; user-select: none; -moz-user-select: none; }</style><script charset="utf-8" src="./Code Challenge_ Updating Strong Parameters_files/button.509719336ca39171c37a321231ccaf83.js"></script><link type="image/x-icon" rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEoklEQVRYR62Xa0wcVRTH/+cuLLSKUi1NtYmpio+0xtrUWGa2VmtS0xirNgaNH9TGB7ArGGAXWmMTBmNNhR2KpewsJCZN+61NpFEx/WACoWWgiEltKhofiTT1USFNYfvgtXPMLCzOrsPurOV+2p17zv/87j333AfhfzSlS8m6mBvZCcZzpjuDj6+cvOWwskWZyVSOMnXw6VXbGEIFsCbJdwiCXtGKgmcz0XQMUNrvXyMMUgHeliJApyarzy4qQMmgf7mYRj0xSgBkpRH/UpPV7YsCUHxOcd8+Fqkgwh4A+Y5ECe9qktriyHbO6L8pYFBZf6CYmPcCKMxAbPj6ZN6Dh7YoE1af2QU7/gwgrmlS8OtkvQSAMr3qMSLxCRhFGQSOmTLRy2EpeNTq96ZedZubRKdFr9uIcmXb403fxe3mAXy9NU8zGZ0O8mzH1q1J6lMgsLXTq/u/AJC8KCdIYGuoSD1l2s4DeHW/SfVwpiMH+Lxg2tzqUYetvmV6YAeBP7PTI6AvJKtyMoBhBXICQuAOYWSVH9zU8IfVfmeXkrskJzIE4O4FdC5rsrosGSBh+iyO3zNznQtixhBcQIybDMYliOjJsNT8m10Ab29gF4j3pRjEmCarscqypsAWgFisD3kaz9iJlZ+qvTN59Aor4mLflb8ALlgUAOHiB1o3Nv1kipUMKkvF1NhDINdqgLON7LyO9keVa9ZAvoGalTxj/Jkmhc5nAMAAYNQyi7uI0AxgCRH7QlLTIbsgsbrPiVwF4F6UGbCKMNDDQrzVVtT4s/m9rDewIiwHR2zK7zCAVxcT4FsG7Q1LwePWYL6+wPaQFDRrPaFVdlXmT+a4vkmxkzpPATMawh51V+IGU/UEsXjfAI6EPeoRs897cvcykTVzf6sUPG3+f+dU1VpDiF4At9rMhHOAKIvCdk/jr3ERn179GoM+NXdMl+FaZVaBr8t3M+csHQD43iiwrl1WfzTtS3sDkiDusdldnQMQ4cWQpMZ2tNL+mvuEET0D0FIAZzVZXRcbvR54D+CPZiG5XJObWuPAXj1wFODipFlwDgBgnAgKM8yVXRPPKzHVhzxBZRbAPwhgw2wQCmpy0LSLNa/u7wDwwo0A2C3mK1EWj5ipMXMP1/QoADFneJWZX8+OTvdEXe5iJhwA4FpMgOtE0Q0hqfkHy2I7l6Lk7LpsU3AJQOyASNkYn2se9XmrjVf3XwCwKp2rpX9Yk9XVsYTN56qveh+YEsrNXpB7NblpU7yv4quKnJl89wiAvAwA6jRZ/SABwLwDFoxfOcDgty35tNUkoHLkwvmDy+5Zm5M1FWlh4A2HwWfAdGD09+HaYy8diyYAxAXK9Or1guljJmxNIxoBkA0g11lwOmEI9rcVqeY9Yb4t+C5I8QBxFu9fqyGC4Q/J+0/YOaZ8mJgn29/uSAkD9SAszygyY5SAuhVTee2pnmyOXkbm4TKV69rDjIo0x6zJOEWEFvdE9MPmLc2X00E7AoiL+PSqQoAaGLTDfjq5A+DakLz/l3SB4/0ZAcwv1L7Ak8SxO9/GuW+nmWh3WAp2Ow18QwBx55KeyjvM3+2bm9NdwRbk+gefIeUwsS1eagAAAABJRU5ErkJggg=="></head>
+  <body id="challenge" class="osx chrome webkit ">
+    <!-- Data Layer -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  dataLayer.push({"loggedIn":true,"userId":10735350,"userEmail":"ash@code4000.org","accountState":"active","techdegreeStudent":false});
+</script>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PZ55S7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PZ55S7');</script>
+<!-- End Google Tag Manager -->
+
+
+
+  <header class="header" role="banner" data-header="">
+    <nav class="header-nav container" role="navigation" data-nav="">
+        <button class="hamburger-button hamburger-button-inverse" aria-label="Navigation Menu" data-hamburger-button="">
+    <span class="hamburger"></span>
+  </button>
+
+      <ul class="header-nav-list header-nav-item-profile-points-size-4">
+        <li class="header-nav-item  header-nav-item-primary header-nav-item-logo ">
+          <h6 class="header-nav-item-logo-container">
+            <a class="header-nav-link header-nav-item-logo-link" aria_label="Treehouse Home" data-analytics-link="Treehouse Logo" data-analytics-event="application nav link" data-analytics-path="/home" data-analytics-action="clicked" href="https://teamtreehouse.com/home">
+              <svg class="logo-icon header-nav-item-logo-icon" alt="Treehouse" preserveAspectRatio="xMinYMin meet" viewBox="0 0 30 32"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#logo-icon"></use></svg>
+              <span class="header-nav-item-logo-text header-nav-item-primary">Home</span>
+</a>          </h6>
+</li>
+
+          <li class="header-nav-item header-nav-item-tablet header-nav-item-primary header-nav-item-techdegrees ">
+            <a class="header-nav-link " data-analytics-event="application nav link" data-analytics-link="Techdegree" data-analytics-path="/techdegree" data-analytics-action="clicked" href="https://teamtreehouse.com/techdegree">Techdegree</a>
+</li>
+        <li class="header-nav-item header-nav-item-tablet header-nav-item-primary header-nav-item-tracks ">
+          <a class="header-nav-link nav-item-tracks" data-analytics-event="application nav link" data-analytics-link="Tracks" data-analytics-path="/tracks" data-analytics-action="clicked" href="https://teamtreehouse.com/tracks">Tracks</a>
+</li>
+        <li class="header-nav-item header-nav-item-tablet header-nav-item-primary header-nav-item-library ">
+          <a class="header-nav-link nav-item-library" data-analytics-event="application nav link" data-analytics-link="Library" data-analytics-path="/library" data-analytics-action="clicked" href="https://teamtreehouse.com/library">Library</a>
+</li>
+        <li class="header-nav-item header-nav-item-tablet nav-item-community header-nav-item-primary header-nav-item-community ">
+          <a class="header-nav-link nav-item-community" data-analytics-event="application nav link" data-analytics-link="Community" data-analytics-path="/community" data-analytics-action="clicked" href="https://teamtreehouse.com/community">Community</a>
+</li>
+        <li class="header-nav-item header-nav-item-tablet header-nav-item-primary header-nav-item-support ">
+          <a class="header-nav-link " data-analytics-event="application nav link" data-analytics-link="Support" data-analytics-path="/support" data-analytics-action="clicked" href="https://teamtreehouse.com/support">Support</a>
+</li>
+
+          <li class="header-nav-item header-nav-item-tablet header-nav-item-secondary header-nav-item-workspaces ">
+            <a class="header-nav-link " data-analytics-event="application nav link" data-analytics-link="Workspaces" data-analytics-path="/workspaces" data-analytics-action="clicked" href="https://teamtreehouse.com/workspaces">Workspaces</a>
+</li>
+          <li class="header-nav-item header-nav-item-mobile header-nav-item-secondary header-nav-item-profile" data-nav-item="profile">
+            <a data-nav-link-profile="" data-dropdown-toggle="profile" data-analytics-link="Profile" data-analytics-action="clicked:internal" data-analytics-event="application nav link" data-analytics-path="/ashfulcher" class="header-nav-link " href="https://teamtreehouse.com/ashfulcher">
+                <div id="avatar-804be2" class="header-nav-item-profile-avatar avatar-deep-blue-bg avatar avatar-small">
+    
+    <div class="points-donut chart avatar-points" data-animate-points="true" data-featurette="points-chart" data-width="36" data-height="36" data-donut-width="9px" data-points="{&quot;front-end&quot;:0,&quot;design&quot;:0,&quot;back-end&quot;:1633,&quot;mobile&quot;:0,&quot;fundamentals&quot;:0,&quot;data&quot;:0,&quot;experimental&quot;:0}" data-points-total="1663" data-padding="1" id="featurette-1"><svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="36" height="36" class="ct-chart-donut" style="width: 36; height: 36;"><g class="ct-series add-front-end-stroke"><path d="M18,5.5A12.5,12.5,0,0,0,18,5.5" class="ct-slice-donut" ct:value="0" style="stroke-width: 9px" stroke-dasharray="0px 0px" stroke-dashoffset="0px"></path></g><g class="ct-series add-design-stroke"><path d="M18,5.5A12.5,12.5,0,0,0,18,5.5" class="ct-slice-donut" ct:value="0" style="stroke-width: 9px" stroke-dasharray="0px 0px" stroke-dashoffset="0px"></path></g><g class="ct-series add-back-end-stroke"><path d="M17.998,5.5A12.5,12.5,0,1,0,18,5.5" class="ct-slice-donut" ct:value="1633" style="stroke-width: 9px" stroke-dasharray="78.54887390136719px 78.54887390136719px" stroke-dashoffset="0px"></path></g><g class="ct-series add-mobile-stroke"><path d="M17.998,5.5A12.5,12.5,0,0,0,17.998,5.5" class="ct-slice-donut" ct:value="0" style="stroke-width: 9px" stroke-dasharray="0px 0px" stroke-dashoffset="0px"></path></g><g class="ct-series add-fundamentals-stroke"><path d="M17.998,5.5A12.5,12.5,0,0,0,17.998,5.5" class="ct-slice-donut" ct:value="0" style="stroke-width: 9px" stroke-dasharray="0px 0px" stroke-dashoffset="0px"></path></g><g class="ct-series add-data-stroke"><path d="M17.998,5.5A12.5,12.5,0,0,0,17.998,5.5" class="ct-slice-donut" ct:value="0" style="stroke-width: 9px" stroke-dasharray="0px 0px" stroke-dashoffset="0px"></path></g><g class="ct-series add-experimental-stroke"><path d="M17.998,5.5A12.5,12.5,0,0,0,17.998,5.5" class="ct-slice-donut" ct:value="0" style="stroke-width: 9px" stroke-dasharray="0px 0px" stroke-dashoffset="0px"></path></g></svg></div>
+    <div class="avatar-container">
+      <img alt="Ash Fulcher" class="avatar-image" src="./Code Challenge_ Updating Strong Parameters_files/765b63e74641c6db4b0dd8526f720466">
+    </div>
+    
+    
+    
+</div>
+<span class="header-nav-item-profile-points">1,663</span>
+<span class="header-nav-item-profile-text">View Profile</span>
+
+              <svg class="chevron-icon header-nav-item-profile-chevron" preserveAspectRatio="xMinYMin meet" viewBox="0 0 12 7.5"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#chevron-icon"></use></svg>
+</a>            <div class="header-nav-item-profile-dropdown dropdown dropdown-right">
+  <h4 class="dropdown-title">
+    <a href="https://teamtreehouse.com/ashfulcher" class="header-nav-item-profile-dropdown-title-link">
+      <strong class="header-nav-item-profile-dropdown-title-name">Ash Fulcher</strong>
+      <span class="header-nav-item-profile-dropdown-title-label">View Profile</span>
+    </a>
+  </h4>
+  <ul>
+    <li><a href="https://teamtreehouse.com/account">Account Settings</a></li>
+      <li><a href="https://teamtreehouse.com/account/enrollment">Subscription</a></li>
+      <li><a href="https://teamtreehouse.com/account/referrals">Referral Discounts</a></li>
+  </ul>
+  <a class="dropdown-secondary" href="https://teamtreehouse.com/logout">Sign Out</a>
+</div>
+
+</li>
+          <li class="header-nav-item header-nav-item-mobile header-nav-item-secondary header-nav-item-notifications loaded scrolling scrolling-down" data-featurette="notifications" data-nav-item="notifications" id="featurette-2">
+            <a data-notifications-link="" data-dropdown-toggle="notifications" data-analytics-link="Notifications" data-analytics-action="clicked:internal" data-analytics-event="application nav link" data-analytics-path="/notifications" class="header-nav-link " href="https://teamtreehouse.com/notifications">
+              <svg class="notifications-icon header-nav-item-notifications-icon" preserveAspectRatio="xMinYMin meet" viewBox="0 0 12 12"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#notifications-icon"></use></svg>
+              <span class="header-nav-item-notifications-count header-nav-item-notifications-count-hidden loaded scrolling scrolling-down" data-featurette="notifications-count" id="featurette-3">0</span>
+              <span class="header-nav-item-notifications-text">Notifications</span>
+</a>            <div class="header-nav-item-notifications-dropdown dropdown dropdown-right notifications notification-dropdown" data-notification-dropdown="">
+  <h4 class="dropdown-title"><a href="https://teamtreehouse.com/notifications">Notifications</a></h4>
+  
+  <ul class="notification-list">
+    <li id="notification-1371154766" class="notification-item  ">
+  
+<a class="notification-anchor topic-back-end" href="https://teamtreehouse.com/notifications/1371154766?redirect_to=%2Flibrary%2Fc-basics-2">
+  <p class="notification-meta"><strong>New Course</strong> • <span class="notification-timestamp">20 days ago</span></p>
+  <h5 class="notification-title">C# Basics</h5>
+  <p class="notification-message"></p>
+  <span class="notification-type">
+    <svg class="course-icon notification-icon" preserveAspectRatio="xMinYMin meet" viewBox="0 0 18 18"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#course-icon"></use></svg>
+  </span>
+</a>
+</li>
+<li id="notification-1370852254" class="notification-item  ">
+  
+<a class="notification-anchor topic-design" href="https://teamtreehouse.com/notifications/1370852254?redirect_to=%2Flibrary%2Fdesign-systems">
+  <p class="notification-meta"><strong>New Course</strong> • <span class="notification-timestamp">27 days ago</span></p>
+  <h5 class="notification-title">Design Systems</h5>
+  <p class="notification-message"></p>
+  <span class="notification-type">
+    <svg class="course-icon notification-icon" preserveAspectRatio="xMinYMin meet" viewBox="0 0 18 18"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#course-icon"></use></svg>
+  </span>
+</a>
+</li>
+<li id="notification-1370246821" class="notification-item  ">
+  
+<a class="notification-anchor update-profile" href="https://teamtreehouse.com/account">
+  <p class="notification-meta"><strong>Welcome to Treehouse</strong> • <span class="notification-timestamp">about 1 month ago</span></p>
+  <h5 class="notification-title">Update Your Profile</h5>
+  <p class="notification-message">Don't forget you can learn how to update your profile name and privacy settings from your Account Settings.</p>
+  <span class="notification-type">
+    <svg class="announcement-icon notification-icon" preserveAspectRatio="xMinYMin meet" viewBox="0 0 18 18"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#announcement-icon"></use></svg>
+  </span>
+</a>
+</li>
+
+  </ul>
+  <a class="header-nav-item-notifications-dropdown-all dropdown-secondary" href="https://teamtreehouse.com/notifications">View All Notifications</a>
+</div>
+
+</li>
+          <li class="header-nav-item header-nav-item-mobile header-nav-item-secondary header-nav-item-settings ">
+            <a class="header-nav-link " data-analytics-event="application nav link" data-analytics-link="Settings" data-analytics-path="/account" data-analytics-action="clicked" href="https://teamtreehouse.com/account">Settings</a>
+</li>
+          <li class="header-nav-item header-nav-item-mobile header-nav-item-secondary header-nav-item-sign-out ">
+            <a class="header-nav-link " data-analytics-event="application nav link" data-analytics-link="Sign Out" data-analytics-path="/logout" data-analytics-action="clicked" href="https://teamtreehouse.com/logout">Sign Out</a>
+</li>      </ul>
+      
+    </nav>
+  </header>
+
+  <main class="content topic-back-end" role="main" data-content="">
+      <div class="container ">
+        
+        
+        
+
+
+
+
+        
+          
+
+
+
+
+<div class="breadcrumb">
+    <h3 class="breadcrumb-title">      <a itemprop="url" class="breadcrumb-title-link has-topic-color-dark-on-hover add-back-end-color-dark-on-hover" href="https://teamtreehouse.com/library/ruby-on-rails-5-basics">
+        <svg class="left-arrow-icon breadcrumb-title-icon" preserveAspectRatio="xMinYMin meet" viewBox="0 0 12 12"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#left-arrow-icon"></use></svg>
+        <span itemprop="title">Ruby on Rails 5 Basics</span>
+</a></h3></div>
+
+
+<div id="cc-container" data-layout-element="learning-flow-step" data-learning-flow-step-completed-url="/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters/learning_flow_complete?klass=CodeChallenge" data-step-type="CodeChallenge">
+    <div class="stage-progress-container" data-layout-element="stage-progress">
+    <ul class="stage-progress-list has-topic-background-color add-back-end-background-color" data-featurette="async-element" data-url="/stages/code_challenge/14632/stage_progress" data-strategy="update" data-onload-event="stage-progress-loaded" id="featurette-4">    
+    <li class="stage-progress-item stage-progress-step completed  " data-stage-progress-item="">
+      <a href="https://teamtreehouse.com/library/updating-the-model" class="stage-progress-step-link">
+        
+        <svg class="circle stage-progress-step-mobile-dot" viewBox="0 0 8 8" preserveAspectRatio="xMinYMin meet"><circle r="4" cx="4" cy="4"></circle></svg>
+        
+        <svg class="step-complete-fill-22-icon stage-progress-step-icon stage-progress-step-icon-step-completed" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#step-complete-fill-22-icon"></use></svg> <svg class="video-22-icon stage-progress-step-icon stage-progress-step-icon-step" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#video-22-icon"></use></svg>
+        <span class="stage-progress-step-tooltip has-topic-color add-back-end-color">Updating the Model <em>3:47</em></span>
+      </a>
+    </li>
+    <li class="stage-progress-item stage-progress-item-divider"></li>
+    <li class="stage-progress-item stage-progress-step completed  " data-stage-progress-item="">
+      <a href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/generating-a-migration" class="stage-progress-step-link">
+        
+        <svg class="circle stage-progress-step-mobile-dot" viewBox="0 0 8 8" preserveAspectRatio="xMinYMin meet"><circle r="4" cx="4" cy="4"></circle></svg>
+        
+        <svg class="step-complete-fill-22-icon stage-progress-step-icon stage-progress-step-icon-step-completed" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#step-complete-fill-22-icon"></use></svg> <svg class="code-challenge-22-icon stage-progress-step-icon stage-progress-step-icon-step" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#code-challenge-22-icon"></use></svg>
+        <span class="stage-progress-step-tooltip has-topic-color add-back-end-color">Generating a Migration <em>2 objectives</em></span>
+      </a>
+    </li>
+    <li class="stage-progress-item stage-progress-item-divider"></li>
+    <li class="stage-progress-item stage-progress-step completed  " data-stage-progress-item="">
+      <a href="https://teamtreehouse.com/library/updating-views" class="stage-progress-step-link">
+        
+        <svg class="circle stage-progress-step-mobile-dot" viewBox="0 0 8 8" preserveAspectRatio="xMinYMin meet"><circle r="4" cx="4" cy="4"></circle></svg>
+        
+        <svg class="step-complete-fill-22-icon stage-progress-step-icon stage-progress-step-icon-step-completed" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#step-complete-fill-22-icon"></use></svg> <svg class="video-22-icon stage-progress-step-icon stage-progress-step-icon-step" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#video-22-icon"></use></svg>
+        <span class="stage-progress-step-tooltip has-topic-color add-back-end-color">Updating Views <em>4:58</em></span>
+      </a>
+    </li>
+    <li class="stage-progress-item stage-progress-item-divider"></li>
+    <li class="stage-progress-item stage-progress-step completed  " data-stage-progress-item="">
+      <a href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-a-view" class="stage-progress-step-link">
+        
+        <svg class="circle stage-progress-step-mobile-dot" viewBox="0 0 8 8" preserveAspectRatio="xMinYMin meet"><circle r="4" cx="4" cy="4"></circle></svg>
+        
+        <svg class="step-complete-fill-22-icon stage-progress-step-icon stage-progress-step-icon-step-completed" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#step-complete-fill-22-icon"></use></svg> <svg class="code-challenge-22-icon stage-progress-step-icon stage-progress-step-icon-step" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#code-challenge-22-icon"></use></svg>
+        <span class="stage-progress-step-tooltip has-topic-color add-back-end-color">Updating a View <em>1 objective</em></span>
+      </a>
+    </li>
+    <li class="stage-progress-item stage-progress-item-divider"></li>
+    <li class="stage-progress-item stage-progress-step completed  " data-stage-progress-item="">
+      <a href="https://teamtreehouse.com/library/updating-partials" class="stage-progress-step-link">
+        
+        <svg class="circle stage-progress-step-mobile-dot" viewBox="0 0 8 8" preserveAspectRatio="xMinYMin meet"><circle r="4" cx="4" cy="4"></circle></svg>
+        
+        <svg class="step-complete-fill-22-icon stage-progress-step-icon stage-progress-step-icon-step-completed" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#step-complete-fill-22-icon"></use></svg> <svg class="video-22-icon stage-progress-step-icon stage-progress-step-icon-step" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#video-22-icon"></use></svg>
+        <span class="stage-progress-step-tooltip has-topic-color add-back-end-color">Updating Partials <em>3:31</em></span>
+      </a>
+    </li>
+    <li class="stage-progress-item stage-progress-item-divider"></li>
+    <li class="stage-progress-item stage-progress-step completed  " data-stage-progress-item="">
+      <a href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-a-partial" class="stage-progress-step-link">
+        
+        <svg class="circle stage-progress-step-mobile-dot" viewBox="0 0 8 8" preserveAspectRatio="xMinYMin meet"><circle r="4" cx="4" cy="4"></circle></svg>
+        
+        <svg class="step-complete-fill-22-icon stage-progress-step-icon stage-progress-step-icon-step-completed" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#step-complete-fill-22-icon"></use></svg> <svg class="code-challenge-22-icon stage-progress-step-icon stage-progress-step-icon-step" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#code-challenge-22-icon"></use></svg>
+        <span class="stage-progress-step-tooltip has-topic-color add-back-end-color">Updating a Partial <em>1 objective</em></span>
+      </a>
+    </li>
+    <li class="stage-progress-item stage-progress-item-divider"></li>
+    <li class="stage-progress-item stage-progress-step completed  " data-stage-progress-item="">
+      <a href="https://teamtreehouse.com/library/updating-strong-parameters" class="stage-progress-step-link">
+        
+        <svg class="circle stage-progress-step-mobile-dot" viewBox="0 0 8 8" preserveAspectRatio="xMinYMin meet"><circle r="4" cx="4" cy="4"></circle></svg>
+        
+        <svg class="step-complete-fill-22-icon stage-progress-step-icon stage-progress-step-icon-step-completed" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#step-complete-fill-22-icon"></use></svg> <svg class="video-22-icon stage-progress-step-icon stage-progress-step-icon-step" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#video-22-icon"></use></svg>
+        <span class="stage-progress-step-tooltip has-topic-color add-back-end-color">Updating Strong Parameters <em>3:50</em></span>
+      </a>
+    </li>
+    <li class="stage-progress-item stage-progress-item-divider"></li>
+    <li class="stage-progress-item stage-progress-step  current " data-stage-progress-item="">
+      <a href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters" class="stage-progress-step-link">
+        <img alt="Ash Fulcher" class="stage-progress-step-profile-img" src="./Code Challenge_ Updating Strong Parameters_files/765b63e74641c6db4b0dd8526f720466(1)">
+        <svg class="circle stage-progress-step-mobile-dot" viewBox="0 0 8 8" preserveAspectRatio="xMinYMin meet"><circle r="4" cx="4" cy="4"></circle></svg>
+        <svg class="circle-progress stage-progress-step-progress" viewBox="0 0 28 28" preserveAspectRatio="xMinYMin meet" data-featurette="circle-progress" data-progress="0" data-diameter="28" id="featurette-13"><circle r="14" cx="14" cy="14" class="circle-progress-base"></circle><circle r="14" cx="14" cy="14" stroke-dashoffset="87.965px" stroke-dasharray="87.965px" class="circle-progress-base-overlay" data-progress-base-overlay=""></circle><circle r="14" cx="14" cy="14" stroke-dashoffset="87.965px" stroke-dasharray="87.965px" class="circle-progress-bar " data-progress-bar=""></circle></svg>
+        <svg class="step-complete-fill-22-icon stage-progress-step-icon stage-progress-step-icon-step-completed" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#step-complete-fill-22-icon"></use></svg> <svg class="code-challenge-22-icon stage-progress-step-icon stage-progress-step-icon-step" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#code-challenge-22-icon"></use></svg>
+        <span class="stage-progress-step-tooltip has-topic-color add-back-end-color">Updating Strong Parameters <em>1 objective</em></span>
+      </a>
+    </li>
+    <li class="stage-progress-item stage-progress-item-divider"></li>
+    <li class="stage-progress-item stage-progress-step   " data-stage-progress-item="">
+      <a href="https://teamtreehouse.com/library/wrap-up-7" class="stage-progress-step-link">
+        
+        <svg class="circle stage-progress-step-mobile-dot" viewBox="0 0 8 8" preserveAspectRatio="xMinYMin meet"><circle r="4" cx="4" cy="4"></circle></svg>
+        
+        <svg class="step-complete-fill-22-icon stage-progress-step-icon stage-progress-step-icon-step-completed" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#step-complete-fill-22-icon"></use></svg> <svg class="video-22-icon stage-progress-step-icon stage-progress-step-icon-step" preserveAspectRatio="xMinYMin meet" viewBox="0 0 22 22"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#video-22-icon"></use></svg>
+        <span class="stage-progress-step-tooltip has-topic-color add-back-end-color">Wrap Up <em>1:12</em></span>
+      </a>
+    </li>
+</ul>
+  </div>
+
+
+  
+<div class="step-overlay scale-3d-chrome-fix" data-step-overlay="">
+  <div class="step-overlay-loading-container">
+    <svg class="loading-icon step-overlay-loading-icon" preserveAspectRatio="xMinYMin meet" viewBox="0 0 18 18">
+	<path class="loading-circle" d="M9,4c2.76,0,5,2.24,5,5s-2.24,5-5,5s-5-2.24-5-5S6.24,4,9,4 M9,0C4.03,0,0,4.03,0,9s4.03,9,9,9s9-4.03,9-9S13.97,0,9,0L9,0z"></path>
+	<path class="loading-quarter-circle" d="M16,11c-1.1,0-2-0.9-2-2c0-2.76-2.24-5-5-5C7.9,4,7,3.1,7,2s0.9-2,2-2c4.96,0,9,4.04,9,9C18,10.1,17.1,11,16,11z"></path>
+</svg>
+  </div>
+</div>
+
+
+  <div id="code-challenge-container" data-code-challenge-data="{&quot;tasks&quot;:[{&quot;body&quot;:&quot;\u003cp\u003eThe \u003ccode\u003e_form.html.erb\u003c/code\u003e partial has been updated with a \&quot;breed\&quot; field. But we&#39;re seeing an \&quot;Unpermitted parameter: breed\&quot; message in the Rails log. Add \u003ccode\u003e:breed\u003c/code\u003e as a permitted parameter in the controller.\u003c/p\u003e&quot;}],&quot;files&quot;:[{&quot;source&quot;:&quot;app/controllers/pets_controller.rb&quot;,&quot;content&quot;:&quot;class PetsController \u003c ApplicationController\r\n\r\n  def new\r\n    @pet = Pet.new\r\n  end\r\n\r\n  def create\r\n    @pet = Pet.new(pet_params)\r\n    @pet.save\r\n    redirect_to pets_url\r\n  end\r\n\r\n  private\r\n\r\n    def pet_params\r\n      params.require(:pet).permit(:name, :birthdate)\r\n    end\r\n\r\nend\r\n&quot;},{&quot;source&quot;:&quot;app/views/pets/_form.html.erb&quot;,&quot;content&quot;:&quot;\u003c%= form_for(pet) do |f| %\u003e\r\n\r\n  \u003cdiv class=\&quot;field\&quot;\u003e\r\n    \u003c%= f.label :name %\u003e\r\n    \u003c%= f.text_field :name %\u003e\r\n  \u003c/div\u003e\r\n\r\n  \u003cdiv class=\&quot;field\&quot;\u003e\r\n    \u003c%= f.label :birthdate %\u003e\r\n    \u003c%= f.date_select :birthdate %\u003e\r\n  \u003c/div\u003e\r\n\r\n  \u003cdiv class=\&quot;field\&quot;\u003e\r\n    \u003c%= f.label :breed %\u003e\r\n    \u003c%= f.text_field :breed %\u003e\r\n  \u003c/div\u003e\r\n\r\n  \u003cdiv class=\&quot;actions\&quot;\u003e\r\n    \u003c%= f.submit %\u003e\r\n  \u003c/div\u003e\r\n\u003c% end %\u003e\r\n&quot;}],&quot;previews&quot;:[],&quot;layout&quot;:&quot;files&quot;,&quot;timeout&quot;:15,&quot;challengeSessionUuid&quot;:&quot;273bf538-0677-45ad-900b-534f7c1b0ea9&quot;,&quot;degreeExam&quot;:false,&quot;nextStepPath&quot;:&quot;/library/wrap-up-7&quot;,&quot;submitPath&quot;:&quot;/library/code_challenge_submit/14632&quot;,&quot;logMessagePath&quot;:&quot;/library/code_challenge/14632/log_message&quot;,&quot;csrfToken&quot;:&quot;31sA9s8d4z9EvzvAokK0mLOCCj87ZZE4V5FPoMF0V8+0dspbEKXwzpJs1Lj2PyIw5vE5VglKnp6mFgk7A/NYfg==&quot;,&quot;eventPusherUrl&quot;:&quot;https://event-pusher.teamtreehouse.com&quot;,&quot;hasPreview&quot;:false,&quot;challengeId&quot;:&quot;fb70a02482ea113e16a36350b8a24198d2c89001824ecccc7625fb0d3be3a720&quot;,&quot;getHelpUrl&quot;:&quot;/community/new?from=code_challenge&quot;,&quot;isPremium&quot;:false,&quot;topic_id&quot;:5,&quot;challengeTitle&quot;:&quot;Updating Strong Parameters&quot;,&quot;helpAuthToken&quot;:&quot;Df9rx9l7ffoAdjkb9c06gTUnjP5hCMsRO9hkPNJzvVdm0qFqBsNuC9al1mOhsKwpYFS/l1MnxLfKXyKnEPSy5g==&quot;,&quot;stepParams&quot;:&quot;{\&quot;step_type\&quot;:\&quot;CodeChallenge\&quot;,\&quot;step_id\&quot;:14632}&quot;,&quot;logHintViewedPath&quot;:&quot;/library/code_challenge_hint_viewed/14632&quot;,&quot;logGetHelpPath&quot;:&quot;/library/code_challenge_help_requested/14632&quot;,&quot;completed_path&quot;:&quot;/library/completed/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters&quot;,&quot;timeoutPath&quot;:&quot;/library/code_challenge_timeout/14632&quot;,&quot;icons&quot;:{&quot;text&quot;:{&quot;info&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 24 24\&quot; class=\&quot;info-24-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#info-24-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;success&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 24 24\&quot; class=\&quot;checkmark-24-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#checkmark-24-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;error&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 24 24\&quot; class=\&quot;close-24-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#close-24-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;},&quot;action&quot;:{&quot;info&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 16 16\&quot; class=\&quot;info-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#info-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;preview&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 210 138.33\&quot; class=\&quot;preview-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#preview-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;editor&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 210 140\&quot; class=\&quot;editor-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#editor-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;next&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 12 12\&quot; class=\&quot;right-arrow-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#right-arrow-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;refresh&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 17 14\&quot; class=\&quot;resume-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#resume-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;loading&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 18 18\&quot; class=\&quot;loading-icon\&quot;\u003e\r\n\t\u003cpath class=\&quot;loading-circle\&quot; d=\&quot;M9,4c2.76,0,5,2.24,5,5s-2.24,5-5,5s-5-2.24-5-5S6.24,4,9,4 M9,0C4.03,0,0,4.03,0,9s4.03,9,9,9s9-4.03,9-9S13.97,0,9,0L9,0z\&quot;\u003e\u003c/path\u003e\r\n\t\u003cpath class=\&quot;loading-quarter-circle\&quot; d=\&quot;M16,11c-1.1,0-2-0.9-2-2c0-2.76-2.24-5-5-5C7.9,4,7,3.1,7,2s0.9-2,2-2c4.96,0,9,4.04,9,9C18,10.1,17.1,11,16,11z\&quot;\u003e\u003c/path\u003e\r\n\u003c/svg\u003e&quot;},&quot;help&quot;:{&quot;info&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 24 24\&quot; class=\&quot;info-24-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#info-24-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;star&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 24 24\&quot; class=\&quot;star-outline-24-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#star-outline-24-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;play&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 11 12\&quot; class=\&quot;play-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#play-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;support&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 24 24\&quot; class=\&quot;support-outline-24-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#support-outline-24-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;close&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 12 12\&quot; class=\&quot;close-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#close-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;seal&quot;:&quot;\u003csvg preserveAspectRatio=\&quot;xMinYMin meet\&quot; viewBox=\&quot;0 0 36 36\&quot; class=\&quot;seal-mask-icon\&quot;\u003e\u003cuse xlink:href=\&quot;/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#seal-mask-icon\&quot;\u003e\u003c/use\u003e\u003c/svg\u003e&quot;,&quot;avatar&quot;:&quot;  \u003cdiv id=\&quot;avatar-c676fa\&quot; class=\&quot;avatar avatar-x-small\&quot;\u003e\n    \n    \u003cdiv class=\&quot;points-donut chart avatar-points\&quot; data-animate-points=\&quot;true\&quot; data-featurette=\&quot;points-chart\&quot; data-width=\&quot;30\&quot; data-height=\&quot;30\&quot; data-donut-width=\&quot;9px\&quot; data-points=\&quot;{\u0026quot;front-end\u0026quot;:0,\u0026quot;design\u0026quot;:0,\u0026quot;back-end\u0026quot;:1633,\u0026quot;mobile\u0026quot;:0,\u0026quot;fundamentals\u0026quot;:0,\u0026quot;data\u0026quot;:0,\u0026quot;experimental\u0026quot;:0}\&quot; data-points-total=\&quot;1663\&quot; data-padding=\&quot;2\&quot;\u003e\u003c/div\u003e\n    \u003cdiv class=\&quot;avatar-container\&quot;\u003e\n      \u003cimg alt=\&quot;Ash Fulcher\&quot; class=\&quot;avatar-image\&quot; src=\&quot;https://secure.gravatar.com/avatar/765b63e74641c6db4b0dd8526f720466?s=60\u0026amp;d=https%3A%2F%2Fstatic.teamtreehouse.com%2Fassets%2Fcontent%2Fdefault_avatar-ea7cf6abde4eec089a4e03cc925d0e893e428b2b6971b12405a9b118c837eaa2.png\u0026amp;r=pg\&quot; /\u003e\n    \u003c/div\u003e\n    \n    \n    \n\u003c/div\u003e&quot;}}}"><div class="mixed-box step-overlay-rounded-bottom scale-3d-chrome-fix cc-rewrite"><div id="cc-instructions" class="box-header"><h1 id="task-count">Challenge Task 1 of 1</h1><div id="task" class="markdown-zone"><p>The <code>_form.html.erb</code> partial has been updated with a "breed" field. But we're seeing an "Unpermitted parameter: breed" message in the Rails log. Add <code>:breed</code> as a permitted parameter in the controller.</p></div></div><div id="cc-feedback" class="info box-actions icons-only alert"><p class="box-action-text"><span><span class="svg"><svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 24 24" class="info-24-icon"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#info-24-icon"></use></svg></span><strong>Important: </strong>In each task of this code challenge, the code you write should be added to the code from the previous task.</span></p><div class="box-action-buttons"><button class="button secondary icon-on-right cc-restart">Restart<span class="svg"><svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 17 14" class="resume-icon"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#resume-icon"></use></svg></span></button><button id="ask-question" class="button" data-featurette="async-modal-trigger" data-src="/community/new?from=code_challenge" data-params="{&quot;step_type&quot;:&quot;CodeChallenge&quot;,&quot;step_id&quot;:14632}" data-stack="true" data-target="new_forum_post_form" data-ask-question="true">Get Help</button><button class="button primary cc-test">Check Work</button></div></div><div class="box-content multi-line-editor" id="cc-editor"><div class="cc-workspace workspace"><div class="editor-files cc-editor-menu"><ul><li><a class="selected"><span class="icon icon-doc"></span>app/controllers/pets_controller.rb</a></li><li><a class=""><span class="icon icon-doc"></span>app/views/pets/_form.html.erb</a></li></ul></div><div id="react-cc-submission" data-submission="{&quot;files&quot;:[{&quot;source&quot;:&quot;app/controllers/pets_controller.rb&quot;,&quot;content&quot;:&quot;class PetsController &lt; ApplicationController\n\n  def new\n    @pet = Pet.new\n  end\n\n  def create\n    @pet = Pet.new(pet_params)\n    @pet.save\n    redirect_to pets_url\n  end\n\n  private\n\n    def pet_params\n      params.require(:pet).permit(:name, :birthdate, :breed)\n    end\n\nend\n&quot;},{&quot;source&quot;:&quot;app/views/pets/_form.html.erb&quot;,&quot;content&quot;:&quot;&lt;%= form_for(pet) do |f| %&gt;\r\n\r\n  &lt;div class=\&quot;field\&quot;&gt;\r\n    &lt;%= f.label :name %&gt;\r\n    &lt;%= f.text_field :name %&gt;\r\n  &lt;/div&gt;\r\n\r\n  &lt;div class=\&quot;field\&quot;&gt;\r\n    &lt;%= f.label :birthdate %&gt;\r\n    &lt;%= f.date_select :birthdate %&gt;\r\n  &lt;/div&gt;\r\n\r\n  &lt;div class=\&quot;field\&quot;&gt;\r\n    &lt;%= f.label :breed %&gt;\r\n    &lt;%= f.text_field :breed %&gt;\r\n  &lt;/div&gt;\r\n\r\n  &lt;div class=\&quot;actions\&quot;&gt;\r\n    &lt;%= f.submit %&gt;\r\n  &lt;/div&gt;\r\n&lt;% end %&gt;\r\n&quot;}]}"><div class="editor selected"><div class="react-codemirror2"><div class="CodeMirror cm-s-dark cm-s-solarized CodeMirror-focused"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 309px; left: 550.562px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 51px; margin-bottom: -15px; border-right-width: 15px; min-height: 408px; min-width: 510.953px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>20</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 499.562px; top: 300px; height: 20px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">class</span> <span class="cm-tag">PetsController</span> <span class="cm-operator">&lt;</span> <span class="cm-tag">ApplicationController</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-keyword">def</span> <span class="cm-def">new</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-variable-2">@pet</span> <span class="cm-operator">=</span> <span class="cm-tag">Pet</span><span class="cm-operator">.</span><span class="cm-property">new</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-keyword">end</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-keyword">def</span> <span class="cm-def">create</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-variable-2">@pet</span> <span class="cm-operator">=</span> <span class="cm-tag">Pet</span><span class="cm-operator">.</span><span class="cm-property">new</span>(<span class="cm-variable">pet_params</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-variable-2">@pet</span><span class="cm-operator">.</span><span class="cm-property">save</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-variable">redirect_to</span> <span class="cm-variable">pets_url</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-keyword">end</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-keyword">private</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">def</span> <span class="cm-def">pet_params</span></span></pre></div><div class="" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">      <span class="cm-variable">params</span><span class="cm-operator">.</span><span class="cm-property">require</span>(<span class="cm-atom">:pet</span>)<span class="cm-operator">.</span><span class="cm-property">permit</span>(<span class="cm-atom">:name</span>, <span class="cm-atom">:birthdate</span>, <span class="cm-atom">:breed</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">17</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-keyword">end</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">18</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">19</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">end</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -51px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">20</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 15px; width: 1px; border-bottom: 0px solid transparent; top: 408px;"></div><div class="CodeMirror-gutters" style="height: 423px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 41px;"></div></div></div></div></div></div><div class="editor"><div class="react-codemirror2"><div class="CodeMirror cm-s-dark cm-s-solarized"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 0px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" cm-not-content="true" style="display: block; bottom: 0px;"><div style="min-width: 1px; height: 52px;"></div></div><div class="CodeMirror-hscrollbar" cm-not-content="true" style="display: block; right: 0px; left: 0px;"><div style="height: 100%; min-height: 1px; width: 33px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-width: 3px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"><pre class="CodeMirror-line" role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"></div><div class="CodeMirror-code" role="presentation"></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; border-bottom: 0px solid transparent;"></div><div class="CodeMirror-gutters" style="left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 1px;"></div></div></div></div></div></div></div></div></div></div></div>
+
+
+
+
+
+  <script src="./Code Challenge_ Updating Strong Parameters_files/code-challenge-056d1a65f09c9b41bb97.js"></script>
+</div>
+
+</div></main>
+  <footer class="footer" role="contentinfo">
+  <div class="container ">
+      <div class="footer-bonus">
+          <div class="footer-bonus-item" data-featurette="analytics-click-event" data-target="a" data-event-action="Clicked Student Referral Discount Link" data-event-category="link" data-event-label="Source: Footer" id="featurette-5">
+            <h5 class="footer-bonus-heading">Student Referral Discount</h5>
+            <a title="See the student perks." class="footer-bonus-link" href="https://teamtreehouse.com/account/referrals"><svg class="referrals-icon footer-bonus-icon" preserveAspectRatio="xMinYMin meet" viewBox="0 0 70 50"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#referrals-icon"></use></svg></a>
+            <p class="footer-bonus-description"><a href="https://teamtreehouse.com/account/referrals">Invite friends</a> to Treehouse and get a discount off your monthly enrollment.</p>
+</div>        <div class="footer-bonus-item" data-featurette="analytics-click-event" data-target="a" data-event-action="Clicked Student Perks Link" data-event-category="link" data-event-label="Source: Footer" id="featurette-6">
+          <h5 class="footer-bonus-heading">Student Perks</h5>
+          <a title="See the student perks." class="footer-bonus-link" href="https://teamtreehouse.com/perks"><svg class="cash-icon footer-bonus-icon" preserveAspectRatio="xMinYMin meet" viewBox="0 0 70 50"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#cash-icon"></use></svg></a>
+          <p class="footer-bonus-description">A collection of <a href="https://teamtreehouse.com/perks">special discounts</a> and exclusive offers available for Treehouse students.</p>
+</div>      </div>
+    <ul class="footer-list">
+        <li class="footer-item footer-social-item">
+          <a title="Twitter" class="footer-social-link" target="_blank" href="http://twitter.com/treehouse"><svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 24 24" class="twitter-icon"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#twitter-icon"></use></svg></a>
+        </li>
+        <li class="footer-item footer-social-item">
+          <a title="Youtube" class="footer-social-link" target="_blank" href="http://youtube.com/user/gotreehouse"><svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 24 24" class="youtube-icon"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#youtube-icon"></use></svg></a>
+        </li>
+        <li class="footer-item footer-social-item">
+          <a title="Facebook" class="footer-social-link" target="_blank" href="http://facebook.com/teamtreehouse"><svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 24 24" class="facebook-icon"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#facebook-icon"></use></svg></a>
+        </li>
+        <li class="footer-item footer-social-item">
+          <a title="LinkedIn" class="footer-social-link" target="_blank" href="http://linkedin.com/company/treehouse-island-inc-"><svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 24 24" class="linked-in-icon"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#linked-in-icon"></use></svg></a>
+        </li>
+        <li class="footer-item footer-social-item">
+          <a title="Instagram" class="footer-social-link" target="_blank" href="http://instagram.com/teamtreehouse"><svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 24 24" class="instagram-icon"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#instagram-icon"></use></svg></a>
+        </li>
+      <li class="footer-item footer-item-text footer-item-blog"><a class="footer-item-text-link" href="https://blog.teamtreehouse.com/">Treehouse Blog</a></li>
+      <li class="footer-item footer-item-text"><a target="_blank" class="footer-item-text-link" href="https://shop.teamtreehouse.com/">Shop Treehouse</a></li>
+      <li class="footer-item footer-item-text"><a class="footer-item-text-link" href="https://teamtreehouse.com/about">About Treehouse</a></li>
+      <li class="footer-item footer-item-text"><a rel="nofollow" class="footer-item-text-link" href="https://teamtreehouse.com/privacy">Privacy Policy</a></li>
+      <li class="footer-item footer-item-text"><a rel="nofollow" class="footer-item-text-link" href="https://teamtreehouse.com/terms">Terms &amp; Conditions</a></li>
+      <li class="footer-item footer-item-copyright">© 2019 Treehouse Island, Inc.</li>
+    </ul>
+</div></footer>
+
+
+  
+ <!-- yields content from within treehouse-tour paths. Find helper in application.helper -->
+
+<div id="card-trailer-modal" class="modal" data-featurette="course-trailer-modal" data-modal-video-autoplay="true" style="; display: none;">
+</div>  <div id="track_completed" class="modal" data-featurette="modal" data-uncloseable="true" style="; display: none;">
+    <div class="grid-container">
+      <div class="grid-50 grid-parent centered">
+        <div class="contained">
+          <div class="grid-100">
+            <div class="achievement-hero track-complete">
+              <img class="check-complete" src="./Code Challenge_ Updating Strong Parameters_files/icon-track-complete-fbac39967abce70665d9563f98f6d0118070a134a13c602afe02d797c1616f10.svg">
+            </div>
+
+            <div class="modal-callout">
+              <h2>Congratulations!</h2>
+              <p>You have completed the <strong>Rails Development</strong> Track!</p>
+            </div>
+
+            <div class="form-footer">
+
+                <a class="button icon-on-right" href="https://teamtreehouse.com/tracks/rails-development">Review Track <svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 12 12" class="right-arrow-icon"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#right-arrow-icon"></use></svg></a>
+
+                <div class="social-button-container">
+                  <div class="button button-secondary button-share">
+                    Share
+                    <div class="tooltip tooltip-top">
+                            <div class="button-social button-tweet"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" title="Twitter Tweet Button" src="./Code Challenge_ Updating Strong Parameters_files/tweet_button.d753e00c3e838c1b2558149bd3f6ecb8.en.html" data-url="none" style="position: static; visibility: visible; width: 61px; height: 20px;"></iframe><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div><div id="new_forum_post_form" class="modal" data-featurette="wizard-modal"></div>
+<div id="code-challenge-error-modal" class="modal" data-featurette="code-challenge-error-modal" style="; display: none;">
+  <div class="grid-container">
+    <div class="grid-35 grid-parent centered">
+      <div class="contained">
+        <button class="button  modal-close x-small square secondary" data-modal-close="close"><svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 12 12" class="close-icon"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#close-icon"></use></svg></button>
+        <div class="grid-100 secondary-heading">
+          <h1>Oh no!</h1>
+        </div>
+        <div class="grid-100">
+          <div class="modal-callout">
+            <p id="challenge-error-modal-text"></p>
+            <p>If you continue experiencing problems, please contact support at <a href="mailto:help@teamtreehouse.com">help@teamtreehouse.com</a>.</p>
+            <p><strong>Fear not!</strong> Your code is safe with us.  You will be able to resubmit once you reload the challenge.</p>
+          </div>
+            <div class="form-footer">
+              <a class="button button-primary" href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters">
+                <svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 17 14" class="resume-icon"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#resume-icon"></use></svg> Reload Challenge
+</a>                <a class="button icon-on-left" href="https://teamtreehouse.com/library/ruby-on-rails-5-basics">
+                  <svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 12 12" class="left-arrow-icon"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#left-arrow-icon"></use></svg> Back to overview
+</a>            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div id="degree-exam-end-modal" class="modal" data-featurette="degree-exam-end-modal" style="; display: none;">
+  <div class="grid-container">
+    <div class="grid-35 grid-parent centered">
+      <div class="contained">
+        <button class="button  modal-close x-small square secondary" data-modal-close="close"><svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 12 12" class="close-icon"><use xlink:href="/assets/icons-7497ea8058f23d7b3233edbea11b3aaf5315aa9ee899f62ba3a6fecdc4c95a27.svg#close-icon"></use></svg></button>
+        <div class="grid-100 secondary-heading">
+          <h3>Your Exam Has Ended</h3>
+        </div>
+        <div class="grid-100">
+          <div class="modal-callout">
+            <p id="degree-exam-end-modal-text"></p>
+            <button id="degree-exam-end-modal-button" class="button button-primary btn-large">Ok, got it.</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="mini-profile-container"></div>
+<div id="tarp" class="modal-tarp" style="display: none;" data-featurette="tarp"></div>
+
+
+
+    
+    <script src="./Code Challenge_ Updating Strong Parameters_files/application_vendor-5e00460ea8051c6c13854072ee20da589ef9979b0cab9e6577846aca4523c179.js" crossorigin="anonymous" integrity="sha256-XgBGDqgFHGwThUBy7iDaWJ75l5sMq55ld4RqykUjwXk="></script>
+    <script src="./Code Challenge_ Updating Strong Parameters_files/code_editor-b80cf0638726235bc20e820f2964eaa5e9b515195170df0ba40576d25782fe92.js" crossorigin="anonymous" integrity="sha256-uAzwY4cmI1vCDoIPKWTqpem1FRlRcN8LpAV20leC/pI="></script><script type="application/ld+json">
+{ 
+  "@context": "http://schema.org", 
+  "@type": "WebSite", 
+  "url": "http://www.teamtreehouse.com/", 
+  "name" : "Treehouse",
+  "potentialAction": { 
+    "@type": "SearchAction", 
+    "target": "http://teamtreehouse.com/library/q:{search_term}", 
+    "query-input": "required name=search_term" } 
+}
+</script><a href="https://plus.google.com/110278003536476194286" rel="publisher"></a><script type="application/ld+json">
+{ "@context" : "http://schema.org",
+"@type" : "Organization",
+"name" : "Treehouse (Treehouse Island, Inc.)",
+"url" : "http://teamtreehouse.com",
+"logo": "https://upload.wikimedia.org/wikipedia/en/a/a3/Treehouse%27s_logo_%28Jan_2015%29.png",
+"sameAs" : [
+"https://twitter.com/treehouse",
+"https://www.facebook.com/TeamTreehouse",
+"https://www.linkedin.com/company/treehouse-island-inc-",
+"https://plus.google.com/+gotreehouse/posts",
+"http://en.wikipedia.org/wiki/Treehouse_(company)",
+"https://www.freebase.com/m/0t_cxxw"
+]
+}
+</script>
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","688952224481965");fbq("set","agent","tmgoogletagmanager","688952224481965");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=688952224481965&amp;ev=PageView&amp;noscript=1"></noscript>
+
+    <script src="./Code Challenge_ Updating Strong Parameters_files/application-f86896faa2610b324d4d924e80d205078cd7ec0c8ccd0ff0263e6da9b6e44a15.js" crossorigin="anonymous" integrity="sha256-+GiW+qJhCzJNTZJOgNIFB4zX7AyMzQ/wJj5tqbbkShU="></script>
+    
+    
+    <!-- Segment.io Analytics -->
+<script type="text/plain" class="optanon-category-2">
+  !function(){
+    var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+    analytics.load("DMUKccVYvuuUIVSJlokCJe0YQyGm9qVb");
+
+    analytics.ready(function(){
+      window.analytics.segmentDebug = window.analytics.debug;
+      window.analytics.debug = function(state) {
+        if (state == null) { state = true; }
+        $.cookie("_treehouse_analytics_debug", state);
+        return state;
+      };
+    })
+
+    window.recordedAnalytics = []
+    function recordAnalyticsCall(callType, event, properties, options) {
+      if ($.cookie("_treehouse_analytics_debug") == "true") {
+        window.recordedAnalytics.push([callType, event, properties, options])
+        console.debug("Analytics: ", callType, ("'" + event + "'"), properties, options);
+      }
+    }
+    analytics.on('alias', function(e, p, o) { recordAnalyticsCall('alias', e, p, o)});
+    analytics.on('identify', function(e, p, o) { recordAnalyticsCall('identify', e, p, o)});
+    analytics.on('group', function(e, p, o) { recordAnalyticsCall('group', e, p, o)});
+    analytics.on('track', function(e, p, o) { recordAnalyticsCall('track', e, p, o)});
+    analytics.on('page', function(e, p, o) { recordAnalyticsCall('page', e, p, o)});
+
+    var request_id = "5AF99F67-CA3D-AC120A2A-01BB-5D08FFB5-E1C6B1-53AA";
+
+    function trackIdentity() {
+        window.analytics.identify("10735350", {"id":"10735350","name":"Ash Fulcher","email":"ash@code4000.org","username":"ashfulcher","avatar":"https://secure.gravatar.com/avatar/765b63e74641c6db4b0dd8526f720466?s=400\u0026d=https%3A%2F%2Fstatic.teamtreehouse.com%2Fassets%2Fcontent%2Fdefault_avatar-ea7cf6abde4eec089a4e03cc925d0e893e428b2b6971b12405a9b118c837eaa2.png\u0026r=pg","created_at":"2019-05-07T12:45:06Z","organization_id":"","subscription_id":"10259537","plan_id":"1272","plan_name":"Basic","degree_id":"","degree_addon_id":"","track_id":"22","user_timezone":"Europe/London","b2b_org_admin":"false","b2b_dept_admin":"false","billing_period":"monthly","profile_company_name":"","profile_job_title":"","visitor_id":"7077706022","session_id":"3f8d8eb5-e2bd-4184-99c7-7fca18bf4787"}, {
+          Intercom : {
+            user_hash : "fb0de1a3cb75bebaf01047bcf576d218ef89aec8e44b4afa0cfb137e80bcacab"
+          }
+        });
+
+    }
+
+    function trackPage() {
+      window.analytics.page({
+        visitor_id: "7077706022",
+        session_id: "3f8d8eb5-e2bd-4184-99c7-7fca18bf4787",
+        request_id: request_id
+      });
+    }
+
+    
+
+    trackIdentity();
+    trackPage();
+
+    $(document).on("pjax:success", function(event, body, status, xhr, options) {
+      request_id = xhr.getResponseHeader("X-Request-Id");
+      trackPage();
+    });
+  }}();
+  //# sourceURL=_analytics_footer.erb
+</script>
+
+  
+
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Code Challenge_ Updating Strong Parameters_files/widget_iframe.d753e00c3e838c1b2558149bd3f6ecb8.html" title="Twitter settings iframe" style="display: none;"></iframe><div id="optanon" class="modern"><div id="optanon-popup-bg"></div><div id="optanon-popup-wrapper" role="dialog" aria-modal="true" tabindex="-1" lang="en-GB"><div id="optanon-popup-top"><a href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters#" onclick="Optanon.TriggerGoogleAnalyticsEvent(&#39;OneTrust Cookie Consent&#39;, &#39;Preferences Close Button&#39;);" class="optanon-close-link optanon-close optanon-close-ui" title="Close Preference Centre"><div id="optanon-close" style="background: url(https://optanon.blob.core.windows.net/skins/default_flat_bottom_two_button_white/v2/images/optanon-pop-up-close.png);width:34px;height:34px;"></div></a></div><div id="optanon-popup-body"><div id="optanon-popup-body-left"><div id="optanon-popup-body-left-shading"></div><div id="optanon-branding-top-logo" style="background-image: url(https://optanon.blob.core.windows.net/logos/5950/5950:teamtreehouse.com/treehouse-icon.png) !important;"></div><ul id="optanon-menu"><li class="menu-item-on menu-item-about" title="Your Privacy"><p><a href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters#">Your Privacy</a></p></li><li class="menu-item-necessary menu-item-on" title="Essential Cookies"><p><a href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters#">Essential Cookies</a></p></li><li class="menu-item-off menu-item-performance" title="Performance and Functionality Cookies"><p><a href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters#">Performance and Functionality Cookies</a></p></li><li class="menu-item-off menu-item-functional" title="Analytics and Customization Cookies"><p><a href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters#">Analytics and Customization Cookies</a></p></li><li class="menu-item-off menu-item-advertising" title="Targeting Cookies"><p><a href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters#">Targeting Cookies</a></p></li><li class="menu-item-moreinfo menu-item-off" title="Cookie Policy"><p><a target="_blank" href="https://teamtreehouse.com/cookies" onclick="Optanon.TriggerGoogleAnalyticsEvent(&#39;OneTrust Cookie Consent&#39;, &#39;Preferences Cookie Policy&#39;);">Cookie Policy</a></p></li></ul></div><div id="optanon-popup-body-right"><h2 aria-label="true">Privacy Preference Center</h2><h3></h3><div id="optanon-popup-more-info-bar"><div class="optanon-status"><div class="optanon-status-editable"><form><fieldset><p><input type="checkbox" value="check" id="chkMain" checked="" class="optanon-status-checkbox"><label for="chkMain">Active</label></p></fieldset></form></div><div class="optanon-status-always-active optanon-status-on"><p>Always Active</p></div></div></div><div id="optanon-main-info-text"></div></div><div class="optanon-bottom-spacer"></div></div><div id="optanon-popup-bottom"> <a href="https://onetrust.com/poweredbyonetrust" target="_blank"><div id="optanon-popup-bottom-logo" style="background: url(https://optanon.blob.core.windows.net/skins/default_flat_bottom_two_button_white/v2/images/cookie-collective-top-bottom.png);width:155px;height:35px;" title="powered by OneTrust"></div></a><div class="optanon-button-wrapper optanon-save-settings-button optanon-close optanon-close-consent"><div class="optanon-white-button-left"></div><div class="optanon-white-button-middle"><a href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters#" onclick="Optanon.TriggerGoogleAnalyticsEvent(&#39;OneTrust Cookie Consent&#39;, &#39;Preferences Save Settings&#39;);">Save Settings</a></div><div class="optanon-white-button-right"></div></div><div class="optanon-button-wrapper optanon-allow-all-button optanon-allow-all" style="display: block;"><div class="optanon-white-button-left"></div><div class="optanon-white-button-middle"><a href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters#" onclick="Optanon.TriggerGoogleAnalyticsEvent(&#39;OneTrust Cookie Consent&#39;, &#39;Preferences Allow All&#39;);">Allow All</a></div><div class="optanon-white-button-right"></div></div></div></div></div><div class="optanon-alert-box-wrapper  " style="display:none"><div class="optanon-alert-box-bottom-top"><div class="optanon-alert-box-corner-close"><a class="optanon-alert-box-close" href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters#" title="Close Banner" onclick="Optanon.TriggerGoogleAnalyticsEvent(&#39;OneTrust Cookie Consent&#39;, &#39;Banner Close Button&#39;);"></a></div></div><div class="optanon-alert-box-bg"><div class="optanon-alert-box-logo"> </div><div class="optanon-alert-box-body"><p>We use cookies to remember you when you log in, administer our website, analyze our traffic and provide social media features to you. We also share information about your use of our site with our social media, advertising and analytics partners. Click on Cookie Settings to modify your Cookie preferences.</p></div><div class="optanon-clearfix"></div><div class="optanon-alert-box-button-container"><div class="optanon-alert-box-button optanon-button-close"><div class="optanon-alert-box-button-middle"><a class="optanon-alert-box-close" href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters#">Close</a></div></div><div class="optanon-alert-box-button optanon-button-allow"><div class="optanon-alert-box-button-middle"><a class="optanon-allow-all" href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters#" onclick="Optanon.TriggerGoogleAnalyticsEvent(&#39;OneTrust Cookie Consent&#39;, &#39;Banner Accept Cookies&#39;);">Accept Cookies</a></div></div><div class="optanon-alert-box-button optanon-button-more"><div class="optanon-alert-box-button-middle"><a class="optanon-toggle-display" href="https://teamtreehouse.com/library/ruby-on-rails-5-basics/adding-a-model-attribute/updating-strong-parameters#" onclick="Optanon.TriggerGoogleAnalyticsEvent(&#39;OneTrust Cookie Consent&#39;, &#39;Banner Open Preferences&#39;);">Cookie Settings</a></div></div></div><div class="optanon-clearfix optanon-alert-box-bottom-padding"></div></div></div></body></html>

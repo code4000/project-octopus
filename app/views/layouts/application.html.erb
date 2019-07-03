@@ -10,6 +10,13 @@
   </head>
 
   <body>
+
+    <% if current_user.present? %>
+
+      <%= render 'layouts/navbar' %>
+
+    <% end %>
+
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
@@ -17,20 +24,10 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
-    <% if current_user.present? %>
-      <div>
-        <%= link_to 'Home', root_path %> |
-        <%= link_to 'Sites Overview', sites_path %> |
-        <%= link_to 'Students Overview', students_path %> |
-        <%= link_to 'Contacts', contacts_path %> |
-        <%= ((link_to 'Users', user_accounts_path) + " | ") if current_user&.master? %>
-        <%= link_to 'Account Settings', edit_user_registration_path %> |
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      </div>
-    <% end %>
-
     <div>
       <%= yield %>
+            <%= render 'layouts/footer' %>
     </div>
+
   </body>
 </html>

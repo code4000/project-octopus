@@ -1,39 +1,46 @@
-<div>
+<div style="text-align: center">
+<div class="form-group"> 
+<div style="width: 500px; margin-left: 60px; text-align: center;">
   <%= form.label "Name" %>
-  <%= form.text_field :name %>
+  <%= form.text_field :name, class:"form-control"%>
 </div>
-<div>
+<div style="width: 500px; margin-left: 60px; text-align: center;">
   <%= form.label "Capacity" %>
-  <%= form.number_field :capacity %>
+  <%= form.number_field :capacity, class:"form-control" %>
 </div>
-<div>
+<div style="width: 500px; margin-left: 60px; text-align: center; ">
   <%= form.label "Manager" %>
-  <%= form.text_field :manager %>
+  <%= form.text_field :manager, class:"form-control" %>
 </div>
-<div>
+<div style="width: 500px; margin-left: 60px; text-align: center; ">
   <%= form.label "Contact number" %>
-  <%= form.text_field :contact_number %>
+  <%= form.text_field :contact_number, class:"form-control" %>
 </div>
-<div>
+<div style="width: 500px; margin-left: 60px; text-align: center; margin-top:10px">
   <%= form.label "Gender" %>
-  <%= form.select :gender, ["Male","Female","Mixed"] %>
+  <%= form.select :gender, ["Male","Female","Mixed"], class:"form-control" %>
 </div>
-<div>
+<div style="width: 500px; margin-left: 60px; text-align: center; ">
   <%= form.label "Regions" %>
+<div style="form-control">
   <%= form.select(:region_list, Site.tag_counts_on(:regions).collect {|t| [ t.name, t.name ] }, { selected: @site.region_list }, { id: "region_tags", multiple: true } ) %>
 </div>
-<div>
+</div>
+<div style="width: 500px; margin-left: 60px; text-align: center; ">
   <%= form.label "Tags" %>
+<div style="form-control">
   <%= form.select(:tag_list, Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @site.tag_list }, { id: "tags", multiple: true } ) %>
 </div>
-<div>
+</div>
+<div style="width: 500px; margin-left: 60px; text-align: center; ">
   <%= form.label "Notes" %>
-  <%= form.text_area :notes %>
+  <%= form.text_area :notes, class:"form-control" %>
 </div>
-<div>
-  <%= form.submit "Save" %>
+<div style="width: 500px; margin-left: 60px; text-align: center; padding-bottom: 100px; padding-top: 10px;">
+  <%= form.submit "Save", class:"btn btn-info" %>
 </div>
-
+</div>
+</div>
 <script>
   $(document).on('ready page:load', function () {
 
