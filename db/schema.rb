@@ -34,15 +34,13 @@ ActiveRecord::Schema.define(version: 2019_06_17_102721) do
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "resource_type"
-    t.bigint "resource_id"
+  create_table "contact_comments", force: :cascade do |t|
+    t.bigint "contact_id", null: false
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["resource_type", "resource_id"], name: "index_comments_on_resource_type_and_resource_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.integer "user_id", null: false
+    t.index ["contact_id"], name: "index_contact_comments_on_contact_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -121,10 +119,10 @@ ActiveRecord::Schema.define(version: 2019_06_17_102721) do
     t.datetime "updated_at", null: false
     t.string "role"
     t.string "name", null: false
-    t.string "otp_secret_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contact_comments", "contacts"
   add_foreign_key "students", "sites"
 end
