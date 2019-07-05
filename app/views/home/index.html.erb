@@ -2,11 +2,11 @@
 
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Project Octopus Home</h1>
+          <%# <h1 class="h3 mb-4 text-gray-800">Project Octopus Home</h1> %>
 
 
-<h1>Welcome <%= current_user.name %>, to <%= ENV["APP_NAME"] %></h1>
-<p>Showing 5 busiest regions</p>
+<h1 style="text-align:left">Welcome <%= current_user.name %>, to <%= ENV["APP_NAME"] %></h1><br><br>
+<%# <p>Showing 5 busiest regions</p> %>
 
 <% if Site.count != 0 %>
             <!-- Earnings (Monthly) Card Example -->
@@ -60,7 +60,7 @@
             </div>
 
                           <!-- Basic Card Example -->
-              <div class="card shadow mb-4">
+              <div class="col-xl-3 col-md-6 mb-4 card shadow">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Status</h6>
                 </div>
@@ -140,6 +140,93 @@
           </div>
 
 
+<div>
+  <br>
+</div>
+<div class="container text-center">
+
+<% if !@activities.nil? %>
+  <div>
+    <h2 style="text-align:left">Activity feed</h2>
+    <% @activities.each do |activity| %>
+      <div class="activity">
+        <small>(<%= l activity.created_at %>)</small>
+        <%= activity.owner.name if activity.owner %>
+        <%= render_activity activity %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+</div>
+
+<div class="timeline">
+  <div class="entry">
+    <div class="title">
+      <h3>2014 - Present</h3>
+      <p>Title, Company</p>
+    </div>
+    <div class="body">
+      <p>Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.</p>
+      <ul>
+        <li>Rerum sit libero possimus amet excepturi</li>
+        <li>Exercitationem enim dolores sunt praesentium dolorum praesentium</li>
+        <li>Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo</li>
+      </ul>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="title">
+      <h3>2010 - Present</h3>
+      <p>Title, Company</p>
+    </div>
+    <div class="body">
+      <p>Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.</p>
+      <ul>
+        <li>Rerum sit libero possimus amet excepturi</li>
+        <li>Exercitationem enim dolores sunt praesentium dolorum praesentium</li>
+        <li>Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo</li>
+      </ul>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="title">
+      <h3>2009 - 2010</h3>
+      <p>Title, Company</p>
+    </div>
+    <div class="body">
+      <p>Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.</p>
+      <ul>
+        <li>Rerum sit libero possimus amet excepturi</li>
+        <li>Exercitationem enim dolores sunt praesentium dolorum praesentium</li>
+        <li>Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo</li>
+      </ul>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="title">
+      <h3>2006 - 2008</h3>
+      <p>Title, Company</p>
+    </div>
+    <div class="body">
+      <p>Voluptatibus veniam ea reprehenderit atque reiciendis non laborum adipisci ipsa pariatur omnis.</p>
+      <ul>
+        <li>Rerum sit libero possimus amet excepturi</li>
+        <li>Exercitationem enim dolores sunt praesentium dolorum praesentium</li>
+        <li>Modi aut dolores dignissimos sequi sit ut aliquid molestias deserunt illo</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+<div>
+  <br><br>
+</div>
+
   <%# DISPLAY THE MOST POPULAR REGIONS AND 5 SITES FOR EACH %>
   <%# includes some confusing code because of styling in the correct grid format %>
   <div class="row">
@@ -199,20 +286,4 @@
   </div>
 <% end %>
 
-<div>
-  <br><hr><br>
-</div>
-
-<% if !@activities.nil? %>
-  <div>
-    <h2>Activity feed</h2>
-    <% @activities.each do |activity| %>
-      <div class="activity">
-        <small>(<%= l activity.created_at %>)</small>
-        <%= activity.owner.name if activity.owner %>
-        <%= render_activity activity %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
 </div>
