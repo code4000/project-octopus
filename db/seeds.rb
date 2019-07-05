@@ -33,16 +33,20 @@ end
 # Create students  data
 puts ""
 for i in 1..100 do
+  recat = Faker::Date.forward(730)
+  rotl = Faker::Date.between(recat + 6.months, recat + 24.months)
+  hdc = Faker::Date.between(rotl + 6.months, rotl + 24.months)
+  release = Faker::Date.between(hdc + 6.months, hdc + 12.months)
   d = Student.create( site: Site.order('RANDOM()').first,
                   first_name: Faker::Name.first_name,
                   last_name: Faker::Name.last_name,
                   prison_number: (Faker::Alphanumeric.alpha(1)+Faker::Number.number(4)+Faker::Alphanumeric.alpha(2)).upcase,
                   gender: Faker::Gender.binary_type,
                   dob: Faker::Date.between(18.years.ago, 40.years.ago),
-                  crd: Faker::Date.between(2.years.ago, Date.today),
-                  hdc: Faker::Date.between(2.years.ago, Date.today),
-                  rotl: Faker::Date.between(2.years.ago, Date.today),
-                  recat: Faker::Date.between(2.years.ago, Date.today),
+                  recat: recat,
+                  rotl: rotl,
+                  hdc: hdc,
+                  crd: release,
                   contact_number: "07"+Faker::Number.number(9),
                   email: Faker::Internet.email
   )
