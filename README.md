@@ -20,4 +20,4 @@ Open http://localhost:3000
 
 Email: admin@yoomee.com
 
-Password: logmein
+Password: 10gm31n10gm31n
