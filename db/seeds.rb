@@ -8,7 +8,7 @@ puts "Creating seed data..."
 User.create(name: "Master User", email: "admin@yoomee.com", password: "10gm31n10gm31n", role: "master")
 
 # Create HMP site data
-for i in 1..20 do
+for i in 1..10 do
   d = Site.create(  name: "HMP "+Faker::Movies::LordOfTheRings.location,
                 capacity: rand(15...30),
                 manager: Faker::FunnyName.two_word_name,
@@ -20,7 +20,7 @@ end
 
 # Create company site data
 puts ""
-for i in 1..50 do
+for i in 1..10 do
   d = Site.create(  name: (Faker::Company.buzzword + " " +Faker::Commerce.material + " " + Faker::Company.suffix).titleize,
                 capacity: rand(5...10),
                 manager: Faker::TvShows::BreakingBad.character,
@@ -61,7 +61,7 @@ for i in 1..100 do
                   mobile_number: "07"+Faker::Number.number(9),
                   work_number: "01"+Faker::Number.number(9),
                   email: Faker::Internet.email,
-                  about: Faker::Job.employment_type + " " + Faker::ProgrammingLanguage.name + " " + Faker::Job.position
+                  about:  Faker::Job.employment_type + " " + Faker::Device.platform + " " + Faker::ProgrammingLanguage.name + " " + Faker::Job.position + " helping " + Faker::FunnyName.two_word_name + " with the "+ Faker::Device.manufacturer + Faker::Device.model_name
   )
   puts "Created dummy contact #{i}: #{d.first_name} #{d.last_name}"
 
