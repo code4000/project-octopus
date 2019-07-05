@@ -7,7 +7,7 @@ puts ""
 puts "Creating seed data..."
 User.create(name: "Master User", email: "admin@yoomee.com", password: "10gm31n10gm31n", role: "master")
 puts ""
-puts "Created admin user <admin@yoomee.com> with password 'logmein'"
+puts "Created admin user <admin@yoomee.com> with password '10gm31n10gm31n'"
 puts ""
 
 # Create HMP site data
