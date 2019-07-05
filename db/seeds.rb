@@ -6,9 +6,6 @@ PublicActivity.enabled = false
 puts ""
 puts "Creating seed data..."
 User.create(name: "Master User", email: "admin@yoomee.com", password: "10gm31n10gm31n", role: "master")
-puts ""
-puts "Created admin user <admin@yoomee.com> with password '10gm31n10gm31n'"
-puts ""
 
 # Create HMP site data
 for i in 1..20 do
@@ -69,5 +66,9 @@ for i in 1..100 do
   puts "Created dummy contact #{i}: #{d.first_name} #{d.last_name}"
 
 end
+
+puts ""
+puts "Created admin user <admin@yoomee.com> with password '10gm31n10gm31n'"
+puts ""
 
 PublicActivity.enabled = true
