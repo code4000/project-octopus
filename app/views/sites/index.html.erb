@@ -85,47 +85,82 @@
   <% end %>
 </div>
 
-<div class="main">
-  <h1>Sites</h1>
-  <div>
-    <%= link_to 'View all', sites_path %>
-    <% if can? :create, Site %>
-     | <%= link_to 'Add site', new_site_path %>
-    <% end %>
-  </div>
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
 
-  <table class="table">
-    <thead>
-      <th></th>
-      <th>Attendence</th>
-      <th>Regions</th>
-      <th>Population</th>
-      <th>Manager</th>
-      <th>Contact number</th>
-      <th>Tags</th>
-    </thead>
-    <tbody>
-      <% @sites.each do |site| %>
-        <tr>
-          <th><%= link_to site.name, site_path(site) %></th>
-          <td><%= site.students.count %> / <%= site.capacity %></td>
-          <td><%= site.region_list %></td>
-          <td><%= site.gender %></td>
-          <td><%= site.manager %></td>
-          <td><%= site.contact_number %></td>
-          <td><%= site.tag_list %></td>
-        </tr>
-      <% end %>
-  </tbody>
-  </table>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 style="text-align:left;" class="m-0 font-weight-bold text-primary">Sites</h6>
+            </div>
+              <div>
+                <%= link_to 'View all', sites_path %>
+                <% if can? :create, Site %>
+                | <%= link_to 'Add site', new_site_path %>
+                <% end %>
+              </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Attendence</th>
+                      <th>Regions</th>
+                      <th>Population</th>
+                      <th>Manager</th>
+                      <th>Contact number</th>
+                      <th>Tags</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Name</th>
+                      <th>Attendence</th>
+                      <th>Regions</th>
+                      <th>Population</th>
+                      <th>Manager</th>
+                      <th>Contact number</th>
+                      <th>Tags</th>
+                    </tr>
+                  </tfoot>
+                    <tbody>
+                      <% @sites.each do |site| %>
+                        <tr>
+                          <th><%= link_to site.name, site_path(site) %></th>
+                          <td><%= site.students.count %> / <%= site.capacity %></td>
+                          <td><%= site.region_list %></td>
+                          <td><%= site.gender %></td>
+                          <td><%= site.manager %></td>
+                          <td><%= site.contact_number %></td>
+                          <td><%= site.tag_list %></td>
+                        </tr>
+                      <% end %>
+                  </tbody>
+                </table>
+                  <% if Site.count == 0 %>
+                    There are currently no students enrolled on the system.
+                  <% elsif @sites.count == 0 %>
+                    No results found
+                  <% end %>
+              </div>
+            </div>
+          </div>
 
-  <% if Site.count == 0 %>
-    There are currently no students enrolled on the system.
-  <% elsif @sites.count == 0 %>
-    No results found
-  <% end %>
-</div>
+        </div>
+        <!-- /.container-fluid -->
 
+
+
+
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script> 
+    $(document).ready( function () {
+    $('#dataTable').DataTable();
+  });
+  </script>
 <script>
   $(document).on('ready page:load', function () {
     $('.tags').chosen({
