@@ -60,29 +60,7 @@
   </div>
 </div>
 
-<div class="sidebar">
-  <h4>Filter sites</h4>
-  <%= form_tag(search_sites_path, method: :get) do %>
-    <div>
-      <%= label_tag "Name" %>
-      <%= text_field_tag :name, params[:name] %>
-    </div>
-    <div>
-      <%= label_tag "Regions" %>
-      <%= select_tag :region_list, options_for_select(Site.tag_counts_on(:regions).collect {|t| [ t.name ] }, params[:region_list]), { class: "tags", multiple: true } %>
-    </div>
-    <div>
-      <%= label_tag "Tags" %>
-      <%= select_tag :tag_list, options_for_select(Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, params[:tag_list]), { class: "tags", multiple: true } %>
-    </div>
-    <div>
-      <%= label_tag "Gender" %>
-      <%= select_tag :gender, options_for_select(["","Male","Female","Mixed"], params[:gender]) %>
-    </div>
-    <div>
-      <%= submit_tag "Filter" %>
-    </div>
-  <% end %>
+
 </div>
 
         <!-- Begin Page Content -->
@@ -147,11 +125,33 @@
             </div>
           </div>
 
+
+
+<div class="sidebar">
+  <h4>Filter sites</h4>
+  <%= form_tag(search_sites_path, method: :get) do %>
+    <div>
+      <%= label_tag "Name" %>
+      <%= text_field_tag :name, params[:name] %>
+    </div>
+    <div>
+      <%= label_tag "Regions" %>
+      <%= select_tag :region_list, options_for_select(Site.tag_counts_on(:regions).collect {|t| [ t.name ] }, params[:region_list]), { class: "tags", multiple: true } %>
+    </div>
+    <div>
+      <%= label_tag "Tags" %>
+      <%= select_tag :tag_list, options_for_select(Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, params[:tag_list]), { class: "tags", multiple: true } %>
+    </div>
+    <div>
+      <%= label_tag "Gender" %>
+      <%= select_tag :gender, options_for_select(["","Male","Female","Mixed"], params[:gender]) %>
+    </div>
+    <div>
+      <%= submit_tag "Filter" %>
+    </div>
+  <% end %>
         </div>
         <!-- /.container-fluid -->
-
-
-
 
   <!-- Page level plugins -->
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
