@@ -110,34 +110,50 @@
 </div>
 
 <div class="main">
-  <h1>Students</h1>
-
-  <div>
-    <%= link_to 'View all', students_path %>
-    <% if can? :create, Student %>
-      | <%= link_to 'Add student', new_student_path %>
-      | <%= link_to 'Import students', import_students_path %>
-    <% end %>
-  </div>
-
-  <table class="table">
-    <thead>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Relased?</th>
-      <th>Prison number</th>
-      <th>Date of birth</th>
-      <th>Gender</th>
-      <th>Release</th>
-      <th>Tag</th>
-      <th>ROTL</th>
-      <th>Recategorisation</th>
-      <th>Skills</th>
-      <th>Job preferences</th>
-      <th>Tags</th>
-    </thead>
-    <tbody>
-      <% @students.each do |student| %>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Students</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>Name</th>
+                      <th>Location</th>
+                      <th>Relased?</th>
+                      <th>Prison number</th>
+                      <th>Date of birth</th>
+                      <th>Gender</th>
+                      <th>Release</th>
+                      <th>Tag</th>
+                      <th>ROTL</th>
+                      <th>Recategorisation</th>
+                      <th>Skills</th>
+                      <th>Job preferences</th>
+                      <th>Tags</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Name</th>
+                      <th>Location</th>
+                      <th>Relased?</th>
+                      <th>Prison number</th>
+                      <th>Date of birth</th>
+                      <th>Gender</th>
+                      <th>Release</th>
+                      <th>Tag</th>
+                      <th>ROTL</th>
+                      <th>Recategorisation</th>
+                      <th>Skills</th>
+                      <th>Job preferences</th>
+                      <th>Tags</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+        <% @students.each do |student| %>
           <tr>
             <th><%= link_to student.name, student_path(student) %></th>
             <th><%= student.site.present? ? (link_to student.site.name, site_path(student.site)) : "Non listed" %></th>
@@ -155,16 +171,26 @@
           </tr>
       <% end %>
     </tbody>
-  </table>
+            </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
 
   <% if Student.count == 0 %>
     There are currently no students enrolled on the system.
   <% elsif @students.count == 0 %>
     No results found
   <% end %>
-</div>
-</div>
 
+  <div>
+    <%= link_to 'View all', students_path %>
+    <% if can? :create, Student %>
+      | <%= link_to 'Add student', new_student_path %>
+      | <%= link_to 'Import students', import_students_path %>
+    <% end %>
+  </div>
 
 <div class="sidebar">
   <h4>Filter students</h4>
@@ -316,3 +342,11 @@
     $('#import').show();
   });
 </script>
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script> 
+    $(document).ready( function () {
+    $('#dataTable').DataTable();
+  });
+  </script>
