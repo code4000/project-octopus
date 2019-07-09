@@ -75,7 +75,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                      <i style="padding-right:10px;" class="fas fa-comments fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -194,22 +194,16 @@
 
 <div class="container text-center">
 
-<% if !@activities.nil? %>
+
+
+<% else %>
   <div>
-    <% @activities.each do |activity| %>
-      <div class="activity">
-        <small>(<%= l activity.created_at %>)</small>
-        <%= activity.owner.name if activity.owner %>
-        <%= render_activity activity %>
-      </div>
+    <% if can? :create, Site %>
+      <%= link_to 'Add sites', new_site_path %>
+    <% else %>
+      Please add sites
     <% end %>
   </div>
 <% end %>
+
 </div>
-
-
-<div>
-  <br><br>
-</div>
-
- </div>
