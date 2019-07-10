@@ -70,12 +70,6 @@
             <div class="card-header py-3">
               <h6 style="text-align:left;" class="m-0 font-weight-bold text-primary">Sites</h6>
             </div>
-              <div>
-                <%= link_to 'View all', sites_path %>
-                <% if can? :create, Site %>
-                | <%= link_to 'Add site', new_site_path %>
-                <% end %>
-              </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
