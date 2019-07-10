@@ -164,64 +164,6 @@
 </div>
 </div>
 
-<h1><%= @site.name %></h1>
-
-<h4>Attendence: <%= @site.students.count %> / <%= @site.capacity %></h4>
-<h4>Manager: <%= @site.manager %></h4>
-<h4>Contact number: <%= @site.contact_number %></h4>
-<h4>Population: <%= @site.gender %></h4>
-<h4>Regions:</h4><p><%= @site.region_list %></p>
-<h4>Tags:</h4><p><%= @site.tag_list %></p>
-
-<%= ((link_to 'Edit', edit_site_path(@site)) + " | ") if can? :update, @site %>
-<%= ((link_to 'Remove', site_path(@site), method: :delete, data: { confirm: 'Are you sure?' }) + " | ") if can? :destroy, @site %>
-<%= ((link_to 'Add student', new_student_path(site: @site)) + " | ") if can? :create, Student %>
-<%= link_to 'All sites', sites_path %>
-
-<hr>
-<div>
-  <h5>
-    <a href='#' id='see_students' class='toggle_tab'>Students</a> |
-    <a href='#' id='see_activity' class='toggle_tab'>Activity feed</a> |
-    <a href='#' id='see_comments' class='toggle_tab'>Comments</a>
-  </h5>
-</div>
-
-<div id="activity_tab" class="tab">
-  <% if !@activities.nil? %>
-    <h3>Activity feed</h3>
-    <% @activities.each do |activity| %>
-      <div class="activity">
-        <small>(<%= l activity.created_at %>)</small>
-        <%= activity.owner.name if activity.owner %>
-        <%= render_activity activity %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-<div id="comments_tab" class="tab">
-  <h3>Comments</h3>
-  <div class="list-group" style="width: 25%;">
-    <% @site.comments.each do |comment| %>
-      <div class="list-group-item flex-column align-items-start" style="padding: 0; margin: 0;">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1"><%= comment.user.name %><small class="text-muted"> <%= l comment.created_at %></small>
-            <% if can? :manage, comment %>
-              <small><%= link_to 'Delete', comment_path(comment),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %></small>
-            <% end %></h5>
-          <p class="mb-1"><%= comment.body %></p>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <h5>Add a comment</h5>
-  <%= render 'comments/site_comment' %>
-</div>
-
 <script>
   $(document).on('ready page:load', function () {
     $('.tab').hide();
