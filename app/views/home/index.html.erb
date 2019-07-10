@@ -5,7 +5,7 @@
           <%# <h1 class="h3 mb-4 text-gray-800">Project Octopus Home</h1> %>
 
 
-<h1 style="text-align:left">Welcome <%= current_user.name %>, to <%= ENV["APP_NAME"] %></h1><br><br>
+<h1 style="padding-left: 25px;" class="h3 mb-2 text-gray-800">Welcome <%= current_user.name %>, to <%= ENV["APP_NAME"] %></h1><br><br>
 <%# <p>Showing 5 busiest regions</p> %>
 
 <% if Site.count != 0 %>
@@ -155,9 +155,9 @@
   <br>
 </div>
 
-<h2 style="text-align:left; color:#337ab7;"><a>Activity feed</a></h2>
+<h2 style="padding-left:25px; color:#337ab7;" class="h3 mb-2 text-gray-800" ><a>Activity feed</a></h2>
 
-<div class="activity-feed">
+<div style="padding-left:25px;" class="activity-feed">
   <div class="feed-item">
     <div class="date">Sep 25</div>
     <div class="text">Rod Anderson added a comment to <a href="single-need.php">Joshua Rolland</a></div>
