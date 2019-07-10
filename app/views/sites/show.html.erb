@@ -61,11 +61,11 @@
 
 <!-- Earnings (Monthly) Card Example -->
 <div class="col-xl-3 col-md-6 mb-4">
-  <div class="card border-left-info shadow h-100 py-2">
+  <div class="card border-left-primary shadow h-100 py-2">
     <div class="card-body">
       <div class="row no-gutters align-items-center">
         <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Gender</div>
+          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Gender</div>
           <div class="h5 mb-0 font-weight-bold text-gray-800">Male</div>
         </div>
         <div class="col-auto">
@@ -78,11 +78,11 @@
 
 <!-- Earnings (Monthly) Card Example -->
 <div class="col-xl-3 col-md-6 mb-4">
-  <div class="card border-left-primary shadow h-100 py-2">
+  <div class="card border-left-info shadow h-100 py-2">
     <div class="card-body">
       <div class="row no-gutters align-items-center">
         <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Manager</div>
+          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Manager</div>
           <div class="h5 mb-0 font-weight-bold text-gray-800">Neil Barnby</div>
         </div>
         <div class="col-auto">
@@ -138,22 +138,6 @@
           <th>Job preferences</th>
           <th>Tags</th>
         </thead>
-        <tfoot>
-          <tr>
-            <th>Name</th>
-            <%= '<th>Relased?</th>'.html_safe if @site.hub? %>
-            <th>Prison number</th>
-            <th>Date of birth</th>
-            <th>Gender</th>
-            <th>Release</th>
-            <th>Tag</th>
-            <th>ROTL</th>
-            <th>Recategorisation</th>
-            <th>Skills</th>
-            <th>Job preferences</th>
-            <th>Tags</th>
-          </tr>
-        </tfoot>
       <tbody>
         <% @site.students.order(:first_name).each do |student| %>
             <tr>
