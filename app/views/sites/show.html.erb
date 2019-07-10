@@ -1,13 +1,14 @@
-<div class="container text-left">
+<div  style="padding-left: 25px;" class=" container text-left">
 
+<div style="padding-right:10px;">
 <button style="margin-right:10px; float:right" type="button" class="btn btn-primary">+ Add Person</button>
 <button style="margin-right:16px; float:right"  type="button" class="btn btn-danger">Delete</button>
 <button style="margin-right:10px; float:right" type="button" class="btn btn-primary">Edit</button>
-
+</div>
 
 
 <!-- Page Heading -->
-    <h3>Students at <%= @site.name %></h3>
+    <h3  style="padding-left: 25px;" class="h3 mb-2 text-gray-800">Students at <%= @site.name %></h3>
     <% if @site.students.count <= 0 %>
       <p>There are currently no students enrolled at this site.</p>
     <% else %>
@@ -112,7 +113,7 @@
   </div>
 </div>
 
-<div class="main">
+<div class="main"  style="padding-left:15px; padding-right:15px;">
   <div id="students_tab" class="tab">
       
   <!-- DataTales Example -->
