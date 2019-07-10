@@ -7,7 +7,10 @@
 
 
 <!-- Page Heading -->
-<h1 style="text-align:left" class="h3 mb-4 text-gray-800">HMP Humber</h1>
+    <h3>Students at <%= @site.name %></h3>
+    <% if @site.students.count <= 0 %>
+      <p>There are currently no students enrolled at this site.</p>
+    <% else %>
 
 <!-- table filter/search - top -->
 <div class="col-xl-6 col-md-6 mb-4">
@@ -111,10 +114,6 @@
 
 <div class="main">
   <div id="students_tab" class="tab">
-    <h3>Students at <%= @site.name %></h3>
-    <% if @site.students.count <= 0 %>
-      <p>There are currently no students enrolled at this site.</p>
-    <% else %>
       
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
