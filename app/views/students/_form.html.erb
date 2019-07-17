@@ -1,66 +1,91 @@
-
-
   <div class="container">
 
     <!-- Outer Row -->
-    <div class="row justify-content-center">
+    <div class="row ">
 
-      <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="col-xl-9 col-lg-12 col-md-9">
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="text-center">
-              <h1 style="text-align:left; margin-top:0px; padding-left:50px;" class="h4 text-gray-900 mb-4 card-header" >Edit</h1>
-            </div>
-          <div class="card-body p-0">
+        <div class="card o-hidden border-0 shadow-lg my-5" style="margin-top: 25px !important;">
+                  <div class="text-center">
+                    <h1 style="text-align:left; margin-top:0px; padding-left:50px;" class="h4 text-gray-900 mb-4 card-header" >Edit</h1>
+
+                  </div>
+          <div class="card-body p-0" style="margin-top: -45px;">
             <!-- Nested Row within Card Body -->
             <div class="row">
               <div class="col-lg-12 d-none d-lg-block"></div>
               <div class="col-lg-12">
                 <div class="p-5">
-                  <div class="text-center">
-                    <h1 style="text-align:left;" class="h4 text-gray-900 mb-4">Edit</h1>
-                  </div>
                   <form class="user">
                     <div class="form-group">
-                     <label for="exampleFormControlSelect1">Name</label>
-                      <input type="name" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Name...">
+                        <%= form.label "First name" %>
+                        <%= form.text_field :first_name, class: "form-control form-control-user", placeholder: "First Name..." %>
                     </div>
                     <div class="form-group">
-                     <label for="exampleFormControlSelect1">Capacity</label>
-                      <input type="capacity" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Capacity...">
+                        <%= form.label "Surname" %>
+                        <%= form.text_field :last_name, class: "form-control form-control-user", placeholder: "Surame..." %>
                     </div>
                     <div class="form-group">
-                     <label for="exampleFormControlSelect1">Manager</label>
-                      <input type="manager" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Manager...">
+                        <%= form.label "Prison number" %>
+                        <%= form.text_field :prison_number, class: "form-control form-control-user", placeholder: "Prison number..." %> 
                     </div>
                     <div class="form-group">
-                     <label for="exampleFormControlSelect1">Contact number</label>
-                      <input type="number" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Contact number...">
+                       <%= form.label "Gender" %><br>
+                      <%= form.select :gender, ["Male","Female","Mixed"], class:"custom-select custom-select-sm" %>
                     </div>
                     <div class="form-group">
-                     <label for="exampleFormControlSelect1">Gender</label>
-                    <select class="custom-select custom-select-sm">
-                      <option selected>Gender</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                      <option value="3">Other</option>
-                    </select>
+                      <%= form.label "Contact number" %>
+                      <%= form.text_field :contact_number, placeholder:"Contact number...", class:"form-control form-control-user" %>
+                    </div>
+                    <h4>Key info:</h4>
+                    <div class="form-group">
+                      <%= form.label "Date of birth" %>
+                      <%= form.date_field :dob, placeholder:"D.O.B....", class:"form-control form-control-user" %> 
                     </div>
                     <div class="form-group">
-                     <label for="exampleFormControlSelect1">Regions</label>
-                      <input type="selct" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Regions...">
+                      <%= form.label "Release date" %>
+                      <%= form.date_field :crd, placeholder: "Release date....", class:"form-control form-control-user" %>
                     </div>
-                    <div class="form-group">
-                     <label for="exampleFormControlSelect1">Tags</label>
-                      <input type="select" class="form-control form-control-user" id="exampleInputPassword" placeholder="Tags...">
+                    <div>
+                      <%= form.label "Eligible for tag" %>
+                      <%= form.date_field :hdc, placeholder: "H.D.C. date....", class:"form-control form-control-user" %>
+                    </div>
+                    <div>
+                      <%= form.label "Eligible for ROTL" %>
+                      <%= form.date_field :rotl, placeholder: "R.O.T.L. date....", class:"form-control form-control-user" %>
+                    </div>
+                    <div>
+                      <%= form.label "Next recategorisation" %>
+                      <%= form.date_field :recat, placeholder: "Catagory review date....", class:"form-control form-control-user" %>
+                    </div>
+                    <h4>Key info:</h4>
+                    <% if !@student&.id.present? || @student.contactable? %>
+                      <div>
+                        <%= form.label "Contact number" %>
+                        <%= form.text_field :contact_number, placeholder: "Contact number....", class:"form-control form-control-user" %>
+                      </div>
+                      <div>
+                        <%= form.label "Email" %>
+                        <%= form.email_field :email, placeholder: "Release Date....", class:"form-control form-control-user" %>
+                      </div>
+                    <% end %>
+                    <div>
+                      <%= form.label "Skills" %>
+                      <%= form.select(:skill_list, Student.tag_counts_on(:skills).collect {|t| [ t.name, t.name ] }, { selected: @student.skill_list }, { id: "skill_tags",class:"form-control form-control-user", multiple: true } ) %>
+                    </div>
+                    <div>
+                      <%= form.label "Job preferences" %>
+                      <%= form.select(:job_preference_list, Student.tag_counts_on(:job_preferences).collect {|t| [ t.name, t.name ] }, { selected: @student.job_preference_list }, { id: "job_preference_tags", placeholder: "Release Date....", class:"form-control form-control-user", multiple: true } ) %>
+                    </div>
+                    <div>
+                      <%= form.label "Tags" %>
+                      <%= form.select(:tag_list, Student.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @student.tag_list }, { id: "tags", placeholder: "Release Date....", class:"form-control form-control-user", multiple: true } ) %>
                     </div>
                     <div style="text-align:right">
-                    <a href="" class="btn btn-primary btn-user">
+                    <a href="" class="btn btn-dark btn-user" style="margin-right:10px;">
                       Cancel
                     </a>
-                    <a href="" class="btn btn-google btn-user">
-                      Save
-                    </a>
+                      <%= form.submit "Save", class:"btn btn-google btn-user" %>
                     </div>
                   </form>
                   </div>
@@ -88,70 +113,14 @@
 
 
 <h4>Personal info:</h4>
+
+
 <div>
-  <%= form.label "First name" %>
-  <%= form.text_field :first_name %>
-</div>
-<div>
-  <%= form.label "Surname" %>
-  <%= form.text_field :last_name %>
-</div>
-<div>
-  <%= form.label "Prison number" %>
-  <%= form.text_field :prison_number %>
-</div>
-<div>
-  <%= form.label "Site" %>
-   <%= form.collection_select :site_id, Site.order(:name),:id,:name, include_blank: true, selected: (@student&.site.present? ? @student.site.id : params[:site]) %>
-</div>
-<div>
-  <%= form.label "Gender" %>
-  <%= form.select :gender, ["Male","Female"] %>
-</div>
-<div>
-  <%= form.label "Date of birth" %>
-  <%= form.date_field :dob %>
+
 </div>
 <h4>Key dates:</h4>
-<div>
-  <%= form.label "Release date" %>
-  <%= form.date_field :crd %>
-</div>
-<div>
-  <%= form.label "Eligible for tag" %>
-  <%= form.date_field :hdc %>
-</div>
-<div>
-  <%= form.label "Eligible for ROTL" %>
-  <%= form.date_field :rotl %>
-</div>
-<div>
-  <%= form.label "Next recategorisation" %>
-  <%= form.date_field :recat %>
-</div>
-<h4>Key info:</h4>
-<% if !@student&.id.present? || @student.contactable? %>
-  <div>
-    <%= form.label "Contact number" %>
-    <%= form.text_field :contact_number %>
-  </div>
-  <div>
-    <%= form.label "Email" %>
-    <%= form.email_field :email %>
-  </div>
-<% end %>
-<div>
-  <%= form.label "Skills" %>
-  <%= form.select(:skill_list, Student.tag_counts_on(:skills).collect {|t| [ t.name, t.name ] }, { selected: @student.skill_list }, { id: "skill_tags", multiple: true } ) %>
-</div>
-<div>
-  <%= form.label "Job preferences" %>
-  <%= form.select(:job_preference_list, Student.tag_counts_on(:job_preferences).collect {|t| [ t.name, t.name ] }, { selected: @student.job_preference_list }, { id: "job_preference_tags", multiple: true } ) %>
-</div>
-<div>
-  <%= form.label "Tags" %>
-  <%= form.select(:tag_list, Student.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @student.tag_list }, { id: "tags", multiple: true } ) %>
-</div>
+
+
 <div>
   <%= form.submit "Save" %>
 </div>
