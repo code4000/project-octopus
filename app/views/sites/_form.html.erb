@@ -20,45 +20,39 @@
                 <div class="p-5">
                   <form class="user">
                     <div class="form-group">
-                     <label for="exampleFormControlSelect1">Name</label>
-                      <input type="name" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Name...">
+                      <%= form.label "Name" %>
+                      <%= form.text_field :name, class: "form-control form-control-user", placeholder: "Name..." %>
                     </div>
                     <div class="form-group">
-                     <label for="exampleFormControlSelect1">Capacity</label>
-                      <input type="capacity" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Capacity...">
+                      <%= form.label "Capacity" %>
+                      <%= form.number_field :capacity,  class:"form-control form-control-user", placeholder:"Capacity..." %>
                     </div>
                     <div class="form-group">
-                     <label for="exampleFormControlSelect1">Manager</label>
-                      <input type="manager" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Manager...">
+                       <%= form.label "Manager" %>
+                       <%= form.text_field :manager, class:"form-control form-control-user", placeholder:"Manager..." %>
                     </div>
                     <div class="form-group">
-                     <label for="exampleFormControlSelect1">Contact number</label>
-                      <input type="number" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Contact number...">
+                      <%= form.label "Contact number" %>
+                      <%= form.text_field :contact_number, placeholder:"Contact number...", class:"form-control form-control-user" %>
                     </div>
                     <div class="form-group">
-                     <label for="exampleFormControlSelect1">Gender</label>
-                    <select class="custom-select custom-select-sm">
-                      <option selected>Gender</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                      <option value="3">Other</option>
-                    </select>
+                       <%= form.label "Gender" %><br>
+                      <%= form.select :gender, ["Male","Female","Mixed"], class:"custom-select custom-select-sm" %>
                     </div>
                     <div class="form-group">
-                     <label for="exampleFormControlSelect1">Regions</label>
-                      <input type="selct" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Regions...">
-                    </div>
+                      <%= form.label "Regions" %>
+                      <%= form.select(:region_list, Site.tag_counts_on(:regions).collect {|t| [ t.name, t.name ] }, { selected: @site.region_list }, { id: "region_tags exampleInputEmail", class:"form-control form-control-user", placeholder:"Regions...", multiple: true } ) %>
+                      </div>
                     <div class="form-group">
                      <label for="exampleFormControlSelect1">Tags</label>
-                      <input type="select" class="form-control form-control-user" id="exampleInputPassword" placeholder="Tags...">
+                       <%= form.label "Tags" %>
+                      <%= form.select(:tag_list, Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @site.tag_list }, { id: "tags exampleInputPassword", placeholder:"Tags...",class:"form-control form-control-user" , multiple: true } ) %>
                     </div>
                     <div style="text-align:right">
-                    <a href="" class="btn btn-primary btn-user">
+                    <a href="" class="btn btn-dark btn-user" style="margin-right:10px;">
                       Cancel
                     </a>
-                    <a href="" class="btn btn-google btn-user">
-                      Save
-                    </a>
+                      <%= form.submit "Save", class:"btn btn-google btn-user" %>
                     </div>
                   </form>
                   </div>
@@ -73,39 +67,6 @@
     </div>
 
   </div>
-
-
-<div>
-  <%= form.label "Name" %>
-  <%= form.text_field :name %>
-</div>
-<div>
-  <%= form.label "Capacity" %>
-  <%= form.number_field :capacity %>
-</div>
-<div>
-  <%= form.label "Manager" %>
-  <%= form.text_field :manager %>
-</div>
-<div>
-  <%= form.label "Contact number" %>
-  <%= form.text_field :contact_number %>
-</div>
-<div>
-  <%= form.label "Gender" %>
-  <%= form.select :gender, ["Male","Female","Mixed"] %>
-</div>
-<div>
-  <%= form.label "Regions" %>
-  <%= form.select(:region_list, Site.tag_counts_on(:regions).collect {|t| [ t.name, t.name ] }, { selected: @site.region_list }, { id: "region_tags", multiple: true } ) %>
-</div>
-<div>
-  <%= form.label "Tags" %>
-  <%= form.select(:tag_list, Site.tag_counts_on(:tags).collect {|t| [ t.name, t.name ] }, { selected: @site.tag_list }, { id: "tags", multiple: true } ) %>
-</div>
-<div>
-  <%= form.submit "Save" %>
-</div>
 
 <script>
   $(document).on('ready page:load', function () {
