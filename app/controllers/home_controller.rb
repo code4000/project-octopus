@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     end
 
     activities = PublicActivity::Activity.all.order('created_at desc')
-    @activities = activities.paginate(page: params[:page], per_page: 20)
+    @activities = activities.paginate(page: params[:page], per_page: 15)
     
   end
 end
