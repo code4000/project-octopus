@@ -135,8 +135,6 @@
           <th>ROTL</th>
           <th>Recategorisation</th>
           <th>Skills</th>
-          <th>Job preferences</th>
-          <th>Tags</th>
         </thead>
       <tbody>
         <% @site.students.order(:first_name).each do |student| %>
@@ -153,8 +151,6 @@
               <td><%= student.rotl.present? ? (l student.rotl) : "Unknown" %></td>
               <td><%= student.recat.present? ? (l student.recat) : "Unknown" %></td>
               <td><%= student.skill_list %></td>
-              <td><%= student.job_preference_list %></td>
-              <td><%= student.tag_list %></td>
             </tr>
         <% end %>
       </tbody>
