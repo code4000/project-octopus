@@ -1,7 +1,14 @@
 <div  style="padding-left: 25px;" class=" container text-left">
 
 <div style="padding-right:10px;">
-  <button style="margin-right:10px; float:right" type="button" class="btn btn-primary">+ Add Person</button>
+
+    <% if can? :create, Student  %>
+    <%= link_to new_student_path(site: @site) do %>
+      <button style="margin-right:10px; float:right" class="btn btn-primary" type="button">
+        + Add Person
+      </button>
+    <% end %>
+  <% end %>
 
     <% if can? :update, @site  %>
     <%= link_to site_path(@site), method: :delete, data: { confirm: 'Are you sure?' } do %>
