@@ -193,7 +193,7 @@
   <div style="padding-left:30px;" class="activity-feed">
     <% @activities.each do |activity| %>
         <div class="feed-item">
-            <div class="date"><%= l activity.created_at %></div>
+            <div class="date"><%= activity.created_at.strftime("%b %e") %></div>
             <div class="text"><%= activity.owner.name if activity.owner %> <%= render_activity activity %></div>
       </div>
     <% end %>
