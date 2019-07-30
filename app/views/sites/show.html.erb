@@ -1,9 +1,16 @@
 <div  style="padding-left: 25px;" class=" container text-left">
 
 <div style="padding-right:10px;">
-<button style="margin-right:10px; float:right" type="button" class="btn btn-primary">+ Add Person</button>
-<button style="margin-right:16px; float:right"  type="button" class="btn btn-danger">Delete</button>
-<button style="margin-right:10px; float:right" type="button" class="btn btn-primary">Edit</button>
+  <button style="margin-right:10px; float:right" type="button" class="btn btn-primary">+ Add Person</button>
+  <button style="margin-right:16px; float:right"  type="button" class="btn btn-danger">Delete</button>
+
+  <% if can? :update, @site  %>
+    <%= link_to edit_site_path(@site) do %>
+      <button style="margin-right:10px; float:right" class="btn btn-primary" type="button">
+        Edit
+      </button>
+    <% end %>
+  <% end %>
 </div>
 
 
