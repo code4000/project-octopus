@@ -189,6 +189,17 @@
   </div>
 </div>
 
+<% if !@activities.nil? %>
+  <div style="padding-left:30px;" class="activity-feed">
+    <% @activities.each do |activity| %>
+        <div class="feed-item">
+            <div class="date"><%= l activity.created_at %></div>
+            <div class="text"><%= activity.owner.name if activity.owner %> <%= render_activity activity %></div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <div class="container text-center">
 
 
